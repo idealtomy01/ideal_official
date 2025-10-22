@@ -37,11 +37,18 @@ export const colors = {
     secondary: 'text-cyan-400',
     bg: 'bg-blue-500',
     bgHover: 'hover:bg-blue-600',
+    text: 'text-blue-400',
   },
   // アクセント（高級感）
   luxury: {
     border: 'border-gray-700',
     gold: 'text-yellow-400',
+  },
+  // ボーダー
+  border: {
+    default: 'border-gray-700',
+    accent: 'border-blue-400',
+    muted: 'border-gray-600',
   },
   // 状態カラー
   state: {

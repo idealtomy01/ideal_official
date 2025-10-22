@@ -15,6 +15,7 @@ export function Footer() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
+    { href: '/philosophy', label: 'Philosophy' },
     { href: '/contact', label: 'Contact' },
   ]
 
