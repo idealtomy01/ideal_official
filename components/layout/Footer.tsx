@@ -15,7 +15,7 @@ export function Footer() {
   const navLinks = [
     { href: '/', label: 'Home' },
     { href: '/services', label: 'Services' },
-    { href: '/philosophy', label: 'idealとは' },
+    { href: '/philosophy', label: 'DAO研究・取り組み' },
     { href: '/contact', label: 'Contact' },
   ]
 

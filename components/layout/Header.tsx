@@ -44,7 +44,7 @@ export function Header() {
   // ナビゲーションリンク
   const navLinks = [
     { href: '/', label: 'トップ' },
-    { href: '/philosophy', label: 'idealとは' },
+    { href: '/philosophy', label: 'DAO研究・取り組み' },
     { href: '/contact', label: '問い合わせ' },
   ]
 

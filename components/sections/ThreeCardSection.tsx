@@ -106,7 +106,7 @@ export function ThreeCardSection({
   const getCardSizeStyles = () => {
     switch (cardSize) {
       case 'sm':
-        return 'p-4'
+        return 'p-3'
       case 'lg':
         return 'p-8'
       default:
@@ -156,7 +156,7 @@ export function ThreeCardSection({
         {/* 3カラムカードグリッド */}
         <div className={`
         ${enableMobileScroll 
-          ? 'flex overflow-x-auto gap-4 pb-4 scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:pb-0 snap-x snap-mandatory px-4 md:px-0 justify-start' 
+          ? 'flex overflow-x-auto gap-3 pb-4 scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:pb-0 snap-x snap-mandatory px-2 md:px-0 justify-start' 
           : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'
         }
         ${getCardAlignmentStyles()}
@@ -179,7 +179,7 @@ export function ThreeCardSection({
                     transition-all duration-300
                     hover:scale-105 hover:shadow-lg
                     h-full flex flex-col
-                    ${enableMobileScroll ? 'flex-shrink-0 w-80 md:w-auto snap-start' : ''}
+                    ${enableMobileScroll ? 'flex-shrink-0 w-72 md:w-auto snap-start' : ''}
                   `}>
                     {/* アイコンまたは画像 */}
                     {(card.icon || card.image) && (
@@ -199,12 +199,12 @@ export function ThreeCardSection({
                     )}
 
                     {/* タイトル */}
-                    <h3 className={`text-xl font-semibold ${colors.text.primary} mb-3`}>
+                    <h3 className={`text-base font-semibold ${colors.text.primary} mb-3`}>
                       {card.title}
                     </h3>
 
                     {/* 説明文 */}
-                    <p className={`${colors.text.secondary} mb-4 flex-grow`}>
+                    <p className={`text-sm ${colors.text.secondary} mb-4 flex-grow`}>
                       {card.description}
                     </p>
 
@@ -225,35 +225,30 @@ export function ThreeCardSection({
                       </div>
                     )}
 
-                    {/* リンク */}
-                    {card.href && (
-                      <div className="text-center mt-auto">
-                        <a
-                          href={card.href}
-                          className={`
-                            inline-flex items-center text-sm font-medium
-                            ${colors.accent.text} hover:${colors.text.primary}
-                            transition-colors duration-200
-                          `}
-                          onClick={(e) => e.stopPropagation()}
+                    {/* モーダル表示のヒント */}
+                    <div className="text-center mt-auto">
+                      <div className={`
+                        inline-flex items-center text-sm font-medium
+                        ${colors.accent.text} hover:${colors.text.primary}
+                        transition-colors duration-200
+                        cursor-pointer
+                      `}>
+                        詳細を見る
+                        <svg
+                          className="ml-1 w-4 h-4"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
                         >
-                          詳細を見る
-                          <svg
-                            className="ml-1 w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M9 5l7 7-7 7"
-                            />
-                          </svg>
-                        </a>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
                       </div>
-                    )}
+                    </div>
                   </div>
                 </ModalTrigger>
               )
@@ -271,7 +266,7 @@ export function ThreeCardSection({
                   transition-all duration-300
                   hover:scale-105 hover:shadow-lg
                   h-full flex flex-col
-                  ${enableMobileScroll ? 'flex-shrink-0 w-80 md:w-auto snap-start' : ''}
+                  ${enableMobileScroll ? 'flex-shrink-0 w-72 md:w-auto snap-start' : ''}
                 `}
                 onClick={card.onClick}
               >

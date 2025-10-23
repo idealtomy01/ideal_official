@@ -8,6 +8,8 @@
 import { Metadata } from 'next'
 import { Header } from '../../components/layout/Header'
 import { SmoothScroll } from '../../components/layout/SmoothScroll'
+import { ThreeCardSection, CardData } from '../../components/sections/ThreeCardSection'
+import { Accordion, AccordionItem } from '../../components/ui/Accordion'
 import { colors, layout } from '../../lib/design-tokens'
 
 export const metadata: Metadata = {
@@ -20,6 +22,407 @@ export const metadata: Metadata = {
 }
 
 export default function PhilosophyPage() {
+  // 価値の目詰まり具体例のカードデータ
+  const valueClogCards: CardData[] = [
+    {
+      title: '地域社会',
+      description: 'ボランティアや自治会活動がもたらす価値の構造的問題',
+      modalTitle: '地域社会における価値の目詰まり',
+      modalContent: (
+        <div className="space-y-4">
+          <p>
+            ボランティアや自治会活動がもたらす価値。その真の受益者は、活動に直接関与しない<strong>「フリーライダー」</strong>や、その恩恵を暗黙的に享受する<strong>社会全体</strong>です。
+          </p>
+          <p>
+            環境を提供し維持する貢献者の活動価値は可視化されず、彼らの経済的な豊かさに結びつくことはありません。
+          </p>
+          <p>
+            皮肉なことに、この構造は、貢献する<strong>『内側の人』</strong>よりも、貢献せずに利益だけを享受する<strong>『外側の人』</strong>の方が、結果として欲望を満たしやすい社会を維持してしまっているのです。
+          </p>
+        </div>
+      ),
+      modalSize: 'lg'
+    },
+    {
+      title: '組織内',
+      description: '後輩指導や情報共有が生み出す価値の構造的問題',
+      modalTitle: '組織内における価値の目詰まり',
+      modalContent: (
+        <div className="space-y-4">
+          <p>
+            後輩への技術指導や部署を超えた情報共有。これらの活動が生み出す価値の真の受益者は、誰なのか。
+          </p>
+          <p>
+            貢献した個人の努力は、「チームの成果」や「組織の生産性向上」といった、より大きな指標の中に吸収され、希釈されてしまいます。
+            貢献の源泉が誰であったかは、もはや誰にも分かりません。
+          </p>
+          <p>
+            この構造は、個人が自身の評価を守るために&ldquo;知識を共有しない&rdquo;という、合理的な防衛行動を誘発します。
+            組織の長期的な成長を犠牲にしてでも、個人が短期的な自己利益を追求する事が合理的である。これもまた、貢献者から価値が一方的に吸い上げられる、紛れもない搾取の形の一部です。
+          </p>
+        </div>
+      ),
+      modalSize: 'lg'
+    },
+    {
+      title: '企業間連携',
+      description: '企業間取引における防衛戦略の構造的問題',
+      modalTitle: '企業間連携における価値の目詰まり',
+      modalContent: (
+        <div className="space-y-4">
+          <p>
+            企業間取引における暗黙の前提は、共同での価値創造よりも、いかに自社の責任を回避し、リスクを相手に転嫁するかという、
+            <strong>徹底した防衛戦略</strong>が最大のコストになっています。
+          </p>
+          <p>
+            その結果、生まれるのがリスク管理と称した責任の押し付け合いです。
+            複雑な契約書や厳しい監査は、万が一の際に相手を追及し、自らを守るための<strong>&ldquo;法的武装&rdquo;</strong>であり、
+            そのコストは本質的価値を生み出すための活動よりも大きなものになっているでしょう。
+          </p>
+          <p>
+            この環境での最大の被害者は、常に<strong>誠実な事業者</strong>です。
+            相手を信頼し、真に価値を創造しようとする姿勢は非合理的な経営になりかねず、一方的にリスクと追加コストを背負わされる。
+            <strong>誠実さそのものが、経済的合理性を失う。</strong>社会全体の価値創造を停滞させる、深刻な問題なのです。
+          </p>
+        </div>
+      ),
+      modalSize: 'lg'
+    }
+  ]
+
+  // 公正さを支える6つの絶対条件のカードデータ
+  const absoluteConditionsCards: CardData[] = [
+    {
+      title: '1. 透明性と自動化',
+      description: '意思決定プロセスと実行の自動化と検証可能性',
+      modalTitle: '透明性と自動化',
+      modalContent: (
+        <div className="space-y-4">
+          <p>
+            意思決定プロセスと実行はプログラムにより自動化され、それらを全て誰もが検証可能な状態とし、
+            人間の恣意的な介入の実行を高コストな状態となっていること。
+          </p>
+          <p>
+            この条件により、システムの公平性と信頼性が担保され、人間の主観的な判断による歪みを排除できます。
+          </p>
+        </div>
+      ),
+      modalSize: 'md'
+    },
+    {
+      title: '2. 広範囲の検知',
+      description: 'AIによる微細な貢献の検知と広範囲な影響の把握',
+      modalTitle: '広範囲の影響と活動（貢献）の検知',
+      modalContent: (
+        <div className="space-y-4">
+          <p>
+            AIが、広範囲に及ぶ影響と、人間には見過ごされる微細な貢献の両方を検知できること。
+          </p>
+          <p>
+            人間の認知限界を超えた貢献の可視化により、これまで見落とされていた価値創造活動を適切に評価できるようになります。
+          </p>
+        </div>
+      ),
+      modalSize: 'md'
+    },
+    {
+      title: '3. 補正・調整システム',
+      description: '定量化による攻略活動を防ぐ仕組み',
+      modalTitle: '補正、調整システム',
+      modalContent: (
+        <div className="space-y-4">
+          <p>
+            定量化による攻略活動が合理的とならない仕組みを導入・実現できること
+          </p>
+          <p>
+            システムの公平性を維持するため、数値化された指標を悪用する行為を防ぐ仕組みが不可欠です。
+          </p>
+        </div>
+      ),
+      modalSize: 'md'
+    },
+    {
+      title: '4. 中長期的影響の反映',
+      description: '長期的な貢献度と影響の評価システム',
+      modalTitle: '中長期的に影響を反映させる仕組み',
+      modalContent: (
+        <div className="space-y-4">
+          <p>
+            中長期的な貢献度が与える中長期的な影響を加味できること
+          </p>
+          <p>
+            短期的な成果だけでなく、時間をかけて実現される価値創造も適切に評価される仕組みです。
+          </p>
+        </div>
+      ),
+      modalSize: 'md'
+    },
+    {
+      title: '5. 進化する価値基準',
+      description: '時代に合わせて価値基準を更新する仕組み',
+      modalTitle: '進化する価値基準',
+      modalContent: (
+        <div className="space-y-4">
+          <p>
+            時代や環境の変化に合わせ、コミュニティが透明なプロセスで価値基準を更新できること。
+          </p>
+          <p>
+            固定化された価値観ではなく、社会の変化に応じて柔軟に進化する評価システムの重要性を示しています。
+          </p>
+        </div>
+      ),
+      modalSize: 'md'
+    },
+    {
+      title: '6. 透明性の秘匿性',
+      description: '個人のプライバシー保護とシステムの透明性',
+      modalTitle: 'プライバシーと透明性の両立',
+      modalContent: (
+        <div className="space-y-4">
+          <p>
+            プロセスの透明性を担保しつつ、個人の心理的安全性を守るプライバシー保護がなされていること。
+          </p>
+          <p>
+            公正な評価システムでありながら、個人の尊厳とプライバシーを守る技術的解決策が求められます。
+          </p>
+        </div>
+      ),
+      modalSize: 'md'
+    }
+  ]
+
+  // 各工程のアコーディオンデータ
+  const processSteps: AccordionItem[] = [
+    {
+      id: 'step-1',
+      title: '1：AIによる貢献の『観測』',
+      content: (
+        <div>
+          <p>AIによる多角的なデータ観測。人間では不可能だった活動範囲と貢献要素に対し、リアルタイムに感知し情報を集積するように設計します。</p>
+        </div>
+      )
+    },
+    {
+      id: 'step-2',
+      title: '2：ブロックチェーンによる『記録に基づく計算』と記録の保全',
+      content: (
+        <div className="space-y-4">
+          <p>
+            AIによって感知された情報は、ブロックチェーン上に「PoC要素」として刻まれます。
+            この情報を中長期的に貢献度測定の影響要素とすることで、貢献は一過性の評価ではなく、個人に永続的に紐づく&ldquo;デジタル資産（負債）&rdquo;となります。
+          </p>
+          <div className="space-y-4 bg-gray-800 p-4 rounded-lg border border-gray-600">
+            <p>
+              このスコアは、組織に対して紐づくものではなく活動者個人に紐づくものとします。また組織の解散や組織の移動によってリセットされることはありません。
+              長期的な活動履歴の積み重ねが、個々人の価値観や評価基準の揺るがない情報となります。
+            </p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'step-3',
+      title: '3：スマートコントラクトによるインセンティブの『自動執行』',
+      content: (
+        <div className="space-y-4">
+          <p>
+            ブロックチェーンに記録されたPoC要素を基に既定の貢献度測定を行い、決められた計算に基づきスマートコントラクトがインセンティブを自動執行します。
+            ここには一切の人間的裁量や遅延は介在出来ないものとします。
+          </p>
+          <div className="space-y-4">
+            <ul className="list-disc list-inside ml-4 space-y-2">
+              <li><strong>トークンエコノミクス:</strong> PoC要素に基づく結果に応じて執行されるインセンティブ報酬の移動は、トークンによって行われることで実現可能となります。</li>
+              <li><strong>ガバナンス設計:</strong> 各組織や集団ごとの意思決定プロセスに基づき、自由に投票方式やリワード（活動報酬）トークン活用が可能な環境を実現とします。</li>
+            </ul>
+            <p className="font-bold mt-4">
+              この自動執行されたインセンティブの基となる要素が、中長期的にその個人のインセンティブに永続的に影響を与える仕組みとなることで、
+              一つ一つの判断や行動に中長期的な責任とリスクを発生させます。
+            </p>
+          </div>
+        </div>
+      )
+    },
+    {
+      id: 'step-4',
+      title: '4：時間と範囲を超えた『影響の追跡』と『永続的フィードバック』',
+      content: (
+        <div className="space-y-4">
+          <p>
+            AIは、記録された各行動（PoC要素）が、時間軸（数年、数十年）と影響範囲（チーム、組織、社会）において、どのような結果をもたらしたかを追跡・分析し続けます。
+          </p>
+          <p>
+            中長期的な影響分析の結果は、個人に紐づくデジタル資産にフィードバックされ、未来のインセンティブ計算に反映されます。
+            良い影響は将来の貢献度を高め、悪い影響はそれを減衰させる。これにより、短期的な「逃げ得」が合理的か未知数となり、
+            すべての活動者に対する『責任、リスク、報酬の分散化』実現に近づきます。
+          </p>
+        </div>
+      )
+    },
+    {
+      id: 'step-5',
+      title: '5：価値基準の『自己進化』',
+      content: (
+        <div className="space-y-4">
+          <p>
+            社会環境や時代の価値観は常に変化します。固定されたルールに縛られるのではなく、自ら進化し続けるように設計する必要があります。
+            重要なのは、柔軟に変更可能な要素と、変更が行えない要素の棲み分けを行うことです。
+          </p>
+          <p>
+            AIは、エコシステム全体の健全性や外部環境の変化を常に観測し、「現在の貢献度測定基準が、本当にDAOの掲げる価値観と一致しているか」を問い続けます。
+            その分析結果はコミュニティに提示され、透明なガバナンスプロセスを通じて、DAO自身が価値基準をアップデートしていくことに寄与します。
+          </p>
+        </div>
+      )
+    },
+    {
+      id: 'step-6',
+      title: '6：プライバシーと透明性の『両立』',
+      content: (
+        <div className="space-y-4">
+          <p>
+            ゼロ知識証明（Zero-Knowledge Proofs）などの暗号技術を活用し、個々の行動の詳細（具体的な発言内容やコードの断片、活動履歴など）を秘匿したまま、
+            「その個人が持つデジタル資産」の内容をを証明し、ブロックチェーンに記録しておくことが可能になります。
+          </p>
+          <ul className="list-disc list-inside ml-4 space-y-2 text-sm">
+            <li><strong>プロセスは透明に：</strong>どのようなルール（スマートコントラクト）で貢献が評価され、インセンティブが執行されるかは、誰でも検証可能な状態とする。</li>
+            <li><strong>データは非公開に：</strong>その評価の根拠となった個々の具体的な行動データは、本人の同意なしに公開されることがないものとする。</li>
+          </ul>
+          <p className="mt-4 font-bold">
+            この技術的な両立が、公正さへの信頼と個人の心理的安全性を同時に担保し、自分らしく貢献できる環境を実現するための鍵となります。
+          </p>
+        </div>
+      )
+    }
+  ]
+
+  // 哲学セクションのアコーディオンデータ
+  const philosophyItems: AccordionItem[] = [
+    {
+      id: 'philosophy-1',
+      title: '『能力』の強制的な社会保障化',
+      content: (
+        <div className="space-y-4">
+          <p>
+            現代日本の雇用システムでは、<strong>成果や能力を理由に正社員を解雇することは極めて困難です。</strong>これは本来、個人の生活を守るためのセーフティネットでした。
+          </p>
+          <p>
+            しかし、この制度は意図せずして<strong>&ldquo;有能で誠実な人間が生み出す価値の余剰が、価値を生まない人間のコストに強制的に再分配される&rdquo;</strong>という仕組みを組織に強いています。
+            組織は、このコストを払い続けなければならず、その原資は、本来報われるべき誠実な貢献者からの搾取によって賄われているのです。
+          </p>
+        </div>
+      )
+    },
+    {
+      id: 'philosophy-2',
+      title: '評価システムを歪める『温情主義』',
+      content: (
+        <div className="space-y-4">
+          <p>
+            <strong>能力の欠如や貢献の不足という事実から目を背け、評価そのものを歪めてしまう文化</strong>
+          </p>
+          <p>
+            個々の得意不得意や向き不向きも含め、個別環境化での&ldquo;無能&rdquo;は罪ではない。しかし、その事実が曖昧な評価基準で&ldquo;調整&rdquo;され、二つの悲劇を生みます。
+          </p>
+          <div className="space-y-4 border-t border-gray-600 pt-4 mt-4">
+            <p className="underline decoration-blue-400 underline-offset-4 decoration-2 mb-2"> 
+              １，組織全体の評価基準を破壊し、誠実な貢献者の意欲を削いでしまうこと。
+            </p>
+            <p className="underline decoration-blue-400 underline-offset-4 decoration-2"> 
+              ２，本来であれば適切な支援や別の道によって救われるべき個人から、その機会を奪ってしまうこと。
+            </p>
+          </div>
+        </div>
+      )
+    }
+  ]
+
+  // ロードマップのアコーディオンデータ
+  const roadmapItems = [
+    {
+      id: 'phase-1',
+      title: (
+        <span>
+          <span className="text-blue-400">フェーズ1</span>：基礎研究とプロトタイプの構築
+        </span>
+      ),
+      content: (
+        <div className="space-y-4">
+          <p>
+            この段階では、環境提供のために必要な要素をコードに変換するための開発・検証をします。
+          </p>
+          <ul className="list-disc list-inside space-y-4">
+            <li>
+              <strong>価値の定義と設計：</strong> 何を「貢献」とし、それに対してどのような対価（トークン等）を紐付けるのか。その価値交換システムの基本設計を確立します。
+            </li>
+            <li>
+              <strong>技術的基盤の確立：</strong> 貢献を検知するAIと、それを記録するブロックチェーンが連携するための、基本的なアーキテクチャを設計・検証します。
+            </li>
+            <li>
+              <strong>プライバシーと透明性の両立：</strong> ゼロ知識証明（zk-SNARKs等）の技術を活用し、貢献の事実は検証可能でありながら、個人のプライバシーを完全に保護する技術的アプローチを研究、検証します。
+            </li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'phase-2',
+      title: (
+        <span>
+          <span className="text-blue-400">フェーズ2</span>：AI仮想社会を活用したシミュレーション
+        </span>
+      ),
+      content: (
+        <div className="space-y-4">
+          <p>
+            開発したプロトタイプを、現実世界を模したAIによる仮想社会（デジタルサンドボックス）に投入し、テストと調整を繰り返します。
+          </p>
+          <ul className="list-disc list-inside space-y-4">
+            <li>
+              <strong>多様な組織モデルでの検証：</strong> 数人規模のチームから数万人規模のコミュニティまで、様々な組織、社会モデルをシミュレートし、システムの有効性と限界を洗い出します。
+            </li>
+            <li>
+              <strong>報酬バランスの最適化：</strong> 貢献度に対する報酬の変数（インセンティブの強弱や時間経過による減衰率など）を動的に調整し、最も健全なエコシステムが生まれるパラメータを探求します。
+            </li>
+            <li>
+              <strong>耐攻撃性のストレステスト：</strong> あらゆる「攻略法」を試みる敵対的なAIエージェントを投入し、システムの免疫機能が正しく作動するかを徹底的にテストします。
+            </li>
+          </ul>
+        </div>
+      )
+    },
+    {
+      id: 'phase-3',
+      title: (
+        <span>
+          <span className="text-blue-400">フェーズ3</span>：社会実験と実装へ
+        </span>
+      ),
+      content: (
+        <div className="space-y-4">
+          <p>
+            技術そのものだけではなく<strong>&ldquo;中心に据える価値観を何にするか&rdquo;</strong>によって、
+            &ldquo;貢献の定義&rdquo;と&ldquo;公正さの形&rdquo;がどう変わるのかという視点での検証を行い常に進化できる環境であることを確認、検証します。
+          </p>
+          <ul className="list-disc list-inside space-y-4">
+            <li>
+              <strong>価値観による適応性の検証：</strong> &ldquo;中心に据える価値観&rdquo;によって、&ldquo;貢献の定義&rdquo;と&ldquo;公正さの形&rdquo;がどう変化し、システムがそれに適応できるかを検証します。
+            </li>
+            <li>
+              <strong>多様なユースケースでの実証：</strong> 個人の哲学、企業理念、社会課題解決など、様々な価値観を持つコミュニティでの適用可能性を実証します。
+            </li>
+          </ul>
+          
+          <p className="mt-4">
+            DAOの実現に必要なのは&ldquo;環境&rdquo;であり、その環境に必要な要素を開発し、誰もが入手可能な状態とすることが、本格的な社会実装のスタートラインであり、当面の目標地点です。
+          </p>
+          <p className="mt-4 font-bold">
+            持続可能で多様な組織の未来が形作られ、選択肢が広がる未来に必要なシステムとして機能するかの重要なフェーズです。
+          </p>
+        </div>
+      )
+    }
+  ]
+
   return (
     <div className="min-h-screen bg-black text-gray-100">
       <Header />
@@ -152,8 +555,9 @@ export default function PhilosophyPage() {
                 <p className="text-xl font-bold mb-1 text-red-300">信用コストの肥大化</p>
                 <p className="text-md text-red-400">監査・管理・監視コストが増大し、組織の合理性を意識した行動者が損をする悪循環</p>
               </div>
+            </div>
 
-              <div className="mt-8 mb-12">
+            <div className="mt-8 mb-12">
                 <h4 className="text-lg md:text-xl font-bold text-gray-100 border-l-4 border-blue-400 pl-4 mt-4 mb-4">
                   「正直者が報われない」構造の正体
                 </h4>
@@ -167,9 +571,8 @@ export default function PhilosophyPage() {
                   <p className="text-base md:text-lg font-bold">
                     この構造によって、有能で誠実な人材ほど、搾取され続けるか静かに組織を去っていくかのどちらかになる。これこそが、曖昧な評価基準や信用コストが引き起こす最も致命的な損失だと考えています。
                   </p>
-                </div>
+                </div>       
               </div>
-            </div>
 
             <div className="my-16">
               <h3 className="text-xl md:text-2xl font-semibold mb-4 border-l-4 border-blue-400 pl-4">
@@ -188,71 +591,14 @@ export default function PhilosophyPage() {
             </div>
 
             <div className="mt-16">
-              <h3 className="text-xl md:text-2xl font-semibold mb-8 border-l-4 border-blue-400 pl-4">
-                日常に潜む「価値の目詰まり」の具体例
-              </h3>
-              <div className="grid md:grid-cols-3 gap-8">
-                <div className="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-700/50 hover:border-blue-400/50 transition-all duration-300">
-                  <div className="flex justify-center mb-4">
-                    <svg className="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                    </svg>
-                  </div>
-                  <h4 className="text-lg md:text-xl font-bold mb-3 text-center text-gray-100">地域社会</h4>
-                  <p className="text-sm leading-relaxed">
-                    ボランティアや自治会活動がもたらす価値。その真の受益者は、活動に直接関与しない<strong>「フリーライダー」</strong>や、その恩恵を暗黙的に享受する<strong>社会全体</strong>です。
-                  </p>
-                  <p className="text-sm leading-relaxed mt-2">
-                    環境を提供し維持する貢献者の活動価値は可視化されず、彼らの経済的な豊かさに結びつくことはありません。
-                  </p>
-                  <p className="text-sm leading-relaxed mt-2">
-                    皮肉なことに、この構造は、貢献する<strong>『内側の人』</strong>よりも、貢献せずに利益だけを享受する<strong>『外側の人』</strong>の方が、結果として欲望を満たしやすい社会を維持してしまっているのです。
-                  </p>
-                </div>
-                
-                <div className="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-700/50 hover:border-blue-400/50 transition-all duration-300">
-                  <div className="flex justify-center mb-4">
-                    <svg className="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                    </svg>
-                  </div>
-                  <h4 className="text-lg md:text-xl font-bold mb-3 text-center text-gray-100">組織内</h4>
-                  <p className="text-sm leading-relaxed">
-                    後輩への技術指導や部署を超えた情報共有。これらの活動が生み出す価値の真の受益者は、誰なのか。
-                  </p>
-                  <p className="text-sm leading-relaxed mt-2">
-                    貢献した個人の努力は、「チームの成果」や「組織の生産性向上」といった、より大きな指標の中に吸収され、希釈されてしまいます。
-                    貢献の源泉が誰であったかは、もはや誰にも分かりません。
-                  </p>
-                  <p className="text-sm leading-relaxed mt-2">
-                    この構造は、個人が自身の評価を守るために&ldquo;知識を共有しない&rdquo;という、合理的な防衛行動を誘発します。
-                    組織の長期的な成長を犠牲にしてでも、個人が短期的な自己利益を追求する事が合理的である。これもまた、貢献者から価値が一方的に吸い上げられる、紛れもない搾取の形の一部です。
-                  </p>
-                </div>
-                
-                <div className="bg-gray-900 p-6 rounded-xl shadow-lg border border-gray-700/50 hover:border-blue-400/50 transition-all duration-300">
-                  <div className="flex justify-center mb-4">
-                    <svg className="w-12 h-12 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="1">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
-                    </svg>
-                  </div>
-                  <h4 className="text-lg md:text-xl font-bold mb-3 text-center text-gray-100">企業間連携</h4>
-                  <p className="text-sm leading-relaxed">
-                    企業間取引における暗黙の前提は、共同での価値創造よりも、いかに自社の責任を回避し、リスクを相手に転嫁するかという、
-                    <strong>徹底した防衛戦略</strong>が最大のコストになっています。
-                  </p>
-                  <p className="text-sm leading-relaxed mt-2">
-                    その結果、生まれるのがリスク管理と称した責任の押し付け合いです。
-                    複雑な契約書や厳しい監査は、万が一の際に相手を追及し、自らを守るための<strong>&ldquo;法的武装&rdquo;</strong>であり、
-                    そのコストは本質的価値を生み出すための活動よりも大きなものになっているでしょう。
-                  </p>
-                  <p className="text-sm leading-relaxed mt-2">
-                    この環境での最大の被害者は、常に<strong>誠実な事業者</strong>です。
-                    相手を信頼し、真に価値を創造しようとする姿勢は非合理的な経営になりかねず、一方的にリスクと追加コストを背負わされる。
-                    <strong>誠実さそのものが、経済的合理性を失う。</strong>社会全体の価値創造を停滞させる、深刻な問題なのです。
-                  </p>
-                </div>
-              </div>
+              <ThreeCardSection
+                title="日常に潜む「価値の目詰まり」の具体例"
+                cards={valueClogCards}
+                enableMobileScroll={true}
+                padding="md"
+                cardSize="md"
+                className="bg-black"
+              />
             </div>
 
             <div className="space-y-6 mt-16 text-base md:text-lg leading-relaxed">
@@ -290,43 +636,11 @@ export default function PhilosophyPage() {
                 現代の社会システムが内包する、二つの代表的な構造的問題から解決が測れるのではないかと考えています。
               </p>
       
-              <div>
-                <h3 className="text-xl md:text-2xl font-semibold mb-4 border-l-4 border-blue-400 pl-4">
-                  『能力』の強制的な社会保障化
-                </h3>
-                <div className="space-y-4 bg-gray-900 p-6 rounded-lg border border-gray-700">
-                  <p>
-                    現代日本の雇用システムでは、<strong>成果や能力を理由に正社員を解雇することは極めて困難です。</strong>これは本来、個人の生活を守るためのセーフティネットでした。
-                  </p>
-                  <p>
-                    しかし、この制度は意図せずして<strong>&ldquo;有能で誠実な人間が生み出す価値の余剰が、価値を生まない人間のコストに強制的に再分配される&rdquo;</strong>という仕組みを組織に強いています。
-                    組織は、このコストを払い続けなければならず、その原資は、本来報われるべき誠実な貢献者からの搾取によって賄われているのです。
-                  </p>
-                </div>
-              </div>
-      
-              <div>
-                <h3 className="text-xl md:text-2xl font-semibold mb-4 border-l-4 border-blue-400 pl-4">
-                  評価システムを歪める『温情主義』
-                </h3>
-                <div className="space-y-4 bg-gray-900 p-6 rounded-lg border border-gray-700">
-                  <p>
-                    <strong>能力の欠如や貢献の不足という事実から目を背け、評価そのものを歪めてしまう文化</strong>
-                  </p>
-                  <p>
-                    個々の得意不得意や向き不向きも含め、個別環境化での&ldquo;無能&rdquo;は罪ではない。しかし、その事実が曖昧な評価基準で&ldquo;調整&rdquo;され、二つの悲劇を生みます。
-                  </p>
-                  <div className="space-y-4 border-t border-gray-600 pt-4 mt-4">
-                    <p className="underline decoration-blue-400 underline-offset-4 decoration-2 mb-2"> 
-                      １，組織全体の評価基準を破壊し、誠実な貢献者の意欲を削いでしまうこと。
-                    </p>
-                    <p className="underline decoration-blue-400 underline-offset-4 decoration-2"> 
-                      ２，本来であれば適切な支援や別の道によって救われるべき個人から、その機会を奪ってしまうこと。
-                    </p>
-                  </div>
-                </div>
-              </div>
-      
+              <Accordion 
+                items={philosophyItems}
+                className="mt-8"
+              />
+
               <div>
                 <h3 className="text-xl md:text-2xl font-semibold mb-4 mt-6 border-l-4 border-blue-400 pl-4">
                   評価をごまかす優しさは、誰も救わない。人が人を評価、判断しなくていい社会へ
@@ -334,7 +648,7 @@ export default function PhilosophyPage() {
                 <div className="space-y-4">
                   <p>
                     この構造的な問題や、それによって不自由を強いられる全てに対し、新しい評価の形が必要だと考えています。
-                    それは、<strong>&ldquo;生きるために必要な評価&rdquo;と&ldquo;救済&rdquo;をシステムレベルで完全に分離する</strong>ことからはじまります。
+                    それは、<strong>&ldquo;評価&rdquo;と&ldquo;救済&rdquo;をシステムレベルで完全に分離する</strong>ことからはじまります。
                   </p>
                   <ul className="list-disc list-inside space-y-3 ml-4">
                     <li><strong>評価の絶対性：</strong>個人の貢献、能力、誠実さは、透明なロジックの下で絶対的に評価される。
@@ -364,7 +678,7 @@ export default function PhilosophyPage() {
                       あらゆる&ldquo;正直さ&rdquo;が、その結果と物理法則のように結びつく環境を設計するべき。
                     </p>
                   </blockquote>
-                  
+                    
                   <p>
                     ここで言う&ldquo;正直さ&rdquo;とは、倫理的なものではありません。
                     短期的な利益の追求、欲望、好き嫌いの表明、あるいは逃避。それらすべてが、人間のありのままの「正直な」行動です。
@@ -420,7 +734,7 @@ export default function PhilosophyPage() {
               </p>
             </div>
         
-            <div className="p-6 md:p-8 rounded-xl bg-gray-900 shadow-2xl border border-gray-700">
+            <div className="p-2 md:p-8 rounded-xl bg-gray-900 shadow-2xl border border-gray-700">
               <h3 className="text-xl md:text-2xl font-semibold mb-6 border-l-4 border-blue-400 pl-4">
                 公正さを支える6つの絶対条件
               </h3>
@@ -428,106 +742,21 @@ export default function PhilosophyPage() {
                 この基盤は、以下の揺るぎない絶対条件（設計原則）の上に構築されます。一つでも欠ければ、このシステムは旧来の評価ツールと同じ運命を辿るでしょう。
               </p>
               
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
-                  <p className="font-bold text-blue-400">1. 透明性と自動化</p>
-                  <p className="text-sm mt-1">意思決定プロセスと実行はプログラムにより自動化され、それらを全て誰もが検証可能な状態とし、
-                      人間の恣意的な介入の実行を高コストな状態となっていること。</p>
-                </div>
-                <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
-                  <p className="font-bold text-blue-400">2. 広範囲の影響と活動（貢献）の検知</p>
-                  <p className="text-sm mt-1">AIが、広範囲に及ぶ影響と、人間には見過ごされる微細な貢献の両方を検知できること。</p>
-                </div>
-                <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
-                  <p className="font-bold text-blue-400">3. 補正、調整システム</p>
-                  <p className="text-sm mt-1">定量化による攻略活動が合理的とならない仕組みを導入・実現できること</p>
-                </div>
-                <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
-                  <p className="font-bold text-blue-400">4. 中長期的に影響を反映させる仕組み</p>
-                  <p className="text-sm mt-1">中長期的な貢献度が与える中長期的な影響を加味できること</p>
-                </div>
-                <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
-                  <p className="font-bold text-blue-400">5. 進化する価値基準</p>
-                  <p className="text-sm mt-1">時代や環境の変化に合わせ、コミュニティが透明なプロセスで価値基準を更新できること。</p>
-                </div>
-                <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
-                  <p className="font-bold text-blue-400">6. プライバシーと透明性の両立</p>
-                  <p className="text-sm mt-1">プロセスの透明性を担保しつつ、個人の心理的安全性を守るプライバシー保護がなされていること。</p>
-                </div>
-              </div>
+              <ThreeCardSection
+                cards={absoluteConditionsCards}
+                enableMobileScroll={true}
+                padding="sm"
+                cardSize="sm"
+                className="bg-transparent"
+              />
             </div>
 
             <h3 className="text-xl md:text-2xl font-semibold mb-6 border-l-4 border-blue-400 pl-4 mt-8 md:mt-12">各工程</h3>
         
-            <div className="space-y-12">
-              <div>
-                <h4 className="text-lg md:text-xl font-bold mb-4 text-blue-400">1：AIによる貢献の『観測』</h4>
-                <p>AIによる多角的なデータ観測。人間では不可能だった活動範囲と貢献要素に対し、リアルタイムに感知し情報を集積するように設計します。</p>
-              </div>
-      
-              <div>
-                <h4 className="text-lg md:text-xl font-bold mb-4 text-blue-400">2：ブロックチェーンによる『記録に基づく計算】と記録の保全</h4>
-                <p className="mb-6">AIによって感知された情報は、ブロックチェーン上に「PoC要素」として刻まれます。
-                    この情報を中長期的に貢献度測定の影響要素とすることで、貢献は一過性の評価ではなく、個人に永続的に紐づく&ldquo;デジタル資産（負債）&rdquo;となります。</p>
-                <div className="space-y-4 bg-gray-900 p-6 rounded-lg border border-gray-700/50">
-                  <p>このスコアは、組織に対して紐づくものではなく活動者個人に紐づくものとします。また組織の解散や組織の移動によってリセットされることはありません。
-                      長期的な活動履歴の積み重ねが、個々人の価値観や評価基準の揺るがない情報となります。</p>
-                </div>
-              </div>
-      
-              <div>
-                <h4 className="text-lg md:text-xl font-bold mb-4 text-blue-400">3：スマートコントラクトによるインセンティブの『自動執行』</h4>
-                <p className="mb-6">ブロックチェーンに記録されたPoC要素を基に既定の貢献度測定を行い、決められた計算に基づきスマートコントラクトがインセンティブを自動執行します。
-                    ここには一切の人間的裁量や遅延は介在出来ないものとします。</p>
-                <div className="space-y-4">
-                  <ul className="list-disc list-inside ml-4 space-y-2">
-                    <li><b>トークンエコノミクス:</b> PoC要素に基づく結果に応じて執行されるインセンティブ報酬の移動は、トークンによって行われることで実現可能となります。</li>
-                    <li><b>ガバナンス設計:</b> 各組織や集団ごとの意思決定プロセスに基づき、自由に投票方式やリワード（活動報酬）トークン活用が可能な環境を実現とします。</li>
-                  </ul>
-                  <p className="font-bold mt-4">この自動執行されたインセンティブの基となる要素が、中長期的にその個人のインセンティブに永続的に影響を与える仕組みとなることで、
-                      一つ一つの判断や行動に中長期的な責任とリスクを発生させます。</p>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-lg md:text-xl font-bold mb-4 text-blue-400">4：時間と範囲を超えた『影響の追跡』と『永続的フィードバック』</h4>
-                <p className="mb-4">
-                  AIは、記録された各行動（PoC要素）が、時間軸（数年、数十年）と影響範囲（チーム、組織、社会）において、どのような結果をもたらしたかを追跡・分析し続けます。
-                </p>
-                <p>
-                  中長期的な影響分析の結果は、個人に紐づくデジタル資産にフィードバックされ、未来のインセンティブ計算に反映されます。
-                  良い影響は将来の貢献度を高め、悪い影響はそれを減衰させる。これにより、短期的な「逃げ得」が合理的か未知数となり、
-                  すべての活動者に対する『責任、リスク、報酬の分散化』実現に近づきます。
-                </p>
-              </div>
-          
-              <div>
-                <h4 className="text-lg md:text-xl font-bold mb-4 text-blue-400">5：価値基準の『自己進化』</h4>
-                <p className="mb-4">
-                  社会環境や時代の価値観は常に変化します。固定されたルールに縛られるのではなく、自ら進化し続けるように設計する必要があります。
-                  重要なのは、柔軟に変更可能な要素と、変更が行えない要素の棲み分けを行うことです。
-                </p>
-                <p>
-                  AIは、エコシステム全体の健全性や外部環境の変化を常に観測し、「現在の貢献度測定基準が、本当にDAOの掲げる価値観と一致しているか」を問い続けます。
-                  その分析結果はコミュニティに提示され、透明なガバナンスプロセスを通じて、DAO自身が価値基準をアップデートしていくことに寄与します。
-                </p>
-              </div>
-
-              <div>
-                <h4 className="text-xl font-bold mb-4 text-blue-400">ステップ6：プライバシーと透明性の『両立』</h4>
-                <p>
-                  ゼロ知識証明（Zero-Knowledge Proofs）などの暗号技術を活用し、個々の行動の詳細（具体的な発言内容やコードの断片、活動履歴など）を秘匿したまま、
-                  「その個人が持つデジタル資産」の内容をを証明し、ブロックチェーンに記録しておくことが可能になります。
-                </p>
-                <ul className="list-disc list-inside ml-4 space-y-2 text-sm mt-4">
-                  <li><strong>プロセスは透明に：</strong>どのようなルール（スマートコントラクト）で貢献が評価され、インセンティブが執行されるかは、誰でも検証可能な状態とする。</li>
-                  <li><strong>データは非公開に：</strong>その評価の根拠となった個々の具体的な行動データは、本人の同意なしに公開されることがないものとする。</li>
-                </ul>
-                <p className="mt-4 font-bold">
-                  この技術的な両立が、公正さへの信頼と個人の心理的安全性を同時に担保し、自分らしく貢献できる環境を実現するための鍵となります。
-                </p>
-              </div>
-            </div>
+            <Accordion 
+              items={processSteps}
+              className="mt-8"
+            />
           </section>
 
           {/* 第4章：価値観で進化する組織構造（The Structure） */}
@@ -618,64 +847,12 @@ export default function PhilosophyPage() {
               </p>
             </div>
         
-            <div className="mt-12 space-y-12">
-              <div className="p-6 rounded-xl bg-gray-900 border border-gray-700">
-                <h4 className="text-lg md:text-xl md:text-2xl font-bold text-blue-400 mb-4">フェーズ1：基礎研究とプロトタイプの構築</h4>
-                <p className="mb-6">
-                  この段階では、環境提供のために必要な要素をコードに変換するための開発・検証をします。
-                </p>
-                <ul className="list-disc list-inside space-y-4">
-                  <li>
-                    <strong>価値の定義と設計：</strong> 何を「貢献」とし、それに対してどのような対価（トークン等）を紐付けるのか。その価値交換システムの基本設計を確立します。
-                  </li>
-                  <li>
-                    <strong>技術的基盤の確立：</strong> 貢献を検知するAIと、それを記録するブロックチェーンが連携するための、基本的なアーキテクチャを設計・検証します。
-                  </li>
-                  <li>
-                    <strong>プライバシーと透明性の両立：</strong> ゼロ知識証明（zk-SNARKs等）の技術を活用し、貢献の事実は検証可能でありながら、個人のプライバシーを完全に保護する技術的アプローチを研究、検証します。
-                  </li>
-                </ul>
-              </div>
-      
-              <div className="p-6 rounded-xl bg-gray-900 border border-gray-700">
-                <h4 className="text-lg md:text-2xl font-bold text-blue-400 mb-4">フェーズ2：AI仮想社会を活用したシミュレーション</h4>
-                <p className="mb-6">
-                  開発したプロトタイプを、現実世界を模したAIによる仮想社会（デジタルサンドボックス）に投入し、テストと調整を繰り返します。
-                </p>
-                <ul className="list-disc list-inside space-y-4">
-                  <li>
-                    <strong>多様な組織モデルでの検証：</strong> 数人規模のチームから数万人規模のコミュニティまで、様々な組織、社会モデルをシミュレートし、システムの有効性と限界を洗い出します。
-                  </li>
-                  <li>
-                    <strong>報酬バランスの最適化：</strong> 貢献度に対する報酬の変数（インセンティブの強弱や時間経過による減衰率など）を動的に調整し、最も健全なエコシステムが生まれるパラメータを探求します。
-                  </li>
-                  <li>
-                    <strong>耐攻撃性のストレステスト：</strong> あらゆる「攻略法」を試みる敵対的なAIエージェントを投入し、システムの免疫機能が正しく作動するかを徹底的にテストします。
-                  </li>
-                </ul>
-              </div>
-      
-              <div className="p-6 rounded-xl bg-gray-900 border border-gray-700">
-                <h4 className="text-lg md:text-2xl font-bold text-blue-400 mb-4">フェーズ3：社会実験と実装へ</h4>
-                <p className="mb-6">
-                  技術そのものだけではなく<strong>&ldquo;中心に据える価値観を何にするか&rdquo;</strong>によって、
-                  &ldquo;貢献の定義&rdquo;と&ldquo;公正さの形&rdquo;がどう変わるのかという視点での検証を行い常に進化できる環境であることを確認、検証します。
-                </p>
-                <ul className="list-disc list-inside space-y-4">
-                  <li>
-                    <strong>価値観による適応性の検証：</strong> &ldquo;中心に据える価値観&rdquo;によって、&ldquo;貢献の定義&rdquo;と&ldquo;公正さの形&rdquo;がどう変化し、システムがそれに適応できるかを検証します。
-                  </li>
-                  <li>
-                    <strong>多様なユースケースでの実証：</strong> 個人の哲学、企業理念、社会課題解決など、様々な価値観を持つコミュニティでの適用可能性を実証します。
-                  </li>
-                </ul>
-                
-                <p className="mt-4">
-                  DAOの実現に必要なのは&ldquo;環境&rdquo;であり、その環境に必要な要素を開発し、誰もが入手可能な状態とすることが、本格的な社会実装のスタートラインであり、当面の目標地点です。
-                </p>
-                <p className="mt-4 font-bold">
-                  持続可能で多様な組織の未来が形作られ、選択肢が広がる未来に必要なシステムとして機能するかの重要なフェーズです。
-                </p>
+            <div className="mt-12">
+              <div className="border border-blue-400 rounded-lg p-4">
+                <Accordion 
+                  items={roadmapItems}
+                  className="space-y-4"
+                />
               </div>
             </div>
           </section>
