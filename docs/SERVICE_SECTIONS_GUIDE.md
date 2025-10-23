@@ -246,7 +246,7 @@ interface CardData {
     leftContent={
       <div className="space-y-4">
         <h3 className="text-xl font-semibold text-white mb-4">従来のシステム開発</h3>
-        <ul className="space-y-3 text-gray-300">
+        <ul className="space-y-3 text-gray-300 inline-block text-left">
           <li className="flex items-start">
             <span className="w-2 h-2 bg-red-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
             <span>ルールベースの固定的な処理</span>
@@ -262,7 +262,7 @@ interface CardData {
     rightContent={
       <div className="space-y-4">
         <h3 className="text-xl font-semibold text-white mb-4">最新のAIソリューション</h3>
-        <ul className="space-y-3 text-gray-300">
+        <ul className="space-y-3 text-gray-300 inline-block text-left">
           <li className="flex items-start">
             <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
             <span>データからの自動学習と適応</span>
@@ -375,6 +375,11 @@ interface TabData {
 
 **用途:** タブ切り替えで複数カテゴリの技術やサービスを提示
 
+**デザイン特徴:**
+- **ピル型/セグメントコントロール**: モダンで目立つタブデザイン
+- **中央配置**: タブボタンが中央に配置され、統一感のあるデザイン
+- **背景色によるアクティブ表示**: アンダーバーではなく背景色でアクティブ状態を表現
+
 **実装例:**
 ```tsx
 <div className="border-b border-blue-400">
@@ -428,6 +433,12 @@ interface TabData {
   />
 </div>
 ```
+
+**タブデザインの詳細:**
+- **外枠**: `bg-gray-800`でダークグレーの背景
+- **ボタン**: `px-8 py-4`で大きく、`text-lg font-bold`で目立つ
+- **アクティブ**: `bg-blue-600` + `shadow-md`で青背景と影
+- **非アクティブ**: 透明背景 + `hover:bg-gray-700`でホバー効果
 
 ### セクション9: FAQ
 
@@ -596,6 +607,38 @@ interface RelatedServiceData {
 - コンパクト: `padding="sm"`（技術提供セクションなど）
 - 中程度: `padding="md"`
 
+### デザイン統一の重要ポイント
+
+#### **従来技術との比較セクション（セクション5）**
+- **必須**: `textAlign="center"`を設定
+- **箇条書き**: `inline-block text-left`クラスを適用
+- **目的**: 中央配置でバランスの良い表示、テキストの左端を揃える
+
+```tsx
+// 正しい実装例
+<TwoColumnSection
+  title="従来技術との比較"
+  textAlign="center"  // ← 必須
+  leftContent={
+    <div className="space-y-4">
+      <h3 className="text-xl font-semibold text-white mb-4">従来のシステム開発</h3>
+      <ul className="space-y-3 text-gray-300 inline-block text-left">  {/* ← 必須 */}
+        <li className="flex items-start">
+          <span className="w-2 h-2 bg-red-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+          <span>テキスト</span>
+        </li>
+      </ul>
+    </div>
+  }
+  // rightContent も同様...
+/>
+```
+
+#### **技術提供セクション（セクション8）**
+- **自動適用**: ピル型/セグメントコントロールデザインが自動で適用される
+- **特徴**: 中央配置、背景色によるアクティブ表示、大きなボタンサイズ
+- **カスタマイズ不要**: `TabSection`コンポーネントが標準で提供
+
 ### モーダルコンテンツ作成ガイドライン
 - タイトル: `text-xl font-bold text-white mb-4`
 - サブタイトル: `font-semibold text-blue-400 mb-2`
@@ -606,6 +649,7 @@ interface RelatedServiceData {
 - カードレイアウト: `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3`
 - 2カラムレイアウト: `grid md:grid-cols-2`
 - ボタン配置: `flex flex-col sm:flex-row`
+- タブデザイン: 自動でレスポンシブ対応済み
 
 ## コンポーネントファイルパス一覧
 
@@ -645,6 +689,40 @@ import { serviceLinks } from '../../../data/services/service-links'
 - **セクション0**: ヒーローセクション（必須）
 - **セクション0.5**: サービスナビゲーション（必須）
 
+### デザイン統一の自動適用
+
+#### **従来技術との比較セクション（セクション5）**
+```tsx
+// 必ず textAlign="center" を設定
+<TwoColumnSection
+  title="従来技術との比較"
+  textAlign="center"  // ← 必須設定
+  leftContent={...}
+  rightContent={...}
+  variant="dark"
+/>
+
+// 箇条書きには inline-block text-left を適用
+<ul className="space-y-3 text-gray-300 inline-block text-left">
+  <li className="flex items-start">
+    <span className="w-2 h-2 bg-red-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+    <span>テキスト</span>
+  </li>
+</ul>
+```
+
+#### **技術提供セクション（セクション8）**
+```tsx
+// ピル型デザインが自動で適用される
+<TabSection
+  title="技術提供"
+  tabs={[...]}
+  defaultTab="development"
+  variant="dark"
+/>
+// ↑ 中央配置、背景色によるアクティブ表示、大きなボタンサイズが自動適用
+```
+
 ### サービスナビゲーションの実装例
 ```tsx
 import { serviceLinks } from '../../../data/services/service-links'
@@ -657,5 +735,20 @@ import { serviceLinks } from '../../../data/services/service-links'
   />
 </div>
 ```
+
+### 新規サービスページ作成時のチェックリスト
+
+#### **デザイン統一確認**
+- [ ] 従来技術との比較セクションに`textAlign="center"`を設定
+- [ ] 箇条書きに`inline-block text-left`クラスを適用
+- [ ] 技術提供セクションでピル型デザインが適用されているか確認
+- [ ] 全セクションに`border-b border-blue-400`を適用
+- [ ] `variant="dark"`を統一使用
+
+#### **機能確認**
+- [ ] モーダル機能が正常に動作するか
+- [ ] レスポンシブ表示が適切か
+- [ ] サービスナビゲーションが表示されるか
+- [ ] タブ切り替えが正常に動作するか
 
 このガイドを使用することで、効率的にサービスページを作成できます。

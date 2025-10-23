@@ -13,34 +13,33 @@ export function TabContainer({ tabs, defaultTab, className = '' }: TabContainerP
   return (
     <div className={className}>
       <Tab.Group defaultIndex={defaultTab ? tabs.findIndex(tab => tab.id === defaultTab) : 0}>
-        {/* タブボタン部分 */}
-        <Tab.List className="flex flex-wrap lg:flex-nowrap space-x-4 border-b border-gray-700">
-          {tabs.map((tab) => (
-            <Tab as={Fragment} key={tab.id}>
-              {({ selected }) => (
-                <button
-                  className={`
-                    py-3 px-6 text-lg font-bold rounded-lg
-                    ${transitions.colors}
-                    focus:outline-none
-                    focus-visible:outline-none
-                    focus:ring-0
-                    focus-visible:ring-0
-                    ${selected
-                      ? `${colors.text.primary} border-b-2 border-blue-400`
-                      : `${colors.text.muted} hover:bg-blue-400/20 hover:text-blue-400`
-                    }
-                  `}
-                >
-                  {tab.name}
-                </button>
-              )}
-            </Tab>
-          ))}
-        </Tab.List>
-        
-        {/* 仕切り線 */}
-        <div className="border-b border-gray-700 mt-0"></div>
+        {/* タブボタン部分 - ピル型デザイン */}
+        <div className="flex justify-center mb-8">
+          <Tab.List className="inline-flex p-1 rounded-lg bg-gray-800 space-x-1">
+            {tabs.map((tab) => (
+              <Tab as={Fragment} key={tab.id}>
+                {({ selected }) => (
+                  <button
+                    className={`
+                      w-full px-8 py-4 text-lg font-bold rounded-md
+                      ${transitions.colors}
+                      focus:outline-none
+                      focus-visible:outline-none
+                      focus:ring-0
+                      focus-visible:ring-0
+                      ${selected
+                        ? `bg-blue-600 ${colors.text.primary} shadow-md`
+                        : `${colors.text.secondary} hover:bg-gray-700 hover:${colors.text.primary}`
+                      }
+                    `}
+                  >
+                    {tab.name}
+                  </button>
+                )}
+              </Tab>
+            ))}
+          </Tab.List>
+        </div>
 
         {/* タブコンテンツ部分 */}
         <Tab.Panels className="mt-8">

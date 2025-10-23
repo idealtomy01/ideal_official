@@ -1,6 +1,6 @@
 'use client'
 
-import { colors, typography, spacing } from '../../lib/design-tokens'
+import { colors } from '../../lib/design-tokens'
 import { TabContainer } from '../ui/TabContainer'
 import { TabData } from '../../types/service'
 
@@ -26,10 +26,6 @@ export interface TabSectionProps {
   variant?: 'default' | 'dark' | 'accent'
   /** パディングのサイズ */
   padding?: 'sm' | 'md' | 'lg' | 'xl'
-  /** タブの配置 */
-  tabAlignment?: 'left' | 'center' | 'right'
-  /** タブのレイアウト */
-  tabLayout?: 'auto' | 'compact' | 'wide'
 }
 
 export function TabSection({
@@ -39,10 +35,9 @@ export function TabSection({
   tabs,
   defaultTab,
   className = '',
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   variant = 'default',
-  padding = 'lg',
-  tabAlignment = 'center',
-  tabLayout = 'auto'
+  padding = 'lg'
 }: TabSectionProps) {
   // バリアント別のスタイル
   const getVariantStyles = () => {
@@ -65,29 +60,6 @@ export function TabSection({
     }
   }
 
-  // タブ配置
-  const getTabAlignmentStyles = () => {
-    switch (tabAlignment) {
-      case 'left':
-        return 'justify-start'
-      case 'right':
-        return 'justify-end'
-      default:
-        return 'justify-center'
-    }
-  }
-
-  // タブレイアウト
-  const getTabLayoutStyles = () => {
-    switch (tabLayout) {
-      case 'compact':
-        return 'flex-wrap lg:flex-nowrap' // 4つのタブ用：PCで1行、モバイルで折り返し
-      case 'wide':
-        return 'flex-nowrap' // 2つのタブ用：常に1行
-      default:
-        return 'flex-wrap lg:flex-nowrap' // 自動：タブ数に応じて調整
-    }
-  }
 
   return (
     <section className={`${getVariantStyles()} ${getPaddingStyles()} ${className}`}>
@@ -114,13 +86,11 @@ export function TabSection({
         )}
 
         {/* タブコンテンツ */}
-        <div className={getTabAlignmentStyles()}>
-          <TabContainer
-            tabs={tabs}
-            defaultTab={defaultTab}
-            className={`w-full ${getTabLayoutStyles()}`}
-          />
-        </div>
+        <TabContainer
+          tabs={tabs}
+          defaultTab={defaultTab}
+          className="w-full"
+        />
       </div>
     </section>
   )

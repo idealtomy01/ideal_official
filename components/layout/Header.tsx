@@ -43,9 +43,9 @@ export function Header() {
 
   // ナビゲーションリンク
   const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/philosophy', label: 'Philosophy' },
-    { href: '/contact', label: 'Contact' },
+    { href: '/', label: 'トップ' },
+    { href: '/philosophy', label: 'idealとは' },
+    { href: '/contact', label: '問い合わせ' },
   ]
 
   // サービスドロップダウンメニュー

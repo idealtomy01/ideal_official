@@ -6,6 +6,7 @@
  */
 
 import { Metadata } from 'next'
+import { Header } from '../../components/layout/Header'
 import { SmoothScroll } from '../../components/layout/SmoothScroll'
 import { colors, layout } from '../../lib/design-tokens'
 
@@ -21,9 +22,10 @@ export const metadata: Metadata = {
 export default function PhilosophyPage() {
   return (
     <div className="min-h-screen bg-black text-gray-100">
+      <Header />
       <SmoothScroll />
       {/* 固定ヘッダーナビゲーション */}
-      <header className="fixed top-0 left-0 w-full z-50 shadow-xl border-b border-gray-700 bg-black/80 backdrop-blur-md">
+      <header className="fixed top-16 left-0 w-full z-40 shadow-xl border-b border-gray-700 bg-black/80 backdrop-blur-md">
         <div className={`${layout.container} py-4 flex flex-wrap justify-center sm:justify-between items-center`}>
           <h1 className={`text-xl font-bold ${colors.accent.primary} tracking-wider uppercase mb-2 sm:mb-0`}>
             ideal whitepaper
@@ -41,7 +43,7 @@ export default function PhilosophyPage() {
       </header>
 
       {/* メインコンテンツ */}
-      <main className="pt-32 md:pt-24 pb-16">
+      <main className="pt-48 md:pt-40 pb-16">
         <div className={`${layout.containerNarrow}`}>
           {/* タイトルセクション */}
           <section className="text-center mb-4 md:mb-8">
