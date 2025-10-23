@@ -133,6 +133,7 @@ export function TwoColumnSection({
           <div className={`
             ${getLeftColumnStyles()}
             ${reverseOnMobile ? 'lg:order-1' : ''}
+            h-full flex flex-col
           `}>
             {leftContent}
           </div>
@@ -141,6 +142,7 @@ export function TwoColumnSection({
           <div className={`
             ${getRightColumnStyles()}
             ${reverseOnMobile ? 'lg:order-2' : ''}
+            h-full flex flex-col
           `}>
             {rightContent}
           </div>

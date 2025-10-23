@@ -2,6 +2,7 @@
 
 import { colors } from '../../lib/design-tokens'
 import Image from 'next/image'
+import { ModalTrigger } from '../ui/ModalTrigger'
 
 /**
  * ThreeCardSection コンポーネント
@@ -23,6 +24,12 @@ export interface CardData {
   href?: string
   /** カードのクリックイベント（オプション） */
   onClick?: () => void
+  /** モーダルのタイトル（オプション） */
+  modalTitle?: string
+  /** モーダルのコンテンツ（オプション） */
+  modalContent?: React.ReactNode
+  /** モーダルのサイズ（オプション） */
+  modalSize?: 'sm' | 'md' | 'lg' | 'xl'
 }
 
 export interface ThreeCardSectionProps {
@@ -132,94 +139,194 @@ export function ThreeCardSection({
           grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8
           ${getCardAlignmentStyles()}
         `}>
-          {cards.map((card, index) => (
-            <div
-              key={index}
-              className={`
-                ${colors.bg.secondary} ${colors.border.default} border rounded-lg
-                ${getCardSizeStyles()}
-                ${colors.state.hover} ${colors.state.focus}
-                focus:outline-none cursor-pointer
-                transition-all duration-300
-                hover:scale-105 hover:shadow-lg
-              `}
-              onClick={card.onClick}
-            >
-              {/* アイコンまたは画像 */}
-              {(card.icon || card.image) && (
-                <div className="mb-4 text-center">
-                  {card.image ? (
-                    <Image
-                      src={card.image}
-                      alt={card.title}
-                      width={64}
-                      height={64}
-                      className="w-16 h-16 mx-auto rounded-full object-cover"
-                    />
-                  ) : (
-                    <div className="text-4xl mb-2">{card.icon}</div>
-                  )}
-                </div>
-              )}
+          {cards.map((card, index) => {
+            // モーダル機能がある場合のカード
+            if (card.modalTitle && card.modalContent) {
+              return (
+                <ModalTrigger
+                  key={index}
+                  title={card.modalTitle}
+                  size={card.modalSize || 'lg'}
+                  modalContent={card.modalContent}
+                >
+                  <div className={`
+                    ${colors.bg.secondary} ${colors.border.default} border rounded-lg
+                    ${getCardSizeStyles()}
+                    ${colors.state.hover} ${colors.state.focus}
+                    focus:outline-none cursor-pointer
+                    transition-all duration-300
+                    hover:scale-105 hover:shadow-lg
+                    h-full flex flex-col
+                  `}>
+                    {/* アイコンまたは画像 */}
+                    {(card.icon || card.image) && (
+                      <div className="mb-4 text-center">
+                        {card.image ? (
+                          <Image
+                            src={card.image}
+                            alt={card.title}
+                            width={64}
+                            height={64}
+                            className="w-16 h-16 mx-auto rounded-full object-cover"
+                          />
+                        ) : (
+                          <div className="text-4xl mb-2">{card.icon}</div>
+                        )}
+                      </div>
+                    )}
 
-              {/* タイトル */}
-              <h3 className={`text-xl font-semibold ${colors.text.primary} mb-3`}>
-                {card.title}
-              </h3>
+                    {/* タイトル */}
+                    <h3 className={`text-xl font-semibold ${colors.text.primary} mb-3`}>
+                      {card.title}
+                    </h3>
 
-              {/* 説明文 */}
-              <p className={`${colors.text.secondary} mb-4`}>
-                {card.description}
-              </p>
+                    {/* 説明文 */}
+                    <p className={`${colors.text.secondary} mb-4 flex-grow`}>
+                      {card.description}
+                    </p>
 
-              {/* タグ */}
-              {card.tags && card.tags.length > 0 && (
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {card.tags.map((tag, tagIndex) => (
-                    <span
-                      key={tagIndex}
-                      className={`
-                        px-2 py-1 text-xs font-medium rounded-full
-                        ${colors.accent.bg} ${colors.text.primary}
-                      `}
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              )}
+                    {/* タグ */}
+                    {card.tags && card.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {card.tags.map((tag, tagIndex) => (
+                          <span
+                            key={tagIndex}
+                            className={`
+                              px-2 py-1 text-xs font-medium rounded-full
+                              ${colors.accent.bg} ${colors.text.primary}
+                            `}
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
 
-              {/* リンク */}
-              {card.href && (
-                <div className="text-center">
-                  <a
-                    href={card.href}
-                    className={`
-                      inline-flex items-center text-sm font-medium
-                      ${colors.accent.text} hover:${colors.text.primary}
-                      transition-colors duration-200
-                    `}
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    詳細を見る
-                    <svg
-                      className="ml-1 w-4 h-4"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M9 5l7 7-7 7"
+                    {/* リンク */}
+                    {card.href && (
+                      <div className="text-center mt-auto">
+                        <a
+                          href={card.href}
+                          className={`
+                            inline-flex items-center text-sm font-medium
+                            ${colors.accent.text} hover:${colors.text.primary}
+                            transition-colors duration-200
+                          `}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          詳細を見る
+                          <svg
+                            className="ml-1 w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </ModalTrigger>
+              )
+            }
+
+            // 通常のカード（モーダル機能なし）
+            return (
+              <div
+                key={index}
+                className={`
+                  ${colors.bg.secondary} ${colors.border.default} border rounded-lg
+                  ${getCardSizeStyles()}
+                  ${colors.state.hover} ${colors.state.focus}
+                  focus:outline-none cursor-pointer
+                  transition-all duration-300
+                  hover:scale-105 hover:shadow-lg
+                  h-full flex flex-col
+                `}
+                onClick={card.onClick}
+              >
+                {/* アイコンまたは画像 */}
+                {(card.icon || card.image) && (
+                  <div className="mb-4 text-center">
+                    {card.image ? (
+                      <Image
+                        src={card.image}
+                        alt={card.title}
+                        width={64}
+                        height={64}
+                        className="w-16 h-16 mx-auto rounded-full object-cover"
                       />
-                    </svg>
-                  </a>
-                </div>
-              )}
-            </div>
-          ))}
+                    ) : (
+                      <div className="text-4xl mb-2">{card.icon}</div>
+                    )}
+                  </div>
+                )}
+
+                {/* タイトル */}
+                <h3 className={`text-xl font-semibold ${colors.text.primary} mb-3`}>
+                  {card.title}
+                </h3>
+
+                {/* 説明文 */}
+                <p className={`${colors.text.secondary} mb-4 flex-grow`}>
+                  {card.description}
+                </p>
+
+                {/* タグ */}
+                {card.tags && card.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {card.tags.map((tag, tagIndex) => (
+                      <span
+                        key={tagIndex}
+                        className={`
+                          px-2 py-1 text-xs font-medium rounded-full
+                          ${colors.accent.bg} ${colors.text.primary}
+                        `}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                {/* リンク */}
+                {card.href && (
+                  <div className="text-center mt-auto">
+                    <a
+                      href={card.href}
+                      className={`
+                        inline-flex items-center text-sm font-medium
+                        ${colors.accent.text} hover:${colors.text.primary}
+                        transition-colors duration-200
+                      `}
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      詳細を見る
+                      <svg
+                        className="ml-1 w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </a>
+                  </div>
+                )}
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>
