@@ -7,7 +7,6 @@ import { ThreeCardSection } from '../../../components/sections/ThreeCardSection'
 import { TabSection } from '../../../components/sections/TabSection'
 import { FAQSection } from '../../../components/sections/FAQSection'
 import { RelatedServicesSection } from '../../../components/sections/RelatedServicesSection'
-import { ModalTrigger } from '../../../components/ui/ModalTrigger'
 import { aiServiceData } from '../../../data/services/ai'
 
 export const metadata: Metadata = {
@@ -177,152 +176,15 @@ export default function AIConsultingPage() {
         />
       </div>
 
-      {/* 5. タブセクション（1つ目） */}
+      {/* 5. 説明セクション */}
       <div className="border-b border-blue-400">
-        <TabSection
+        <SingleColumnSection
           title="AI人材が働くすべての人たちに最適なワークライフバランスを"
           description="AI導入は業務効率化だけでなく、従業員の働き方も変革します。創造的な業務に時間を割けるよう、技術導入を通じて、すべての従業員がより充実した仕事と私生活を実現できる環境づくりをサポートします。"
-        tabs={[
-          {
-            id: 'ai-overview',
-            name: 'AI概要',
-            content: (
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">機械学習</h3>
-                    <p className="text-gray-300">
-                      データから学習し、パターンを認識して予測や分類を行う機械学習技術。ビジネスの意思決定支援や自動化に活用します。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">深層学習</h3>
-                    <p className="text-gray-300">
-                      複雑なニューラルネットワークを用いて、画像認識、自然言語処理、音声認識などの高度なタスクを実現します。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">自然言語処理</h3>
-                    <p className="text-gray-300">
-                      テキストデータの解析、生成、翻訳などを行うAI技術。チャットボット、感情分析、文書分析などに活用します。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">予測分析</h3>
-                    <p className="text-gray-300">
-                      過去のデータから将来のトレンドや結果を予測。需要予測、リスク分析、顧客行動予測などに活用します。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )
-          },
-          {
-            id: 'development-process',
-            name: '開発プロセス',
-            content: (
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">1. 要件定義とデータ評価</h3>
-                    <p className="text-gray-300">
-                      ビジネス目標の明確化、必要なデータの特定、データ品質の評価を行います。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">2. データ前処理と設計</h3>
-                    <p className="text-gray-300">
-                      データのクリーニング、特徴量エンジニアリング、モデルアーキテクチャの設計を行います。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">3. モデル開発とトレーニング</h3>
-                    <p className="text-gray-300">
-                      AIモデルの開発、学習、パラメータの最適化を行います。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">4. 評価と最適化</h3>
-                    <p className="text-gray-300">
-                      モデルの性能評価、精度向上のための調整、実環境でのテストを行います。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )
-          },
-          {
-            id: 'main-features',
-            name: '主要機能',
-            content: (
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">予測分析</h3>
-                    <p className="text-gray-300">
-                    機械学習モデルを活用した高精度な予測分析。需要予測、売上予測、リスク分析など、データに基づく意思決定を支援します。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">自然言語処理</h3>
-                    <p className="text-gray-300">
-                    テキストデータの高度な分析と生成。チャットボット、文書分類、感情分析、要約生成など、言語処理に関する様々なソリューションを提供します。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">画像認識</h3>
-                    <p className="text-gray-300">
-                    深層学習を用いた高精度な画像認識・分類。物体検出、顔認識、異常検知など、視覚的なデータ処理を自動化します。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">レコメンデーション</h3>
-                    <p className="text-gray-300">
-                    ユーザーの行動データを分析し、個別化されたレコメンデーションを提供。ECサイト、コンテンツ配信、マーケティングなどで活用できます。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )
-          },
-          {
-            id: 'use-cases',
-            name: '活用事例',
-            content: (
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">金融・フィンテック</h3>
-                    <p className="text-gray-300">
-                      リスク評価、不正検知、市場分析、ポートフォリオ最適化など、金融分野での高度な分析と自動化を実現します。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">小売・Eコマース</h3>
-                    <p className="text-gray-300">
-                      需要予測、在庫最適化、レコメンデーション、顧客セグメンテーションなど、販売戦略の最適化を実現します。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">製造業</h3>
-                    <p className="text-gray-300">
-                      予知保全、品質管理、生産最適化、需要予測など、製造プロセスの効率化と品質向上を支援します。
-                    </p>
-                  </div>
-                  <div className="space-y-4">
-                    <h3 className="text-xl font-semibold text-white">ヘルスケア</h3>
-                    <p className="text-gray-300">
-                      画像診断支援、疾病予測、医療記録分析、創薬研究支援など、医療分野でのAI活用を推進します。
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )
-          }
-        ]}
-        defaultTab="ai-overview"
-        variant="dark"
-        />
+          variant="dark"
+        >
+          <div></div>
+        </SingleColumnSection>
       </div>
 
       {/* 6. 従来技術との比較 - 2カラムセクション */}
@@ -556,13 +418,15 @@ export default function AIConsultingPage() {
             id: 'development',
             name: '開発',
             content: (
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-3 gap-6">
-                  {/* カード1: 機械学習モデル開発 */}
-                  <ModalTrigger
-                    title="機械学習モデル開発"
-                    size="lg"
-                    modalContent={
+              <ThreeCardSection
+                padding="sm"
+                cards={[
+                  {
+                    title: '機械学習モデル開発',
+                    description: 'ビジネスニーズに合わせた機械学習モデルの設計と開発',
+                    tags: ['TensorFlow', 'PyTorch', 'Scikit-learn'],
+                    modalTitle: '機械学習モデル開発',
+                    modalContent: (
                       <div className="space-y-6">
                         <h4 className="text-2xl font-bold text-white mb-4">
                           ビジネス課題を解決するカスタムAIモデル
@@ -583,29 +447,15 @@ export default function AIConsultingPage() {
                           </p>
                         </div>
                       </div>
-                    }
-                  >
-                    <div className="bg-gray-800 p-6 rounded-lg border border-blue-500/30 hover:border-blue-400 transition-all duration-300 cursor-pointer group">
-                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">機械学習モデル開発</h3>
-                      <p className="text-gray-300 text-sm mb-4">
-                        ビジネスニーズに合わせた機械学習モデルの設計と開発
-                      </p>
-                      <div className="flex flex-wrap gap-1">
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">TensorFlow</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">PyTorch</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">Scikit-learn</span>
-                      </div>
-                      <div className="mt-3 text-blue-400 text-xs font-medium">
-                        クリックして詳細を見る →
-                      </div>
-                    </div>
-                  </ModalTrigger>
-
-                  {/* カード2: 自然言語処理 */}
-                  <ModalTrigger
-                    title="自然言語処理"
-                    size="lg"
-                    modalContent={
+                    ),
+                    modalSize: "lg"
+                  },
+                  {
+                    title: '自然言語処理',
+                    description: 'テキストデータの分析、生成、翻訳などのNLPソリューション',
+                    tags: ['BERT', 'GPT', 'Transformers'],
+                    modalTitle: '自然言語処理',
+                    modalContent: (
                       <div className="space-y-6">
                         <h4 className="text-2xl font-bold text-white mb-4">
                           「言葉」のデータをビジネス資産に変えるNLP
@@ -626,29 +476,15 @@ export default function AIConsultingPage() {
                           </p>
                         </div>
                       </div>
-                    }
-                  >
-                    <div className="bg-gray-800 p-6 rounded-lg border border-blue-500/30 hover:border-blue-400 transition-all duration-300 cursor-pointer group">
-                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">自然言語処理</h3>
-                      <p className="text-gray-300 text-sm mb-4">
-                        テキストデータの分析、生成、翻訳などのNLPソリューション
-                      </p>
-                      <div className="flex flex-wrap gap-1">
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">BERT</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">GPT</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">Transformers</span>
-                      </div>
-                      <div className="mt-3 text-blue-400 text-xs font-medium">
-                        クリックして詳細を見る →
-                      </div>
-                    </div>
-                  </ModalTrigger>
-
-                  {/* カード3: 画像認識システム */}
-                  <ModalTrigger
-                    title="画像認識システム"
-                    size="lg"
-                    modalContent={
+                    ),
+                    modalSize: "lg"
+                  },
+                  {
+                    title: '画像認識システム',
+                    description: '深層学習を用いた画像認識・分類システムの開発',
+                    tags: ['OpenCV', 'CNNs', 'YOLO'],
+                    modalTitle: '画像認識システム',
+                    modalContent: (
                       <div className="space-y-6">
                         <h4 className="text-2xl font-bold text-white mb-4">
                           人間の「目」を超える、高精度な画像認識AI
@@ -669,38 +505,27 @@ export default function AIConsultingPage() {
                           </p>
                         </div>
                       </div>
-                    }
-                  >
-                    <div className="bg-gray-800 p-6 rounded-lg border border-blue-500/30 hover:border-blue-400 transition-all duration-300 cursor-pointer group">
-                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">画像認識システム</h3>
-                      <p className="text-gray-300 text-sm mb-4">
-                        深層学習を用いた画像認識・分類システムの開発
-                      </p>
-                      <div className="flex flex-wrap gap-1">
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">OpenCV</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">CNNs</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">YOLO</span>
-                      </div>
-                      <div className="mt-3 text-blue-400 text-xs font-medium">
-                        クリックして詳細を見る →
-                      </div>
-                    </div>
-                  </ModalTrigger>
-                </div>
-              </div>
+                    ),
+                    modalSize: "lg"
+                  }
+                ]}
+                variant="dark"
+              />
             )
           },
           {
             id: 'consulting',
             name: 'コンサルティング',
             content: (
-              <div className="space-y-6">
-                <div className="grid md:grid-cols-3 gap-6">
-                  {/* カード1: AI戦略コンサルティング */}
-                  <ModalTrigger
-                    title="AI戦略コンサルティング"
-                    size="lg"
-                    modalContent={
+              <ThreeCardSection
+                padding="sm"
+                cards={[
+                  {
+                    title: 'AI戦略コンサルティング',
+                    description: 'ビジネス目標に合わせたAI導入戦略の策定',
+                    tags: ['戦略立案', 'ロードマップ作成', 'KPI設定'],
+                    modalTitle: 'AI戦略コンサルティング',
+                    modalContent: (
                       <div className="space-y-6">
                         <h4 className="text-2xl font-bold text-white mb-4">
                           AI導入を「成功」に導く羅針盤
@@ -721,29 +546,15 @@ export default function AIConsultingPage() {
                           </p>
                         </div>
                       </div>
-                    }
-                  >
-                    <div className="bg-gray-800 p-6 rounded-lg border border-blue-500/30 hover:border-blue-400 transition-all duration-300 cursor-pointer group">
-                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">AI戦略コンサルティング</h3>
-                      <p className="text-gray-300 text-sm mb-4">
-                        ビジネス目標に合わせたAI導入戦略の策定
-                      </p>
-                      <div className="flex flex-wrap gap-1">
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">戦略立案</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">ロードマップ作成</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">KPI設定</span>
-                      </div>
-                      <div className="mt-3 text-blue-400 text-xs font-medium">
-                        クリックして詳細を見る →
-                      </div>
-                    </div>
-                  </ModalTrigger>
-
-                  {/* カード2: データ分析コンサルティング */}
-                  <ModalTrigger
-                    title="データ分析コンサルティング"
-                    size="lg"
-                    modalContent={
+                    ),
+                    modalSize: "lg"
+                  },
+                  {
+                    title: 'データ分析コンサルティング',
+                    description: 'データ収集、前処理、分析手法の最適化支援',
+                    tags: ['データマイニング', '統計分析', '可視化'],
+                    modalTitle: 'データ分析コンサルティング',
+                    modalContent: (
                       <div className="space-y-6">
                         <h4 className="text-2xl font-bold text-white mb-4">
                           データを「価値」に変換するプロセス支援
@@ -764,29 +575,15 @@ export default function AIConsultingPage() {
                           </p>
                         </div>
                       </div>
-                    }
-                  >
-                    <div className="bg-gray-800 p-6 rounded-lg border border-blue-500/30 hover:border-blue-400 transition-all duration-300 cursor-pointer group">
-                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">データ分析コンサルティング</h3>
-                      <p className="text-gray-300 text-sm mb-4">
-                        データ収集、前処理、分析手法の最適化支援
-                      </p>
-                      <div className="flex flex-wrap gap-1">
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">データマイニング</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">統計分析</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">可視化</span>
-                      </div>
-                      <div className="mt-3 text-blue-400 text-xs font-medium">
-                        クリックして詳細を見る →
-                      </div>
-                    </div>
-                  </ModalTrigger>
-
-                  {/* カード3: AI実装支援 */}
-                  <ModalTrigger
-                    title="AI実装支援"
-                    size="lg"
-                    modalContent={
+                    ),
+                    modalSize: "lg"
+                  },
+                  {
+                    title: 'AI実装支援',
+                    description: 'AI導入プロジェクトの実装と運用サポート',
+                    tags: ['プロジェクト管理', 'チーム構築', '技術支援'],
+                    modalTitle: 'AI実装支援',
+                    modalContent: (
                       <div className="space-y-6">
                         <h4 className="text-2xl font-bold text-white mb-4">
                           計画を「現実」にする、伴走型の実装サポート
@@ -807,25 +604,12 @@ export default function AIConsultingPage() {
                           </p>
                         </div>
                       </div>
-                    }
-                  >
-                    <div className="bg-gray-800 p-6 rounded-lg border border-blue-500/30 hover:border-blue-400 transition-all duration-300 cursor-pointer group">
-                      <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-blue-400 transition-colors">AI実装支援</h3>
-                      <p className="text-gray-300 text-sm mb-4">
-                        AI導入プロジェクトの実装と運用サポート
-                      </p>
-                      <div className="flex flex-wrap gap-1">
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">プロジェクト管理</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">チーム構築</span>
-                        <span className="px-2 py-1 bg-blue-900/50 text-blue-300 rounded text-xs">技術支援</span>
-                      </div>
-                      <div className="mt-3 text-blue-400 text-xs font-medium">
-                        クリックして詳細を見る →
-                      </div>
-                    </div>
-                  </ModalTrigger>
-                </div>
-              </div>
+                    ),
+                    modalSize: "lg"
+                  }
+                ]}
+                variant="dark"
+              />
             )
           }
         ]}
