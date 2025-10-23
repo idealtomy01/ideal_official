@@ -7,6 +7,7 @@ import { ThreeCardSection } from '../../../components/sections/ThreeCardSection'
 import { TabSection } from '../../../components/sections/TabSection'
 import { FAQSection } from '../../../components/sections/FAQSection'
 import { RelatedServicesSection } from '../../../components/sections/RelatedServicesSection'
+import { ModalTrigger } from '../../../components/ui/ModalTrigger'
 import { aiServiceData } from '../../../data/services/ai'
 
 export const metadata: Metadata = {
@@ -77,28 +78,177 @@ export default function AIConsultingPage() {
 
       {/* 3. 具体的な活用方法 - 3カードセクション */}
       <div className="border-b border-blue-400">
-        <ThreeCardSection
-          title={aiServiceData.sections[3].title!}
-          description={aiServiceData.sections[3].description!}
-          cards={[
-            {
-              title: '業務効率化',
-              description: 'ChatGPTを活用した定型業務の自動化、画像認識による在庫管理など、人手不足の解消と従業員のコア業務への集中を実現します。',
-              tags: ['自動化', '効率化', 'ChatGPT']
-            },
-            {
-              title: 'マーケティング強化',
-              description: 'SNSマーケティングの最適化や顧客データ分析により、限られた予算で最大の効果を実現します。',
-              tags: ['SNS', 'データ分析', '最適化']
-            },
-            {
-              title: '品質管理・予測',
-              description: 'AIによる品質チェックと予測分析により、エラーの削減と効率的な在庫管理を実現します。',
-              tags: ['品質管理', '予測分析', '在庫管理']
-            }
-          ]}
-          variant="dark"
-        />
+        <div className="py-16 bg-black">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent mb-4">
+                具体的な活用方法
+              </h2>
+              <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+                AI技術を活用した具体的なビジネスソリューションをご提案します
+              </p>
+            </div>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* カード1: 業務効率化・自動化 */}
+              <ModalTrigger
+                title="業務効率化・自動化"
+                size="lg"
+                modalContent={
+                  <div className="space-y-6">
+                    <h4 className="text-2xl font-bold text-white mb-4">
+                      AIによる業務プロセスの再構築
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      私たちは、貴社の既存ワークフローを詳細に分析し、「AIに任せるべき業務」と「人が集中すべき業務」を明確に切り分けます。
+                    </p>
+                    
+                    <div className="space-y-4">
+                      <h5 className="text-xl font-semibold text-white">テキスト生成AIの活用</h5>
+                      <p className="text-gray-300 leading-relaxed">
+                        ChatGPTなどのLLM（大規模言語モデル）を連携させ、カスタマーサポートの一次対応、日報や議事録の自動要約、マーケティングメールのドラフト作成などを自動化します。
+                      </p>
+                      
+                      <h5 className="text-xl font-semibold text-white">画像・データ認識AI</h5>
+                      <p className="text-gray-300 leading-relaxed">
+                        AI-OCRによる請求書や契約書のデータ化、画像認識AIによる工場の検品作業や在庫管理を自動化。人的ミスをゼロに近づけ、バックオフィスの負担を劇的に軽減します。
+                      </p>
+                    </div>
+                    
+                    <p className="text-gray-300 leading-relaxed font-medium">
+                      これにより、従業員は単純作業から解放され、より付加価値の高い戦略的な業務にリソースを集中させることが可能になります。
+                    </p>
+                  </div>
+                }
+              >
+                <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-400 transition-all duration-300 cursor-pointer group">
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                    業務効率化・自動化
+                  </h3>
+                  <p className="text-gray-300 mb-4 leading-relaxed">
+                    AIが定型業務を代行し、ヒューマンエラーを削減。従業員をより創造的なコア業務へと解放し、企業全体の生産性を飛躍的に向上させます。
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-blue-900/50 text-blue-300 text-sm rounded-full">
+                      自動化
+                    </span>
+                    <span className="px-3 py-1 bg-blue-900/50 text-blue-300 text-sm rounded-full">
+                      効率化
+                    </span>
+                    <span className="px-3 py-1 bg-blue-900/50 text-blue-300 text-sm rounded-full">
+                      ChatGPT
+                    </span>
+                  </div>
+                  <div className="mt-4 text-blue-400 text-sm font-medium">
+                    クリックして詳細を見る →
+                  </div>
+                </div>
+              </ModalTrigger>
+
+              {/* カード2: マーケティング・顧客分析 */}
+              <ModalTrigger
+                title="マーケティング・顧客分析"
+                size="lg"
+                modalContent={
+                  <div className="space-y-6">
+                    <h4 className="text-2xl font-bold text-white mb-4">
+                      データドリブンな意思決定の実現
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      勘や経験に頼ったマーケティングから脱却し、AIによる客観的なデータ分析に基づいた戦略立案をサポートします。
+                    </p>
+                    
+                    <div className="space-y-4">
+                      <h5 className="text-xl font-semibold text-white">高精度な顧客セグメンテーション</h5>
+                      <p className="text-gray-300 leading-relaxed">
+                        購買履歴、Web閲覧ログ、デモグラフィック情報などをAIが分析し、高精度な顧客セグメント（クラスター）を作成。LTV（顧客生涯価値）の高い優良顧客層や、解約予備軍を特定します。
+                      </p>
+                      
+                      <h5 className="text-xl font-semibold text-white">施策の最適化とトレンド予測</h5>
+                      <p className="text-gray-300 leading-relaxed">
+                        SNSの投稿データや広告の反応率をAIがリアルタイムで分析し、最もコンバージョン率の高い広告クリエイティブや配信時間を自動で最適化。さらに市場トレンドを監視・予測し、次の一手を先読みした戦略的なキャンペーン立案を可能にします。
+                      </p>
+                    </div>
+                  </div>
+                }
+              >
+                <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-400 transition-all duration-300 cursor-pointer group">
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                    マーケティング・顧客分析
+                  </h3>
+                  <p className="text-gray-300 mb-4 leading-relaxed">
+                    AIが膨大な顧客データやSNSトレンドを分析。最適なターゲット層に、最適なタイミングでメッセージを届け、マーケティングROIを最大化します。
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-blue-900/50 text-blue-300 text-sm rounded-full">
+                      SNS
+                    </span>
+                    <span className="px-3 py-1 bg-blue-900/50 text-blue-300 text-sm rounded-full">
+                      データ分析
+                    </span>
+                    <span className="px-3 py-1 bg-blue-900/50 text-blue-300 text-sm rounded-full">
+                      最適化
+                    </span>
+                  </div>
+                  <div className="mt-4 text-blue-400 text-sm font-medium">
+                    クリックして詳細を見る →
+                  </div>
+                </div>
+              </ModalTrigger>
+
+              {/* カード3: 品質管理・需要予測 */}
+              <ModalTrigger
+                title="品質管理・需要予測"
+                size="lg"
+                modalContent={
+                  <div className="space-y-6">
+                    <h4 className="text-2xl font-bold text-white mb-4">
+                      AIによるリスクの最小化と未来の可視化
+                    </h4>
+                    <p className="text-gray-300 leading-relaxed">
+                      目視では見逃してしまう微細なエラーや、複雑な要因が絡み合う未来の需要を、AI技術で正確に捉えます。
+                    </p>
+                    
+                    <div className="space-y-4">
+                      <h5 className="text-xl font-semibold text-white">画像認識による品質管理（QC）</h5>
+                      <p className="text-gray-300 leading-relaxed">
+                        製造ラインのカメラ映像をAIがリアルタイムで解析。熟練技術者の「目」を学習させることで、人手不足の解消と検品精度の均一化を同時に実現し、不良品の流出を未然に防ぎます。
+                      </p>
+                      
+                      <h5 className="text-xl font-semibold text-white">時系列データによる需要予測・予知保全</h5>
+                      <p className="text-gray-300 leading-relaxed">
+                        過去の売上データ、天候、経済指標などをAIが分析し、高精度な需要予測モデルを構築。過剰在庫や機会損失を防ぎます。また、機器の稼働データを監視し、「故障の兆候」を事前に検知する予知保全もサポートします。
+                      </p>
+                    </div>
+                  </div>
+                }
+              >
+                <div className="bg-gray-800 p-6 rounded-lg border border-gray-700 hover:border-blue-400 transition-all duration-300 cursor-pointer group">
+                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-blue-400 transition-colors">
+                    品質管理・需要予測
+                  </h3>
+                  <p className="text-gray-300 mb-4 leading-relaxed">
+                    AIの画像認識による不良品検知や、時系列データ分析による需要予測。製造業から小売業まで、あらゆるビジネスのリスクを最小化します。
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-3 py-1 bg-blue-900/50 text-blue-300 text-sm rounded-full">
+                      品質管理
+                    </span>
+                    <span className="px-3 py-1 bg-blue-900/50 text-blue-300 text-sm rounded-full">
+                      予測分析
+                    </span>
+                    <span className="px-3 py-1 bg-blue-900/50 text-blue-300 text-sm rounded-full">
+                      在庫管理
+                    </span>
+                  </div>
+                  <div className="mt-4 text-blue-400 text-sm font-medium">
+                    クリックして詳細を見る →
+                  </div>
+                </div>
+              </ModalTrigger>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* 5. タブセクション（1つ目） */}
