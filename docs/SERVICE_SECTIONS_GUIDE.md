@@ -18,6 +18,7 @@
 | 番号 | セクション名 | コンポーネント | 主な用途 | 必須/オプション |
 |------|-------------|---------------|----------|----------------|
 | 0 | ヒーローセクション | `HeroSection` | ページタイトルとサブテキスト | 必須 |
+| 0.5 | サービスナビゲーション | `ServiceNavigation` | サービス間のナビゲーション | 必須 |
 | 1 | 技術説明 | `SingleColumnSection` | 単一カラムでの技術説明 | 推奨 |
 | 2 | ターゲット説明 | `SingleColumnSection` | ターゲット顧客への訴求 | オプション |
 | 3 | 活用方法 | `ThreeCardSection` | 3つのカードで具体的な活用方法（モーダル付き） | 推奨 |
@@ -49,6 +50,41 @@
   title="AI技術の可能性"
   subText="中小企業にこそ、AIがもたらす大きな恩恵"
 />
+```
+
+### セクション0.5: サービスナビゲーション
+
+**コンポーネント:** `ServiceNavigation`
+
+**Props:**
+- `serviceLinks: ServiceLinkData[]` - サービスリンクの配列
+- `currentServiceId: string` - 現在のサービスID
+- `className?: string` - 追加のCSSクラス
+
+**用途:** 全サービスページで統一されたナビゲーションメニュー
+
+**実装例:**
+```tsx
+import { serviceLinks } from '../../../data/services/service-links'
+
+<div className="border-b border-blue-400">
+  <ServiceNavigation
+    serviceLinks={serviceLinks}
+    currentServiceId="web-development"
+  />
+</div>
+```
+
+**共通データファイル:**
+```tsx
+// data/services/service-links.ts
+export const serviceLinks: ServiceLinkData[] = [
+  { id: 'ai-consulting', name: 'AI', href: '/services/ai-consulting' },
+  { id: 'web-development', name: 'Web開発', href: '/services/web-development' },
+  { id: 'app-development', name: 'アプリ開発', href: '/services/app-development' },
+  { id: 'game-development', name: 'ゲーム制作', href: '/services/game-development' },
+  { id: 'blockchain-development', name: 'ブロックチェーン開発', href: '/services/blockchain-development' }
+]
 ```
 
 ### セクション1: 技術説明
@@ -198,6 +234,7 @@ interface CardData {
 - `rightContent: React.ReactNode` - 右側のコンテンツ
 - `variant?: 'default' | 'dark' | 'accent'` - 背景バリアント
 - `className?: string` - 追加のCSSクラス
+- `textAlign?: 'left' | 'center' | 'right'` - テキストの配置
 
 **用途:** 従来技術との比較など、2列での対比表示
 
@@ -235,6 +272,7 @@ interface CardData {
       </div>
     }
     variant="dark"
+    textAlign="center"
   />
 </div>
 ```
@@ -518,32 +556,32 @@ interface RelatedServiceData {
 
 ### AIページ（全セクション）
 ```
-0,1,2,3,4,5,6,7,8,9,10,11
-（ヒーロー、技術説明、ターゲット説明、活用方法、説明、比較、導入要素、理由説明、技術提供、FAQ、関連、CTA）
+0,0.5,1,2,3,4,5,6,7,8,9,10,11
+（ヒーロー、サービスナビ、技術説明、ターゲット説明、活用方法、説明、比較、導入要素、理由説明、技術提供、FAQ、関連、CTA）
 ```
 
 ### Web開発ページ例
 ```
-0,1,3,5,8,9,10,11
-（ヒーロー、技術説明、活用方法、比較、技術提供、FAQ、関連、CTA）
+0,0.5,1,3,5,8,9,10,11
+（ヒーロー、サービスナビ、技術説明、活用方法、比較、技術提供、FAQ、関連、CTA）
 ```
 
 ### アプリ開発ページ例
 ```
-0,1,2,3,6,8,9,10,11
-（ヒーロー、技術説明、ターゲット説明、活用方法、導入要素、技術提供、FAQ、関連、CTA）
+0,0.5,1,2,3,6,8,9,10,11
+（ヒーロー、サービスナビ、技術説明、ターゲット説明、活用方法、導入要素、技術提供、FAQ、関連、CTA）
 ```
 
 ### ゲーム制作ページ例
 ```
-0,1,3,4,5,8,9,10,11
-（ヒーロー、技術説明、活用方法、説明、比較、技術提供、FAQ、関連、CTA）
+0,0.5,1,3,4,5,8,9,10,11
+（ヒーロー、サービスナビ、技術説明、活用方法、説明、比較、技術提供、FAQ、関連、CTA）
 ```
 
 ### ブロックチェーン開発ページ例
 ```
-0,1,2,3,5,7,8,9,10,11
-（ヒーロー、技術説明、ターゲット説明、活用方法、比較、理由説明、技術提供、FAQ、関連、CTA）
+0,0.5,1,2,3,5,7,8,9,10,11
+（ヒーロー、サービスナビ、技術説明、ターゲット説明、活用方法、比較、理由説明、技術提供、FAQ、関連、CTA）
 ```
 
 ## 実装時の注意点
@@ -588,12 +626,36 @@ import { RelatedServicesSection } from '../../../components/sections/RelatedServ
 import { ServicePageData, TabData, CardData, RelatedServiceData, FAQData } from '../../types/service'
 ```
 
+## 共通データファイル
+
+```typescript
+import { serviceLinks } from '../../../data/services/service-links'
+```
+
 ## 使用例：新しいサービスページ作成
 
-1. セクション番号を決定（例：`0,1,3,5,8,9,10,11`）
+1. セクション番号を決定（例：`0,0.5,1,3,5,8,9,10,11`）
 2. 必要なコンポーネントをimport
-3. 各セクションの実装例をコピー＆ペースト
-4. データをサービスに合わせてカスタマイズ
-5. モーダルコンテンツを追加（必要な場合）
+3. 共通データファイル（`serviceLinks`）をimport
+4. 各セクションの実装例をコピー＆ペースト
+5. データをサービスに合わせてカスタマイズ
+6. モーダルコンテンツを追加（必要な場合）
+
+### 必須セクション（全サービスページ共通）
+- **セクション0**: ヒーローセクション（必須）
+- **セクション0.5**: サービスナビゲーション（必須）
+
+### サービスナビゲーションの実装例
+```tsx
+import { serviceLinks } from '../../../data/services/service-links'
+
+// ページ内で使用
+<div className="border-b border-blue-400">
+  <ServiceNavigation
+    serviceLinks={serviceLinks}
+    currentServiceId="your-service-id"
+  />
+</div>
+```
 
 このガイドを使用することで、効率的にサービスページを作成できます。

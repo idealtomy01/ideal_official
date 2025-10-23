@@ -1,177 +1,175 @@
 import { Metadata } from 'next'
-import { Section } from '../../../components/ui/Section'
-import { CallToAction } from '../../../components/sections/CallToAction'
-import { typography, colors } from '../../../lib/design-tokens'
+import { HeroSection } from '../../../components/sections/HeroSection'
+import { ServiceNavigation } from '../../../components/sections/ServiceNavigation'
+import { SingleColumnSection } from '../../../components/sections/SingleColumnSection'
+import { TwoColumnSection } from '../../../components/sections/TwoColumnSection'
+import { ThreeCardSection } from '../../../components/sections/ThreeCardSection'
+import { TabSection } from '../../../components/sections/TabSection'
+import { FAQSection } from '../../../components/sections/FAQSection'
+import { RelatedServicesSection } from '../../../components/sections/RelatedServicesSection'
+import { webDevelopmentData } from '../../../data/services/web-development'
+import { serviceLinks } from '../../../data/services/service-links'
 
 export const metadata: Metadata = {
-  title: 'Webサイト制作 | ideal',
-  description: '高品質なWebサイト制作サービス。レスポンシブデザイン、SEO最適化、高速パフォーマンスを実現します。',
+  title: 'Web開発 | ideal',
+  description: '高品質なWeb開発サービス。レスポンシブデザイン、SEO最適化、高速パフォーマンスを実現します。',
   openGraph: {
-    title: 'Webサイト制作 | ideal',
-    description: '高品質なWebサイト制作サービス。レスポンシブデザイン、SEO最適化、高速パフォーマンスを実現します。',
+    title: 'Web開発 | ideal',
+    description: '高品質なWeb開発サービス。レスポンシブデザイン、SEO最適化、高速パフォーマンスを実現します。',
   },
 }
 
 export default function WebDevelopmentPage() {
   return (
-    <div className="min-h-screen bg-black text-gray-100">
-      {/* ヒーローセクション */}
-      <Section className="pt-24 lg:pt-32 pb-16 lg:pb-24">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className={`${typography.h1} ${colors.text.primary} mb-6`}>
-            Webサイト制作
-          </h1>
-          <p className={`${typography.bodyLarge} ${colors.text.secondary} mb-8`}>
-            高品質なWebサイト制作で、あなたのビジネスをデジタル世界で成功に導きます。
-          </p>
-        </div>
-      </Section>
+    <div className="min-h-screen bg-black">
+      {/* セクション0: ヒーローセクション */}
+      <div className="border-b border-blue-400">
+        <HeroSection
+          title={webDevelopmentData.hero.title}
+          subText={webDevelopmentData.hero.subtitle}
+        />
+      </div>
 
-      {/* サービス詳細 */}
-      <Section className="py-16 lg:py-24">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
-              <h2 className={`${typography.h2} ${colors.text.primary} mb-6`}>
-                レスポンシブデザイン
-              </h2>
-              <p className={`${typography.body} ${colors.text.secondary} mb-6`}>
-                モバイル、タブレット、デスクトップすべてのデバイスで最適な表示を実現。
-                ユーザーエクスペリエンスを重視した設計で、アクセス性と使いやすさを向上させます。
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                  <span className={colors.text.secondary}>モバイルファーストデザイン</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                  <span className={colors.text.secondary}>タッチフレンドリーなUI</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                  <span className={colors.text.secondary}>クロスブラウザ対応</span>
-                </li>
-              </ul>
-            </div>
-            <div className="bg-gray-900 p-8 rounded-xl border border-gray-700">
-              <h3 className={`${typography.h3} ${colors.text.primary} mb-4`}>
-                技術スタック
-              </h3>
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-blue-400 font-semibold mb-2">フロントエンド</h4>
-                  <p className="text-sm text-gray-300">React, Next.js, TypeScript, Tailwind CSS</p>
-                </div>
-                <div>
-                  <h4 className="text-blue-400 font-semibold mb-2">バックエンド</h4>
-                  <p className="text-sm text-gray-300">Node.js, Express, PostgreSQL, MongoDB</p>
-                </div>
-                <div>
-                  <h4 className="text-blue-400 font-semibold mb-2">デプロイ</h4>
-                  <p className="text-sm text-gray-300">Vercel, AWS, Docker</p>
-                </div>
-              </div>
-            </div>
+      {/* サービスナビゲーション */}
+      <div className="border-b border-blue-400">
+        <ServiceNavigation
+          serviceLinks={serviceLinks}
+          currentServiceId="web-development"
+        />
+      </div>
+
+      {/* セクション1: 技術説明 */}
+      <div className="border-b border-blue-400">
+        <SingleColumnSection
+          title={webDevelopmentData.sections[0].title}
+          description={webDevelopmentData.sections[0].description}
+          variant="dark"
+        >
+          {webDevelopmentData.sections[0].content}
+        </SingleColumnSection>
+      </div>
+
+      {/* セクション2: ターゲット説明 */}
+      <div className="border-b border-blue-400">
+        <SingleColumnSection
+          title={webDevelopmentData.sections[1].title}
+          description={webDevelopmentData.sections[1].description}
+          variant="dark"
+        >
+          {webDevelopmentData.sections[1].content}
+        </SingleColumnSection>
+      </div>
+
+      {/* セクション3: 活用方法 */}
+      <div className="border-b border-blue-400">
+        <ThreeCardSection
+          title={webDevelopmentData.sections[2].title}
+          description={webDevelopmentData.sections[2].description}
+          cards={webDevelopmentData.sections[2].data.cards}
+          variant="dark"
+          enableMobileScroll={true}
+        />
+      </div>
+
+      {/* セクション4: 説明セクション */}
+      <div className="border-b border-blue-400">
+        <SingleColumnSection
+          title={webDevelopmentData.sections[3].title}
+          description={webDevelopmentData.sections[3].description}
+          variant="dark"
+        >
+          {webDevelopmentData.sections[3].content}
+        </SingleColumnSection>
+      </div>
+
+      {/* セクション5: 比較セクション */}
+      <div className="border-b border-blue-400">
+        <TwoColumnSection
+          title={webDevelopmentData.sections[4].title}
+          leftContent={webDevelopmentData.sections[4].data.leftContent}
+          rightContent={webDevelopmentData.sections[4].data.rightContent}
+          variant="dark"
+          textAlign="center"
+        />
+      </div>
+
+      {/* セクション6: 導入要素 */}
+      <div className="border-b border-blue-400">
+        <ThreeCardSection
+          title={webDevelopmentData.sections[5].title}
+          description={webDevelopmentData.sections[5].description}
+          cards={webDevelopmentData.sections[5].data.cards}
+          variant="dark"
+          enableMobileScroll={true}
+        />
+      </div>
+
+      {/* セクション7: 理由説明 */}
+      <div className="border-b border-blue-400">
+        <TwoColumnSection
+          title={webDevelopmentData.sections[6].title}
+          leftContent={webDevelopmentData.sections[6].data.leftContent}
+          rightContent={webDevelopmentData.sections[6].data.rightContent}
+          variant="dark"
+        />
+      </div>
+
+      {/* セクション8: 技術提供 */}
+      <div className="border-b border-blue-400">
+        <TabSection
+          title={webDevelopmentData.sections[7].title}
+          tabs={webDevelopmentData.sections[7].data.tabs.map((tab: { content: { type: string; cards: any[] } }) => ({ // eslint-disable-line @typescript-eslint/no-explicit-any
+            ...tab,
+            content: tab.content.type === 'three-cards' ? (
+              <ThreeCardSection
+                cards={tab.content.cards as any} // eslint-disable-line @typescript-eslint/no-explicit-any
+                variant="dark"
+                padding="sm"
+                enableMobileScroll={true}
+              />
+            ) : tab.content
+          }))}
+          defaultTab={webDevelopmentData.sections[7].data.defaultTab}
+          variant="dark"
+        />
+      </div>
+
+      {/* セクション9: FAQ */}
+      <div className="border-b border-blue-400">
+        <FAQSection
+          title="よくある質問"
+          faqs={webDevelopmentData.faqs || []}
+          variant="dark"
+        />
+      </div>
+
+      {/* セクション10: 関連サービス */}
+      <div className="border-b border-blue-400">
+        <RelatedServicesSection
+          title="関連サービス"
+          services={webDevelopmentData.relatedServices || []}
+          variant="dark"
+        />
+      </div>
+
+      {/* セクション11: CTA */}
+      <div className="border-b border-blue-400">
+        <SingleColumnSection
+          title="Webで新しいビジネス価値を創造しませんか？"
+          description="IDEALのWeb開発サービスで、貴社のビジネスに革新をもたらします。まずはお気軽にお問い合わせください。"
+          variant="dark"
+          className="text-center"
+        >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              お問い合わせ
+            </button>
+            <button className="px-8 py-3 border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-colors">
+              サービス一覧に戻る
+            </button>
           </div>
-        </div>
-      </Section>
-
-      {/* SEO最適化セクション */}
-      <Section className="py-16 lg:py-24 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="bg-gray-800 p-8 rounded-xl border border-gray-700">
-              <h3 className={`${typography.h3} ${colors.text.primary} mb-4`}>
-                SEO最適化
-              </h3>
-              <p className={`${typography.body} ${colors.text.secondary} mb-6`}>
-                検索エンジン最適化により、あなたのWebサイトをより多くの人に見つけてもらいます。
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                  <span className={colors.text.secondary}>メタデータ最適化</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                  <span className={colors.text.secondary}>構造化データ実装</span>
-                </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                  <span className={colors.text.secondary}>サイトマップ生成</span>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h2 className={`${typography.h2} ${colors.text.primary} mb-6`}>
-                パフォーマンス最適化
-              </h2>
-              <p className={`${typography.body} ${colors.text.secondary} mb-6`}>
-                高速な読み込み速度とスムーズなユーザーエクスペリエンスを実現。
-                Core Web Vitalsの指標を満たす最適化されたWebサイトを提供します。
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-gray-800 p-4 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-blue-400">90+</div>
-                  <div className="text-sm text-gray-300">Lighthouse Score</div>
-                </div>
-                <div className="bg-gray-800 p-4 rounded-lg text-center">
-                  <div className="text-2xl font-bold text-blue-400">&lt;3s</div>
-                  <div className="text-sm text-gray-300">読み込み時間</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* プロセスセクション */}
-      <Section className="py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto">
-          <h2 className={`${typography.h2} ${colors.text.primary} text-center mb-12`}>
-            制作プロセス
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-black">1</span>
-              </div>
-              <h3 className={`${typography.h3} ${colors.text.primary} mb-3`}>
-                ヒアリング・企画
-              </h3>
-              <p className={colors.text.secondary}>
-                お客様のニーズを詳しくヒアリングし、最適なソリューションを企画します。
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-black">2</span>
-              </div>
-              <h3 className={`${typography.h3} ${colors.text.primary} mb-3`}>
-                デザイン・開発
-              </h3>
-              <p className={colors.text.secondary}>
-                モダンなデザインと最新技術を使用して、高品質なWebサイトを制作します。
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-400 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-black">3</span>
-              </div>
-              <h3 className={`${typography.h3} ${colors.text.primary} mb-3`}>
-                テスト・公開
-              </h3>
-              <p className={colors.text.secondary}>
-                徹底的なテストを行い、問題なく公開できる状態で納品します。
-              </p>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* CTA */}
-      <CallToAction />
+        </SingleColumnSection>
+      </div>
     </div>
   )
 }

@@ -51,6 +51,8 @@ export interface ThreeCardSectionProps {
   cardAlignment?: 'left' | 'center' | 'right'
   /** カードのサイズ */
   cardSize?: 'sm' | 'md' | 'lg'
+  /** スマホ表示時の横スクロール有効化 */
+  enableMobileScroll?: boolean
 }
 
 export function ThreeCardSection({
@@ -62,7 +64,8 @@ export function ThreeCardSection({
   variant = 'default', // eslint-disable-line @typescript-eslint/no-unused-vars
   padding = 'lg',
   cardAlignment = 'center',
-  cardSize = 'md'
+  cardSize = 'md',
+  enableMobileScroll = false
 }: ThreeCardSectionProps) {
   // variant パラメータは将来の拡張性のために保持
   // バリアント別のスタイル
@@ -88,13 +91,14 @@ export function ThreeCardSection({
 
   // カード配置
   const getCardAlignmentStyles = () => {
+    // ↓ すべてに 'md:' を追加
     switch (cardAlignment) {
       case 'left':
-        return 'justify-start'
+        return 'md:justify-start'
       case 'right':
-        return 'justify-end'
+        return 'md:justify-end'
       default:
-        return 'justify-center'
+        return 'md:justify-center'
     }
   }
 
@@ -134,11 +138,29 @@ export function ThreeCardSection({
           </div>
         )}
 
+        {/* スクロールインジケーター（スマホ表示時のみ） */}
+        {enableMobileScroll && (
+          <div className="md:hidden flex justify-center mb-4">
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+              </svg>
+              <span>左右にスワイプしてスクロール</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </div>
+          </div>
+        )}
+
         {/* 3カラムカードグリッド */}
         <div className={`
-          grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8
-          ${getCardAlignmentStyles()}
-        `}>
+        ${enableMobileScroll 
+          ? 'flex overflow-x-auto gap-4 pb-4 scrollbar-hide md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-6 lg:gap-8 md:overflow-visible md:pb-0 snap-x snap-mandatory px-4 md:px-0 justify-start' 
+          : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8'
+        }
+        ${getCardAlignmentStyles()}
+      `}>
           {cards.map((card, index) => {
             // モーダル機能がある場合のカード
             if (card.modalTitle && card.modalContent) {
@@ -157,6 +179,7 @@ export function ThreeCardSection({
                     transition-all duration-300
                     hover:scale-105 hover:shadow-lg
                     h-full flex flex-col
+                    ${enableMobileScroll ? 'flex-shrink-0 w-80 md:w-auto snap-start' : ''}
                   `}>
                     {/* アイコンまたは画像 */}
                     {(card.icon || card.image) && (
@@ -248,6 +271,7 @@ export function ThreeCardSection({
                   transition-all duration-300
                   hover:scale-105 hover:shadow-lg
                   h-full flex flex-col
+                  ${enableMobileScroll ? 'flex-shrink-0 w-80 md:w-auto snap-start' : ''}
                 `}
                 onClick={card.onClick}
               >

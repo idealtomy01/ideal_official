@@ -8,6 +8,7 @@ import { TabSection } from '../../../components/sections/TabSection'
 import { FAQSection } from '../../../components/sections/FAQSection'
 import { RelatedServicesSection } from '../../../components/sections/RelatedServicesSection'
 import { aiServiceData } from '../../../data/services/ai'
+import { serviceLinks } from '../../../data/services/service-links'
 
 export const metadata: Metadata = {
   title: 'AI | ideal',
@@ -19,14 +20,6 @@ export const metadata: Metadata = {
 }
 
 export default function AIConsultingPage() {
-  // サービスナビゲーション用のデータ
-  const serviceLinks = [
-    { id: 'ai-consulting', name: 'AI', href: '/services/ai-consulting' },
-    { id: 'web-development', name: 'Web開発', href: '/services/web-development' },
-    { id: 'app-development', name: 'アプリ開発', href: '/services/app-development' },
-    { id: 'game-development', name: 'ゲーム制作', href: '/services/game-development' },
-    { id: 'blockchain-development', name: 'ブロックチェーン開発', href: '/services/blockchain-development' }
-  ]
 
   return (
     <div className="min-h-screen bg-black">
@@ -37,10 +30,12 @@ export default function AIConsultingPage() {
       />
 
       {/* サービスナビゲーション */}
-      <ServiceNavigation
-        serviceLinks={serviceLinks}
-        currentServiceId="ai-consulting"
-      />
+      <div className="border-b border-blue-400">
+        <ServiceNavigation
+          serviceLinks={serviceLinks}
+          currentServiceId="ai-consulting"
+        />
+      </div>
 
       {/* 1. AI技術の可能性 - 単一カラムセクション */}
       <div className="border-b border-blue-400">
@@ -80,6 +75,7 @@ export default function AIConsultingPage() {
         <ThreeCardSection
           title="具体的な活用方法"
           description="AI技術を活用した具体的なビジネスソリューションをご提案します"
+          enableMobileScroll={true}
           cards={[
             {
               title: '業務効率化・自動化',
@@ -191,10 +187,11 @@ export default function AIConsultingPage() {
       <div className="border-b border-blue-400">
         <TwoColumnSection
           title="従来技術との比較"
+          textAlign="center"
         leftContent={
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-white mb-4">従来のシステム開発</h3>
-            <ul className="space-y-3 text-gray-300">
+            <ul className="space-y-3 text-gray-300 inline-block text-left">
               <li className="flex items-start">
                 <span className="w-2 h-2 bg-red-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
                 <span>ルールベースの固定的な処理</span>
@@ -221,7 +218,7 @@ export default function AIConsultingPage() {
         rightContent={
           <div className="space-y-4">
             <h3 className="text-xl font-semibold text-white mb-4">最新のAIソリューション</h3>
-            <ul className="space-y-3 text-gray-300">
+            <ul className="space-y-3 text-gray-300 inline-block text-left">
               <li className="flex items-start">
                 <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
                 <span>データからの自動学習と適応</span>
@@ -254,6 +251,7 @@ export default function AIConsultingPage() {
          <ThreeCardSection
            title="導入に必要な要素"
            description="AI導入成功のための3つの重要な要素をご説明します"
+           enableMobileScroll={true}
            cards={[
              {
                title: "技術要素",
@@ -420,6 +418,7 @@ export default function AIConsultingPage() {
             content: (
               <ThreeCardSection
                 padding="sm"
+                enableMobileScroll={true}
                 cards={[
                   {
                     title: '機械学習モデル開発',
@@ -519,6 +518,7 @@ export default function AIConsultingPage() {
             content: (
               <ThreeCardSection
                 padding="sm"
+                enableMobileScroll={true}
                 cards={[
                   {
                     title: 'AI戦略コンサルティング',

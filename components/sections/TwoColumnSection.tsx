@@ -1,5 +1,6 @@
 'use client'
 
+import React from 'react'
 import { colors, typography, spacing } from '../../lib/design-tokens'
 
 /**
@@ -28,6 +29,8 @@ export interface TwoColumnSectionProps {
   columnRatio?: 'equal' | 'left-heavy' | 'right-heavy'
   /** カラムの順序（モバイルでの表示順） */
   reverseOnMobile?: boolean
+  /** テキストの配置 */
+  textAlign?: 'left' | 'center' | 'right'
 }
 
 export function TwoColumnSection({
@@ -40,7 +43,8 @@ export function TwoColumnSection({
   variant = 'default',
   padding = 'lg',
   columnRatio = 'equal',
-  reverseOnMobile = false
+  reverseOnMobile = false,
+  textAlign = 'left'
 }: TwoColumnSectionProps) {
   // バリアント別のスタイル
   const getVariantStyles = () => {
@@ -99,6 +103,19 @@ export function TwoColumnSection({
     }
   }
 
+  // テキスト配置
+  const getTextAlignStyles = () => {
+    switch (textAlign) {
+      case 'center':
+        return 'text-center'
+      case 'right':
+        return 'text-right'
+      default:
+        return 'text-left'
+    }
+  }
+
+
   return (
     <section className={`${getVariantStyles()} ${getPaddingStyles()} ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -134,6 +151,7 @@ export function TwoColumnSection({
             ${getLeftColumnStyles()}
             ${reverseOnMobile ? 'lg:order-1' : ''}
             h-full flex flex-col
+            ${getTextAlignStyles()}
           `}>
             {leftContent}
           </div>
@@ -143,6 +161,7 @@ export function TwoColumnSection({
             ${getRightColumnStyles()}
             ${reverseOnMobile ? 'lg:order-2' : ''}
             h-full flex flex-col
+            ${getTextAlignStyles()}
           `}>
             {rightContent}
           </div>
