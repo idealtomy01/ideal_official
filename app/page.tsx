@@ -36,16 +36,16 @@ export default function Home() {
   const serviceData = [
     {
       id: 'ai-consulting',
-      title: 'AIコンサルティング',
-      description: '人工知能技術を活用したビジネスソリューションの企画・設計・実装をサポートします。',
+      title: 'AI',
+      description: 'AI活用のためのコンサルティングから環境構築、AI人材育成サポートまで対応します。',
       image: '/images/test01.jpg',
       link: '/services/ai-consulting',
-      linkText: 'AIコンサルティング詳細へ>>'
+      linkText: 'AI関連詳細へ>>'
     },
     {
       id: 'web-development',
       title: 'Web開発',
-      description: 'モダンなWebアプリケーションの開発から保守まで、包括的なWebソリューションを提供します。',
+      description: 'react、next.jsでの高速Webサイト作成、運用、保守、コンサルティングまで対応します。',
       image: '/images/test01.jpg',
       link: '/services/web-development',
       linkText: 'Web開発詳細へ>>'
@@ -53,7 +53,7 @@ export default function Home() {
     {
       id: 'blockchain-development',
       title: 'ブロックチェーン開発',
-      description: 'ブロックチェーン技術を活用した分散型アプリケーション（DApp）の開発とコンサルティングを行います。',
+      description: '分散型アプリケーション（DApp）の開発やNFT活用など各種コンサルティングを行います。',
       image: '/images/test01.jpg',
       link: '/services/blockchain-development',
       linkText: 'ブロックチェーン開発詳細へ>>'
@@ -61,7 +61,7 @@ export default function Home() {
     {
       id: 'app-development',
       title: 'アプリ開発',
-      description: 'iOS・Android向けのネイティブアプリからクロスプラットフォームアプリまで、幅広いアプリ開発に対応します。',
+      description: 'スマホ向けのネイティブアプリ、スマホゲームアプリの企画・開発に対応します。',
       image: '/images/test01.jpg',
       link: '/services/app-development',
       linkText: 'アプリ開発詳細へ>>'
