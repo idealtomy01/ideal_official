@@ -13,130 +13,67 @@ const StructureSection = React.memo(() => {
       <h2 className={`text-xl md:text-2xl md:text-4xl font-bold mb-8`}>
         価値観で進化する組織構造
       </h2>
-      
+    
       <div className="space-y-8 text-base md:text-lg leading-relaxed">
+        <h3 className="text-xl md:text-2xl font-semibold mb-4 border-l-4 border-blue-400 pl-4">
+          「価値観による分岐の自由」へ
+        </h3>
         <p>
-          このシステムが実現する未来の組織は、従来の階層構造とは根本的に異なります。
-          価値観の一致を基盤とした、動的で進化し続ける組織構造が生まれるでしょう。
+          DAOの本質は、善悪という単一の価値基準を押し付けることではありません。
+        </p>
+        <p>
+          重要なのは、<strong>組織内の意見の相違を、内部抗争や権力闘争といった破壊的な&ldquo;対立&rdquo;ではなく、創造的な&ldquo;分岐（フォーク）&rdquo;へと昇華させる</strong>ことにあります。
+          これは、各々が信じる理想やアプローチを追求するための、システムに組み込まれた基本的な仕組みです。
+          これは、内部抗争や権力闘争、現状維持にエネルギーを浪費するのではなく、各々が目指したい理想を追求するための、システムに組み込まれた基本的な仕組みです。
         </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-blue-400 border-l-4 border-blue-400 pl-4">
-              従来の組織構造
-            </h3>
-            <div className="space-y-4">
-              <div className="p-4 bg-gray-800 rounded-lg border border-gray-600">
-                <h4 className="font-bold text-red-400 mb-2">固定化された階層</h4>
-                <p className="text-sm">役職や地位による固定的な権力構造</p>
-              </div>
-              <div className="p-4 bg-gray-800 rounded-lg border border-gray-600">
-                <h4 className="font-bold text-red-400 mb-2">評価の曖昧さ</h4>
-                <p className="text-sm">主観的な評価基準による不公平な分配</p>
-              </div>
-              <div className="p-4 bg-gray-800 rounded-lg border border-gray-600">
-                <h4 className="font-bold text-red-400 mb-2">摩擦コストの蓄積</h4>
-                <p className="text-sm">価値観の不一致による組織内摩擦</p>
-              </div>
-            </div>
+        <h3 className="text-xl md:text-2xl font-semibold mt-12 mb-4 border-l-4 border-blue-400 pl-4">フォーク：二つの進化のかたち</h3>
+        <p>
+          フォークは、主に二つの形で組織の健全な進化を促します。
+        </p>
+        <div className="grid md:grid-cols-2 gap-6 text-sm">
+          <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+            <p className="font-bold text-blue-400 mb-1">1. 価値観による分岐</p>
+            <p>組織の根本的な価値観やミッションとの間にズレが生じた場合、メンバーは自らの貢献履歴を保持したまま、新しい価値観を掲げる組織を立ち上げることができます。</p>
           </div>
-
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold text-green-400 border-l-4 border-green-400 pl-4">
-              新しい組織構造
-            </h3>
-            <div className="space-y-4">
-              <div className="p-4 bg-gray-800 rounded-lg border border-green-600">
-                <h4 className="font-bold text-green-400 mb-2">動的な価値観マッチング</h4>
-                <p className="text-sm">価値観の一致による自然な集団形成</p>
-              </div>
-              <div className="p-4 bg-gray-800 rounded-lg border border-green-600">
-                <h4 className="font-bold text-green-400 mb-2">透明な評価システム</h4>
-                <p className="text-sm">AIによる客観的で公平な貢献評価</p>
-              </div>
-              <div className="p-4 bg-gray-800 rounded-lg border border-green-600">
-                <h4 className="font-bold text-green-400 mb-2">摩擦の最小化</h4>
-                <p className="text-sm">価値観の一致による組織内協調の最大化</p>
-              </div>
-            </div>
+          <div className="bg-gray-800/50 p-4 rounded-lg border border-gray-600">
+            <p className="font-bold text-blue-400 mb-1">2. アプローチによる分岐</p>
+            <p>共通の価値観や目標は維持しつつも、その達成手段（戦略、戦術）について異なるアイデアを持つグループが、
+                それぞれの方法を試すために分岐することができます。</p>
           </div>
         </div>
 
-        <div className="mt-16 p-8 bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-xl border border-blue-500/50">
-          <h3 className="text-2xl font-bold text-center mb-8 text-blue-300">
-            組織の進化プロセス
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold">1</span>
-              </div>
-              <h4 className="font-bold text-lg mb-2">価値観の明確化</h4>
-              <p className="text-sm">組織の核となる価値観を明確に定義し、共有する</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold">2</span>
-              </div>
-              <h4 className="font-bold text-lg mb-2">動的マッチング</h4>
-              <p className="text-sm">価値観の一致するメンバーが自然に集まる</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold">3</span>
-              </div>
-              <h4 className="font-bold text-lg mb-2">継続的進化</h4>
-              <p className="text-sm">価値観の変化に応じて組織構造も進化する</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12">
-          <h3 className="text-xl md:text-2xl font-semibold mb-6 border-l-4 border-blue-400 pl-4">
-            実現される未来
-          </h3>
-          
-          <div className="space-y-6">
-            <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-600">
-              <h4 className="font-bold text-lg mb-3 text-blue-400">個人の解放</h4>
-              <p>
-                個人は自分らしさを保ちながら、価値観の一致する集団で活動できるようになります。
-                無理に組織に合わせる必要がなくなり、真の自己実現が可能になります。
-              </p>
-            </div>
-            
-            <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-600">
-              <h4 className="font-bold text-lg mb-3 text-green-400">組織の効率化</h4>
-              <p>
-                価値観の一致により、組織内の摩擦が最小化され、創造性と生産性が最大化されます。
-                無駄な調整コストが削減され、本質的な価値創造に集中できます。
-              </p>
-            </div>
-            
-            <div className="p-6 bg-gray-800/50 rounded-lg border border-gray-600">
-              <h4 className="font-bold text-lg mb-3 text-purple-400">社会の多様性</h4>
-              <p>
-                様々な価値観を持つ組織が共存し、競争し合うことで、社会全体の多様性と活力が保たれます。
-                画一的な価値観に縛られることなく、真の多様性が実現されます。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 p-6 bg-gradient-to-r from-gray-800 to-gray-700 rounded-lg border border-gray-600">
-          <blockquote className="text-center">
-            <p className="text-xl font-bold text-blue-400 italic mb-4">
-              &ldquo;価値観の一致が組織の基盤となる未来&rdquo;
-            </p>
-            <p className="text-gray-300">
-              このシステムにより、個人の尊厳を保ちながら、組織の効率性を最大化する
-              新しい組織形態が実現されるでしょう。
-            </p>
-          </blockquote>
-        </div>
+        <h3 className="text-xl md:text-2xl font-semibold mb-4 border-l-4 border-blue-400 pl-4">
+          フォークが促す健全な進化のメカニズム
+        </h3>
+        <p>
+          この「フォークの権利」は、組織や所属する個人に自律的進化のメカニズムをもたらします。
+        </p>
+        
+        <ul className="list-disc list-inside space-y-4 ml-4">
+          <li>
+            <strong>価値観の一致が協力な引力を生む：</strong> 組織の方向性と自身の価値観がズレ始めたメンバーは、無理に内部で戦う必要はありません。
+            自身の活動履歴（価値持続スコア）を保持したまま、同じ価値観を持つ仲間と共に新しい組織をフォークできます。
+            これにより、最も貢献度の高いメンバーほど、最も自身の価値観と一致する組織へと自然に引き寄せられます。
+          </li>
+          <li>
+            <strong>健全な淘汰と多様性の創出：</strong> フォークは、元の組織からの単なる「離脱」ではありません。
+            それは、新しい価値観や創造性、技術やアイデアを持つ組織の誕生を意味します。
+            これにより、社会には多様な選択肢が生まれ、健全なエコシステムの形成が期待できます。
+          </li>
+          <li>
+            <strong>価値観の表明が組織の価値を強める：</strong> 運営者は常に『価値観を表明し続ける』事が重要となる。「腐敗しないように」や「体裁を整える」
+            と考えるのではなく、「コミュニティの価値観を共有し続けること」を常に考えます。
+            また、組織が採用するアプローチについても、メンバーとの継続的な対話と合意形成を意識します。
+            メンバーとの価値観の一致、成長や発展のためのプロセス、方向性など、魅力的な人材との一致こそが、組織そのものの価値や魅力に直結することが期待できます。
+          </li>
+        </ul>
+        
+        <p className="mt-8 pt-6 border-t border-gray-700">
+          フォーク&ldquo;創造的な分岐の自由&rdquo;こそが、DAOがもたらす最大の価値だと考えています。
+          組織内に設定された上下関係による顔色の伺いあいから、立場や役割が違う&ldquo;対等な関係&rdquo;を目指せる組織構造に技術を活用し、
+          個々人の価値観や得手不得手、やりたい事への正直な実行そのものが、組織の原動力へと変換される事を目指せます。
+        </p>
       </div>
     </section>
   )

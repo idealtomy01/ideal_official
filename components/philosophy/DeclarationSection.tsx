@@ -8,134 +8,82 @@ import { colors } from '../../lib/design-tokens'
 
 const DeclarationSection = React.memo(() => {
   return (
-    <section id="declaration" className="py-8 md:py-16">
-      <p className={`text-base md:text-lg font-semibold ${colors.accent.primary} mb-2`}>6. The Declaration</p>
-      <h2 className={`text-xl md:text-2xl md:text-4xl font-bold mb-8`}>
-        技術の進化がもたらす新しい『最適化』
-      </h2>
-      
-      <div className="space-y-8 text-base md:text-lg leading-relaxed">
+    <section id="declaration" className="py-8 md:py-16 border-b border-gray-800">
+      <div className="max-w-4xl mx-auto">
+        <p className={`text-base md:text-lg font-semibold ${colors.accent.primary} mb-2`}>6. The Genesis</p>
+        <h2 className={`text-xl md:text-2xl md:text-4xl font-extrabold text-gray-100 mb-8`}>
+          技術の進化がもたらす新しい『最適化』
+        </h2>
+            
+        <h3 className="text-xl md:text-2xl font-semibold mt-12 mb-4 border-l-4 border-blue-400 pl-4">
+          生き方の選択肢を増やしたい
+        </h3>
         <p>
-          このシステムの実現により、個人と組織の関係性が根本的に変化します。
-          技術の進化が、これまで不可能だった新しい最適化を可能にするでしょう。
+          問題の本質は、既存のシステムが未成熟であること以上に、<strong>&ldquo;そのシステム以外に、生きる術がない&rdquo;という選択肢の欠如</strong>だと考えています。
+          社会的な進化とは、より優れたシステムへ強制的に移行させることだけではありません。
+          新たな「生き方の選択肢」を提示し、誰もが主体的に所属を選択できるようになることです。
         </p>
 
-        <div className="mt-12">
-          <h3 className="text-xl md:text-2xl font-semibold mb-6 border-l-4 border-blue-400 pl-4">
-            個人の最適化
-          </h3>
-          
-          <div className="space-y-6">
-            <div className="p-6 bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-lg border border-blue-500/50">
-              <h4 className="font-bold text-lg mb-3 text-blue-300">自己実現の最大化</h4>
-              <p>
-                個人は自分らしさを保ちながら、価値観の一致する集団で活動できるようになります。
-                無理に組織に合わせる必要がなくなり、真の自己実現が可能になります。
-              </p>
-            </div>
-            
-            <div className="p-6 bg-gradient-to-r from-green-900/30 to-blue-900/30 rounded-lg border border-green-500/50">
-              <h4 className="font-bold text-lg mb-3 text-green-300">貢献の可視化</h4>
-              <p>
-                AIによる客観的な評価により、これまで見落とされていた貢献が適切に評価されます。
-                個人の努力と成果が公正に認識され、報われる社会が実現されます。
-              </p>
-            </div>
-          </div>
+        <h3 className="text-xl md:text-2xl font-semibold mt-12 mb-4 border-l-4 border-blue-400 pl-4">
+          技術が可能にする『新しい最適化』
+        </h3>
+        <p>
+          このメタシステムは、単なる理想論ではなく、AIとブロックチェーンという二つの技術革新によって初めて実現可能となった、新しい形の&ldquo;最適化&rdquo;に基づいています。
+        </p>
+        <div className="space-y-4 bg-gray-900 p-6 rounded-lg border border-gray-700/50 mt-6">
+          <p className="font-bold text-blue-400">人間だけでは不可能だった&ldquo;観測&rdquo;と&ldquo;記録&rdquo;：</p>
+          <ul className="list-disc list-inside ml-4 space-y-2 text-sm">
+                          <li><strong>AIによる継続的な観測：</strong> 人間には不可能なスケールで、あらゆる行動とその文脈、影響範囲を24時間365日観測し続けることが可能になった。</li>
+                          <li><strong>ブロックチェーンによる永続的な記録：</strong> 観測された行動とその結果は、改ざん困難な履歴としてブロックチェーンに刻まれ、
+                              個人に紐づく&ldquo;検証可能なアイデンティティ&rdquo;ととして活用できる技術に応用できるようになった。</li>
+          </ul>
+          <p className="font-bold text-blue-400 mt-4">時間と範囲を超えた&ldquo;影響測定&rdquo;と&ldquo;フィードバック&rdquo;：</p>
+          <ul className="list-disc list-inside ml-4 space-y-2 text-sm">
+            <li><strong>長期的な影響分析：</strong> AIとブロックチェーンにより、個々の行動、活動が時間（数年、数十年）と範囲（チーム、社会）を超えて
+                どのような影響を与えたかを確認できるようになった。</li>
+            <li><strong>永続的なフィードバックループ：</strong> その結果は、未来のあらゆるインセンティブ計算に自動的に反映され、
+                責任もリスクもメリットも公平に分散できる可能性を拡げました。</li>
+          </ul>
         </div>
-
-        <div className="mt-16">
-          <h3 className="text-xl md:text-2xl font-semibold mb-6 border-l-4 border-green-400 pl-4">
-            組織の最適化
-          </h3>
-          
-          <div className="space-y-6">
-            <div className="p-6 bg-gradient-to-r from-purple-900/30 to-pink-900/30 rounded-lg border border-purple-500/50">
-              <h4 className="font-bold text-lg mb-3 text-purple-300">摩擦の最小化</h4>
-              <p>
-                価値観の一致により、組織内の摩擦が最小化され、創造性と生産性が最大化されます。
-                無駄な調整コストが削減され、本質的な価値創造に集中できます。
-              </p>
-            </div>
-            
-            <div className="p-6 bg-gradient-to-r from-orange-900/30 to-red-900/30 rounded-lg border border-orange-500/50">
-              <h4 className="font-bold text-lg mb-3 text-orange-300">動的適応性</h4>
-              <p>
-                組織は環境の変化に応じて柔軟に進化し、常に最適な状態を維持できます。
-                固定化された構造に縛られることなく、持続的な成長が可能になります。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-16">
-          <h3 className="text-xl md:text-2xl font-semibold mb-6 border-l-4 border-purple-400 pl-4">
-            社会の最適化
-          </h3>
-          
-          <div className="space-y-6">
-            <div className="p-6 bg-gradient-to-r from-cyan-900/30 to-blue-900/30 rounded-lg border border-cyan-500/50">
-              <h4 className="font-bold text-lg mb-3 text-cyan-300">多様性の促進</h4>
-              <p>
-                様々な価値観を持つ組織が共存し、競争し合うことで、社会全体の多様性と活力が保たれます。
-                画一的な価値観に縛られることなく、真の多様性が実現されます。
-              </p>
-            </div>
-            
-            <div className="p-6 bg-gradient-to-r from-teal-900/30 to-green-900/30 rounded-lg border border-teal-500/50">
-              <h4 className="font-bold text-lg mb-3 text-teal-300">持続可能性</h4>
-              <p>
-                公正な評価システムにより、長期的な視点での価値創造が促進されます。
-                短期的な利益追求ではなく、持続可能な発展が可能になります。
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-16 p-8 bg-gradient-to-r from-gray-800 to-gray-700 rounded-lg border border-gray-600">
-          <h3 className="text-2xl font-bold text-center mb-8 text-blue-300">
-            実現される未来
-          </h3>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">👤</span>
-              </div>
-              <h4 className="font-bold text-lg mb-2">個人の解放</h4>
-              <p className="text-sm">自分らしさを保ちながら、真の自己実現が可能</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🏢</span>
-              </div>
-              <h4 className="font-bold text-lg mb-2">組織の進化</h4>
-              <p className="text-sm">価値観の一致による効率的で創造的な組織</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl">🌍</span>
-              </div>
-              <h4 className="font-bold text-lg mb-2">社会の多様性</h4>
-              <p className="text-sm">多様な価値観が共存する豊かな社会</p>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-12 p-8 bg-gradient-to-r from-blue-900/50 to-purple-900/50 rounded-lg border border-blue-500/50">
-          <blockquote className="text-center">
-            <p className="text-2xl font-bold text-blue-300 italic mb-4">
-              &ldquo;技術の進化がもたらす新しい最適化&rdquo;
-            </p>
-            <p className="text-lg text-gray-300">
-              このシステムにより、個人の尊厳を保ちながら、組織の効率性を最大化し、
-              社会全体の多様性と持続可能性を実現する新しい世界が生まれます。
-            </p>
-          </blockquote>
-        </div>
-      </div>
+        <p className="mt-6">
+          この&ldquo;観測→記録→影響測定→フィードバック&rdquo;を個人単位から社会全体を含めて永続的に行える環境は、
+          人間だけでは困難だった公正で長期的な最適化を可能にする技術的基盤です。
+        </p>
+        <p className="mt-4 mb-4">
+          そして、この技術革新によってもたらされた可能性を利用し、具体的な構成要素として、以下を設計します。
+        </p>
+        <ul className="list-decimal list-inside ml-4 space-y-3">
+          <li>
+            <strong className="text-blue-400 text-base">AIによる貢献の観測・分析:</strong> <br />
+            AIが、ブロックチェーン上に記録した独自の価値基準（アルゴリズム）に基づき、貢献活動を観測できるように仕組みを実装。
+          </li>
+          <li>
+            <strong className="text-blue-400 text-base">ブロックチェーンへの貢献記録:</strong> <br />
+            観測された貢献要素（PoC要素）を、ブロックチェーン上に記録。
+          </li>
+          <li>
+            <strong className="text-blue-400 text-base">スマートコントラクトによる自動執行:</strong> <br />
+            ブロックチェーン上の記録をトリガーとし、事前に合意されたロジックに従ってスマートコントラクトがインセンティブを自動的に執行するように実装（人間の介入なし）。
+          </li>
+          <li>
+            <strong className="text-blue-400 text-base">完全な検証可能性:</strong><br />
+            AIの価値基準、記録された貢献要素、スマートコントラクトの実行結果など、全てが過去に遡って誰でも検証可能な状態に実装。
+          </li>
+          <li>
+            <strong className="text-blue-400 text-base">価値基準の更新可能性:</strong> <br />
+            AIの価値基準変更、貢献度測定に対する価値変数の変更など含め、DAOの透明なガバナンスプロセスを経て更新可能であり、その変更履歴もブロックチェーンに記録されるよう実装。
+          </li>
+          <li>
+          <strong className="text-blue-400 text-base">プライバシー保護と個人主権:</strong> <br />
+          ゼロ知識証明等を活用し、貢献の事実は検証可能にしつつ、具体的な行動内容は秘匿できるよう実装。
+          この検証可能な貢献履歴は、個人が主権を持つ形で（NFT等で）管理・活用できる&ldquo;ポータブルな証明書&rdquo;となるよう設計。
+          </li>
+          <li>
+            <strong className="text-blue-400 text-base">永続的なフィードバック:</strong> <br />
+            記録された履歴は長期的な影響分析に利用され、その結果が未来のインセンティブ計算に継続的にフィードバックされるよう設計。
+          </li>
+        </ul>
+      </div>           
     </section>
   )
 })
