@@ -196,7 +196,7 @@ export function RelatedServicesSection({
               <div className="text-center">
                 <span className={`
                   inline-flex items-center text-sm font-medium
-                  ${colors.text.accent} hover:${colors.text.primary}
+                  text-blue-400 hover:text-white
                   transition-colors duration-200
                 `}>
                   詳細を見る

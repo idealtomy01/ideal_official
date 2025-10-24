@@ -190,3 +190,15 @@ export interface ThemeData {
   spacing: Record<string, string>
   breakpoints: Record<string, string>
 }
+
+// カードデータの型定義
+export interface CardData {
+  id: string
+  title: string
+  description: string
+  icon?: React.ReactNode
+  image?: string
+  modalTitle?: string
+  modalSize?: 'sm' | 'md' | 'lg' | 'xl'
+  modalContent?: React.ReactNode
+}

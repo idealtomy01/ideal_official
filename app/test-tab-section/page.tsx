@@ -243,7 +243,6 @@ export default function TestTabSectionPage() {
         tabs={serviceTabs}
         defaultTab="features"
         variant="accent"
-        tabAlignment="left"
       />
 
       {/* テスト4: 右寄せタブ */}
@@ -252,7 +251,6 @@ export default function TestTabSectionPage() {
         description="タブを右寄せで配置したバリアントです。"
         tabs={processTabs}
         defaultTab="development"
-        tabAlignment="right"
         className="border-t border-gray-700"
       />
 
@@ -295,7 +293,6 @@ export default function TestTabSectionPage() {
           }
         ]}
         defaultTab="overview"
-        tabLayout="compact"
         className="border-t border-gray-700"
       />
 
@@ -385,7 +382,6 @@ export default function TestTabSectionPage() {
           }
         ]}
         defaultTab="development"
-        tabLayout="wide"
         variant="dark"
       />
 

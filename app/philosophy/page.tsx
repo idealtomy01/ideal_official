@@ -5,128 +5,42 @@
 
 'use client'
 
-import React, { Suspense } from 'react'
+import React from 'react'
 import dynamic from 'next/dynamic'
 import { Header } from '../../components/layout/Header'
 
 // 動的インポートでパフォーマンス最適化
 const VisionSection = dynamic(() => import('../../components/philosophy/VisionSection'), {
-  loading: () => (
-    <div className="py-8 md:py-16 border-b border-gray-800">
-      <div className="animate-pulse">
-        <div className="h-8 bg-gray-700 rounded mb-4"></div>
-        <div className="h-6 bg-gray-700 rounded mb-8"></div>
-        <div className="space-y-4">
-          <div className="h-4 bg-gray-700 rounded"></div>
-          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-        </div>
-      </div>
-    </div>
-  ),
   ssr: false
 })
 
 const ValueClogSection = dynamic(() => import('../../components/philosophy/ValueClogSection'), {
-  loading: () => (
-    <div className="py-8 md:py-16 border-b border-gray-800">
-      <div className="animate-pulse">
-        <div className="h-8 bg-gray-700 rounded mb-4"></div>
-        <div className="h-6 bg-gray-700 rounded mb-8"></div>
-        <div className="space-y-4">
-          <div className="h-4 bg-gray-700 rounded"></div>
-          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-        </div>
-      </div>
-    </div>
-  ),
   ssr: false
 })
 
 const PhilosophySection = dynamic(() => import('../../components/philosophy/PhilosophySection'), {
-  loading: () => (
-    <div className="py-8 md:py-16 border-b border-gray-800">
-      <div className="animate-pulse">
-        <div className="h-8 bg-gray-700 rounded mb-4"></div>
-        <div className="h-6 bg-gray-700 rounded mb-8"></div>
-        <div className="space-y-4">
-          <div className="h-4 bg-gray-700 rounded"></div>
-          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-        </div>
-      </div>
-    </div>
-  ),
   ssr: false
 })
 
 const MechanismSection = dynamic(() => import('../../components/philosophy/MechanismSection'), {
-  loading: () => (
-    <div className="py-8 md:py-16 border-b border-gray-800">
-      <div className="animate-pulse">
-        <div className="h-8 bg-gray-700 rounded mb-4"></div>
-        <div className="h-6 bg-gray-700 rounded mb-8"></div>
-        <div className="space-y-4">
-          <div className="h-4 bg-gray-700 rounded"></div>
-          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-        </div>
-      </div>
-    </div>
-  ),
   ssr: false
 })
 
 const StructureSection = dynamic(() => import('../../components/philosophy/StructureSection'), {
-  loading: () => (
-    <div className="py-8 md:py-16 border-b border-gray-800">
-      <div className="animate-pulse">
-        <div className="h-8 bg-gray-700 rounded mb-4"></div>
-        <div className="h-6 bg-gray-700 rounded mb-8"></div>
-        <div className="space-y-4">
-          <div className="h-4 bg-gray-700 rounded"></div>
-          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-        </div>
-      </div>
-    </div>
-  ),
   ssr: false
 })
 
 const RoadmapSection = dynamic(() => import('../../components/philosophy/RoadmapSection'), {
-  loading: () => (
-    <div className="py-8 md:py-16 border-b border-gray-800">
-      <div className="animate-pulse">
-        <div className="h-8 bg-gray-700 rounded mb-4"></div>
-        <div className="h-6 bg-gray-700 rounded mb-8"></div>
-        <div className="space-y-4">
-          <div className="h-4 bg-gray-700 rounded"></div>
-          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-        </div>
-      </div>
-    </div>
-  ),
   ssr: false
 })
 
 const DeclarationSection = dynamic(() => import('../../components/philosophy/DeclarationSection'), {
-  loading: () => (
-    <div className="py-8 md:py-16">
-      <div className="animate-pulse">
-        <div className="h-8 bg-gray-700 rounded mb-4"></div>
-        <div className="h-6 bg-gray-700 rounded mb-8"></div>
-        <div className="space-y-4">
-          <div className="h-4 bg-gray-700 rounded"></div>
-          <div className="h-4 bg-gray-700 rounded w-3/4"></div>
-        </div>
-      </div>
-    </div>
-  ),
   ssr: false
 })
 
 export default function PhilosophyPage() {
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* プリロード戦略 */}
-      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" />
       
       {/* グローバルヘッダー */}
       <Header />
@@ -156,130 +70,57 @@ export default function PhilosophyPage() {
             <a href="#declaration" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
               技術の進化
             </a>
-          </div>
-        </div>
+                </div>
+              </div>
       </nav>
 
       {/* メインコンテンツ */}
       <main className="pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* クリティカルCSSのインライン化 */}
-          <style jsx>{`
-            .critical-section {
-              contain: layout style paint;
-            }
-            .lazy-section {
-              content-visibility: auto;
-              contain-intrinsic-size: 1000px;
-            }
-          `}</style>
           {/* ページタイトル */}
           <div className="text-center py-16 md:py-24">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Philosophy
+              自由と秩序が両立した社会を設計する
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-              技術の進化がもたらす新しい『最適化』
-            </p>
-          </div>
+              正直であることが合理的な環境の設計へ
+                    </p>
+                  </div>
 
           {/* セクション0: はじめに */}
-          <div className="critical-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
+          <div>
+            <VisionSection />
               </div>
-            }>
-              <VisionSection />
-            </Suspense>
-          </div>
-
+      
           {/* セクション1: 問題と課題 */}
-          <div className="critical-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
+          <div>
+            <ValueClogSection />
               </div>
-            }>
-              <ValueClogSection />
-            </Suspense>
-          </div>
 
           {/* セクション2: 歪められた価値の再定義 */}
-          <div className="lazy-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
-              </div>
-            }>
-              <PhilosophySection />
-            </Suspense>
-          </div>
-
+          <div>
+            <PhilosophySection />
+            </div>
+        
           {/* セクション3: 基本設計 */}
-          <div className="lazy-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
-              </div>
-            }>
-              <MechanismSection />
-            </Suspense>
-          </div>
+          <div>
+            <MechanismSection />
+            </div>
 
           {/* セクション4: 価値観で進化する組織構造 */}
-          <div className="lazy-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
+          <div>
+            <StructureSection />
               </div>
-            }>
-              <StructureSection />
-            </Suspense>
-          </div>
-
+      
           {/* セクション5: ロードマップ */}
-          <div className="lazy-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
+          <div>
+            <RoadmapSection />
               </div>
-            }>
-              <RoadmapSection />
-            </Suspense>
-          </div>
 
           {/* セクション6: 技術の進化がもたらす新しい『最適化』 */}
-          <div className="lazy-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
-              </div>
-            }>
-              <DeclarationSection />
-            </Suspense>
-          </div>
+          <div>
+            <DeclarationSection />
+            </div>           
         </div>
       </main>
     </div>

@@ -27,7 +27,7 @@ export function SmoothScroll() {
       if (!targetElement) return
       
       const headerHeight = 80 // ヘッダーの高さ
-      const targetPosition = targetElement.offsetTop - headerHeight
+      const targetPosition = (targetElement as HTMLElement).offsetTop - headerHeight
 
       window.scrollTo({
         top: targetPosition,

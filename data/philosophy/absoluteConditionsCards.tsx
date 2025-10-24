@@ -2,6 +2,7 @@ import { CardData } from '../../types/common'
 
 export const absoluteConditionsCards: CardData[] = [
   {
+    id: 'transparency-automation',
     title: '1. 透明性と自動化',
     description: '意思決定プロセスと実行の自動化と検証可能性',
     modalTitle: '透明性と自動化',
@@ -19,6 +20,7 @@ export const absoluteConditionsCards: CardData[] = [
     modalSize: 'md'
   },
   {
+    id: 'wide-range-detection',
     title: '2. 広範囲の検知',
     description: 'AIによる微細な貢献の検知と広範囲な影響の把握',
     modalTitle: '広範囲の影響と活動（貢献）の検知',
@@ -35,6 +37,7 @@ export const absoluteConditionsCards: CardData[] = [
     modalSize: 'md'
   },
   {
+    id: 'correction-adjustment-system',
     title: '3. 補正・調整システム',
     description: '定量化による攻略活動を防ぐ仕組み',
     modalTitle: '補正、調整システム',
@@ -51,6 +54,7 @@ export const absoluteConditionsCards: CardData[] = [
     modalSize: 'md'
   },
   {
+    id: 'long-term-impact-reflection',
     title: '4. 中長期的影響の反映',
     description: '長期的な貢献度と影響の評価システム',
     modalTitle: '中長期的に影響を反映させる仕組み',
@@ -67,6 +71,7 @@ export const absoluteConditionsCards: CardData[] = [
     modalSize: 'md'
   },
   {
+    id: 'evolving-value-standards',
     title: '5. 進化する価値基準',
     description: '時代に合わせて価値基準を更新する仕組み',
     modalTitle: '進化する価値基準',
@@ -83,6 +88,7 @@ export const absoluteConditionsCards: CardData[] = [
     modalSize: 'md'
   },
   {
+    id: 'transparency-privacy',
     title: '6. 透明性の秘匿性',
     description: '個人のプライバシー保護とシステムの透明性',
     modalTitle: 'プライバシーと透明性の両立',

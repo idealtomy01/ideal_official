@@ -2,6 +2,7 @@ import { CardData } from '../../types/common'
 
 export const valueClogCards: CardData[] = [
   {
+    id: 'local-community',
     title: '地域社会',
     description: 'ボランティアや自治会活動がもたらす価値の構造的問題',
     modalTitle: '地域社会における価値の目詰まり',
@@ -21,6 +22,7 @@ export const valueClogCards: CardData[] = [
     modalSize: 'lg'
   },
   {
+    id: 'within-organization',
     title: '組織内',
     description: '後輩指導や情報共有が生み出す価値の構造的問題',
     modalTitle: '組織内における価値の目詰まり',
@@ -42,6 +44,7 @@ export const valueClogCards: CardData[] = [
     modalSize: 'lg'
   },
   {
+    id: 'inter-company-collaboration',
     title: '企業間連携',
     description: '企業間取引における防衛戦略の構造的問題',
     modalTitle: '企業間連携における価値の目詰まり',
