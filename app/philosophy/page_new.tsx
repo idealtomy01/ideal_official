@@ -109,9 +109,6 @@ const DeclarationSection = dynamic(() => import('../../components/philosophy/Dec
 export default function PhilosophyPage() {
   return (
     <div className="min-h-screen bg-black text-white">
-      {/* プリロード戦略 */}
-      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" />
-      
       {/* グローバルヘッダー */}
       <Header />
       
@@ -144,16 +141,6 @@ export default function PhilosophyPage() {
       {/* メインコンテンツ */}
       <main className="pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* クリティカルCSSのインライン化 */}
-          <style jsx>{`
-            .critical-section {
-              contain: layout style paint;
-            }
-            .lazy-section {
-              content-visibility: auto;
-              contain-intrinsic-size: 1000px;
-            }
-          `}</style>
           {/* ページタイトル */}
           <div className="text-center py-16 md:py-24">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
@@ -165,88 +152,76 @@ export default function PhilosophyPage() {
           </div>
 
           {/* セクション1: 問題と課題 */}
-          <div className="critical-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
+          <Suspense fallback={
+            <div className="py-8 md:py-16 border-b border-gray-800">
+              <div className="animate-pulse">
+                <div className="h-8 bg-gray-700 rounded mb-4"></div>
+                <div className="h-6 bg-gray-700 rounded mb-8"></div>
               </div>
-            }>
-              <ValueClogSection />
-            </Suspense>
-          </div>
+            </div>
+          }>
+            <ValueClogSection />
+          </Suspense>
 
           {/* セクション2: 歪められた価値の再定義 */}
-          <div className="lazy-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
+          <Suspense fallback={
+            <div className="py-8 md:py-16 border-b border-gray-800">
+              <div className="animate-pulse">
+                <div className="h-8 bg-gray-700 rounded mb-4"></div>
+                <div className="h-6 bg-gray-700 rounded mb-8"></div>
               </div>
-            }>
-              <PhilosophySection />
-            </Suspense>
-          </div>
+            </div>
+          }>
+            <PhilosophySection />
+          </Suspense>
 
           {/* セクション3: 基本設計 */}
-          <div className="lazy-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
+          <Suspense fallback={
+            <div className="py-8 md:py-16 border-b border-gray-800">
+              <div className="animate-pulse">
+                <div className="h-8 bg-gray-700 rounded mb-4"></div>
+                <div className="h-6 bg-gray-700 rounded mb-8"></div>
               </div>
-            }>
-              <MechanismSection />
-            </Suspense>
-          </div>
+            </div>
+          }>
+            <MechanismSection />
+          </Suspense>
 
           {/* セクション4: 価値観で進化する組織構造 */}
-          <div className="lazy-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
+          <Suspense fallback={
+            <div className="py-8 md:py-16 border-b border-gray-800">
+              <div className="animate-pulse">
+                <div className="h-8 bg-gray-700 rounded mb-4"></div>
+                <div className="h-6 bg-gray-700 rounded mb-8"></div>
               </div>
-            }>
-              <StructureSection />
-            </Suspense>
-          </div>
+            </div>
+          }>
+            <StructureSection />
+          </Suspense>
 
           {/* セクション5: ロードマップ */}
-          <div className="lazy-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16 border-b border-gray-800">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
+          <Suspense fallback={
+            <div className="py-8 md:py-16 border-b border-gray-800">
+              <div className="animate-pulse">
+                <div className="h-8 bg-gray-700 rounded mb-4"></div>
+                <div className="h-6 bg-gray-700 rounded mb-8"></div>
               </div>
-            }>
-              <RoadmapSection />
-            </Suspense>
-          </div>
+            </div>
+          }>
+            <RoadmapSection />
+          </Suspense>
 
           {/* セクション6: 技術の進化がもたらす新しい『最適化』 */}
-          <div className="lazy-section">
-            <Suspense fallback={
-              <div className="py-8 md:py-16">
-                <div className="animate-pulse">
-                  <div className="h-8 bg-gray-700 rounded mb-4"></div>
-                  <div className="h-6 bg-gray-700 rounded mb-8"></div>
-                </div>
+          <Suspense fallback={
+            <div className="py-8 md:py-16">
+              <div className="animate-pulse">
+                <div className="h-8 bg-gray-700 rounded mb-4"></div>
+                <div className="h-6 bg-gray-700 rounded mb-8"></div>
               </div>
-            }>
-              <DeclarationSection />
-            </Suspense>
-          </div>
+            </div>
+          }>
+            <DeclarationSection />
+          </Suspense>
         </div>
       </main>
     </div>
