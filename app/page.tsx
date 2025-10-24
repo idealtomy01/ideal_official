@@ -72,8 +72,6 @@ export default function Home() {
     <>
       <Hero />
       <TwoCardSectionFixed
-        title="私たちの取り組み"
-        description="理想合同会社は、DAO研究・取り組みとITサービス提供の2つの核を通じて、テクノロジーで自由と秩序が両立した未来を創造します。"
         cards={twoCardData}
       />
       <ServiceGridSectionFixed

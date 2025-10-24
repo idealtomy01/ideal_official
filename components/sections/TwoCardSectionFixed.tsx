@@ -34,7 +34,7 @@ export function TwoCardSectionFixed({
   className = ''
 }: TwoCardSectionFixedProps) {
   return (
-    <section className={`bg-black py-16 md:py-24 ${className}`}>
+    <section className={`bg-black pt-0 pb-16 md:pb-24 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* ヘッダー部分 */}
         {(title || subtitle || description) && (
