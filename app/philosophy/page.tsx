@@ -8,6 +8,7 @@
 import React from 'react'
 import dynamic from 'next/dynamic'
 import { Header } from '../../components/layout/Header'
+import { HeroSection } from '../../components/sections/HeroSection'
 
 // 動的インポートでパフォーマンス最適化
 const VisionSection = dynamic(() => import('../../components/philosophy/VisionSection'), {
@@ -78,16 +79,10 @@ export default function PhilosophyPage() {
       <main className="pt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* ページタイトル */}
-          <section className="flex items-center justify-center bg-black py-24 lg:py-48">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-                自由と秩序が両立した社会を設計する
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-                正直であることが合理的な環境の設計へ
-              </p>
-            </div>
-          </section>
+          <HeroSection
+            title="自由と秩序が両立した社会を設計する"
+            subText="正直であることが合理的な環境の設計へ"
+          />
 
           {/* セクション0: はじめに */}
           <div>

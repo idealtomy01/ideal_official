@@ -7,6 +7,7 @@
 
 import { Metadata } from 'next'
 import { Section } from '../../components/ui/Section'
+import { HeroSection } from '../../components/sections/HeroSection'
 import { ContactForm } from '../../components/forms/ContactForm'
 import { typography, colors } from '../../lib/design-tokens'
 
@@ -23,18 +24,10 @@ export default function ContactPage() {
   return (
     <>
       {/* ページヘッダー */}
-      <section className="flex items-center justify-center bg-black py-24 lg:py-48">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            お問い合わせ
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-            プロジェクトのご相談、お見積もり、その他ご質問など、
-            <br className="hidden sm:block" />
-            お気軽にお問い合わせください。
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        title="お問い合わせ"
+        subText="プロジェクトのご相談、お見積もり、その他ご質問など、お気軽にお問い合わせください。"
+      />
 
       {/* フォームセクション */}
       <Section backgroundColor="black" containerSize="narrow">

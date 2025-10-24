@@ -7,6 +7,7 @@
 
 import { Metadata } from 'next'
 import { Section } from '../../components/ui/Section'
+import { HeroSection } from '../../components/sections/HeroSection'
 import { CallToAction } from '../../components/sections/CallToAction'
 import { typography, colors } from '../../lib/design-tokens'
 
@@ -97,18 +98,10 @@ export default function ServicesPage() {
   return (
     <>
       {/* ページヘッダー */}
-      <section className="flex items-center justify-center bg-black py-24 lg:py-48">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
-            私たちのサービス
-          </h1>
-          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
-            5つの事業分野で、最高のソリューションを提供します。
-            <br className="hidden sm:block" />
-            あなたのビジョンを、私たちの技術で実現しましょう。
-          </p>
-        </div>
-      </section>
+      <HeroSection
+        title="私たちのサービス"
+        subText="5つの事業分野で、最高のソリューションを提供します。あなたのビジョンを、私たちの技術で実現しましょう。"
+      />
 
       {/* サービス詳細セクション */}
       {services.map((service, index) => (
