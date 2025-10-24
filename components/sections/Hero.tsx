@@ -22,38 +22,10 @@ export function Hero() {
             animate-fade-in
           `}
         >
-          高級感・最先端の
+          テクノロジーで
           <br />
-          デジタル体験を
+          自由と秩序が両立した未来へ
         </h1>
-
-        {/* サブ見出し */}
-        <p
-          className={`
-            ${typography.bodyLarge}
-            ${colors.text.muted}
-            mb-12
-            max-w-3xl mx-auto
-          `}
-        >
-          Webサイト制作、アプリ開発、ゲーム制作、AIコンサル、ブロックチェーン開発まで。
-          <br className="hidden sm:block" />
-          ideal は、あなたのビジョンを現実にします。
-        </p>
-
-        {/* CTAボタン */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Link href="/contact">
-            <Button variant="primary" size="lg">
-              お問い合わせ
-            </Button>
-          </Link>
-          <Link href="/services">
-            <Button variant="outline" size="lg">
-              サービス詳細
-            </Button>
-          </Link>
-        </div>
 
         {/* スクロールインジケーター */}
         <div className="mt-20 animate-bounce">
