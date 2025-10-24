@@ -17,7 +17,7 @@ interface SectionProps {
   containerSize?: ContainerSize
   className?: string
   id?: string
-  backgroundColor?: 'black' | 'gray-900' | 'transparent'
+  backgroundColor?: 'black' | 'transparent'
 }
 
 export function Section({
@@ -26,7 +26,7 @@ export function Section({
   containerSize = 'default',
   className = '',
   id,
-  backgroundColor = 'transparent',
+  backgroundColor = 'black',
 }: SectionProps) {
   // サイズ別のクラス
   const sizeClasses = {
@@ -45,7 +45,6 @@ export function Section({
   // 背景色のクラス
   const bgClasses = {
     black: 'bg-black',
-    'gray-900': 'bg-gray-900',
     transparent: 'bg-transparent',
   }
 

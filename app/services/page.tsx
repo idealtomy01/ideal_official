@@ -97,24 +97,24 @@ export default function ServicesPage() {
   return (
     <>
       {/* ページヘッダー */}
-      <Section backgroundColor="black" size="small">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className={`${typography.h1} ${colors.text.primary} mb-6`}>
+      <section className="flex items-center justify-center bg-black py-24 lg:py-48">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
             私たちのサービス
           </h1>
-          <p className={`${typography.bodyLarge} ${colors.text.muted}`}>
+          <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
             5つの事業分野で、最高のソリューションを提供します。
             <br className="hidden sm:block" />
             あなたのビジョンを、私たちの技術で実現しましょう。
           </p>
         </div>
-      </Section>
+      </section>
 
       {/* サービス詳細セクション */}
       {services.map((service, index) => (
         <Section
           key={service.id}
-          backgroundColor={index % 2 === 0 ? 'gray-900' : 'black'}
+          backgroundColor="black"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* アイコン・タイトル（偶数は左、奇数は右） */}

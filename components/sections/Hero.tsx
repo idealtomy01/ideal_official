@@ -5,13 +5,11 @@
  * 大見出し、サブ見出し、CTAボタン
  */
 
-import Link from 'next/link'
-import { Button } from '../ui/Button'
 import { typography, colors } from '../../lib/design-tokens'
 
 export function Hero() {
   return (
-    <section className="min-h-screen flex items-center justify-center bg-gradient-to-b from-black via-gray-900 to-black">
+    <section className="flex items-center justify-center bg-gradient-to-b from-black via-gray-900 to-black py-24 lg:py-48">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         {/* メイン見出し */}
         <h1
@@ -26,21 +24,6 @@ export function Hero() {
           <br />
           自由と秩序が両立した未来へ
         </h1>
-
-        {/* スクロールインジケーター */}
-        <div className="mt-20 animate-bounce">
-          <svg
-            className="w-6 h-6 mx-auto text-gray-400"
-            fill="none"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-          </svg>
-        </div>
       </div>
     </section>
   )
