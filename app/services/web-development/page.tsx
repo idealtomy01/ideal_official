@@ -19,6 +19,15 @@ export const metadata: Metadata = {
   },
 }
 
+// サービスナビゲーション用のリンク
+const serviceNavLinks = [
+  { id: 'web-development', name: 'Webサイト', href: '/services/web-development' },
+  { id: 'ai-consulting', name: 'AI', href: '/services/ai-consulting' },
+  { id: 'app-development', name: 'アプリ開発', href: '/services/app-development' },
+  { id: 'metaverse', name: 'メタバース', href: '/services/metaverse' },
+  { id: 'blockchain-development', name: 'ブロックチェーン', href: '/services/blockchain-development' },
+]
+
 export default function WebDevelopmentPage() {
   return (
     <div className="min-h-screen bg-black">
@@ -31,12 +40,11 @@ export default function WebDevelopmentPage() {
       </div>
 
       {/* サービスナビゲーション */}
-      <div className="border-b border-blue-400">
-        <ServiceNavigation
-          serviceLinks={serviceLinks}
-          currentServiceId="web-development"
-        />
-      </div>
+      <ServiceNavigation
+        serviceLinks={serviceNavLinks}
+        currentServiceId="web-development"
+      />
+
 
       {/* セクション1: 技術説明 */}
       <div className="border-b border-blue-400">

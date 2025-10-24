@@ -19,6 +19,16 @@ export function Footer() {
     { href: '/contact', label: 'Contact' },
   ]
 
+  // サービスリンク
+  const serviceLinks = [
+    { href: '/services/dao-design', label: 'DAO設計' },
+    { href: '/services/web-development', label: 'Webサイト制作' },
+    { href: '/services/ai-consulting', label: 'AI' },
+    { href: '/services/app-development', label: 'アプリ開発' },
+    { href: '/services/metaverse', label: 'メタバース' },
+    { href: '/services/blockchain-development', label: 'ブロックチェーン' },
+  ]
+
   return (
     <footer
       className={`
@@ -28,7 +38,7 @@ export function Footer() {
       `}
     >
       <div className={layout.container}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12">
           {/* 会社情報 */}
           <div>
             <h3 className={`${colors.text.primary} text-xl font-bold mb-4`}>
@@ -48,6 +58,31 @@ export function Footer() {
             </h4>
             <ul className="space-y-2">
               {navLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={`
+                      ${colors.text.muted}
+                      hover:${colors.text.primary}
+                      text-sm
+                      transition-colors duration-300
+                      focus:outline-none focus:ring-2 focus:ring-blue-400
+                    `}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* サービスリンク */}
+          <div>
+            <h4 className={`${colors.text.primary} text-lg font-bold mb-4`}>
+              サービス
+            </h4>
+            <ul className="space-y-2">
+              {serviceLinks.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}

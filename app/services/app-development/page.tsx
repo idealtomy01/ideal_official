@@ -1,5 +1,7 @@
 import { Metadata } from 'next'
 import { Section } from '../../../components/ui/Section'
+import { HeroSection } from '../../../components/sections/HeroSection'
+import { ServiceNavigation } from '../../../components/sections/ServiceNavigation'
 import { CallToAction } from '../../../components/sections/CallToAction'
 import { typography, colors } from '../../../lib/design-tokens'
 
@@ -12,20 +14,31 @@ export const metadata: Metadata = {
   },
 }
 
+// サービスナビゲーション用のリンク
+const serviceNavLinks = [
+  { id: 'web-development', name: 'Webサイト', href: '/services/web-development' },
+  { id: 'ai-consulting', name: 'AI', href: '/services/ai-consulting' },
+  { id: 'app-development', name: 'アプリ開発', href: '/services/app-development' },
+  { id: 'metaverse', name: 'メタバース', href: '/services/metaverse' },
+  { id: 'blockchain-development', name: 'ブロックチェーン', href: '/services/blockchain-development' },
+]
+
 export default function AppDevelopmentPage() {
   return (
     <div className="min-h-screen bg-black text-gray-100">
-      {/* ヒーローセクション */}
-      <Section className="pt-24 lg:pt-32 pb-16 lg:pb-24">
-        <div className="text-center max-w-4xl mx-auto">
-          <h1 className={`${typography.h1} ${colors.text.primary} mb-6`}>
-            アプリ開発
-          </h1>
-          <p className={`${typography.bodyLarge} ${colors.text.secondary} mb-8`}>
-            iOS・Android・Webアプリの開発で、あなたのアイデアを現実にします。
-          </p>
-        </div>
-      </Section>
+      {/* セクション0: ヒーローセクション */}
+      <div className="border-b border-blue-400">
+        <HeroSection
+          title="アプリ開発"
+          subText="iOS・Android対応のアプリやスマホゲーム作成まで"
+        />
+      </div>
+
+      {/* サービスナビゲーション */}
+      <ServiceNavigation
+        serviceLinks={serviceNavLinks}
+        currentServiceId="app-development"
+      />
 
       {/* サービス詳細 */}
       <Section className="py-16 lg:py-24">

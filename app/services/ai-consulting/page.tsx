@@ -19,38 +19,42 @@ export const metadata: Metadata = {
   },
 }
 
+// サービスナビゲーション用のリンク
+const serviceNavLinks = [
+  { id: 'web-development', name: 'Webサイト', href: '/services/web-development' },
+  { id: 'ai-consulting', name: 'AI', href: '/services/ai-consulting' },
+  { id: 'app-development', name: 'アプリ開発', href: '/services/app-development' },
+  { id: 'metaverse', name: 'メタバース', href: '/services/metaverse' },
+  { id: 'blockchain-development', name: 'ブロックチェーン', href: '/services/blockchain-development' },
+]
+
 export default function AIConsultingPage() {
 
   return (
     <div className="min-h-screen bg-black">
-      {/* ヒーローセクション */}
-      <HeroSection
-        title={aiServiceData.hero.title}
-        subText={aiServiceData.hero.subtitle}
-      />
-
-      {/* サービスナビゲーション */}
+      {/* セクション0: ヒーローセクション */}
       <div className="border-b border-blue-400">
-        <ServiceNavigation
-          serviceLinks={serviceLinks}
-          currentServiceId="ai-consulting"
+        <HeroSection
+          title={aiServiceData.hero.title}
+          subText={aiServiceData.hero.subtitle}
         />
       </div>
+
+      {/* サービスナビゲーション */}
+      <ServiceNavigation
+        serviceLinks={serviceNavLinks}
+        currentServiceId="ai-consulting"
+      />
+
 
       {/* 1. AI技術の可能性 - 単一カラムセクション */}
       <div className="border-b border-blue-400">
         <SingleColumnSection
           title={aiServiceData.sections[1].title!}
           description={aiServiceData.sections[1].description!}
-          className={aiServiceData.sections[1].className}
           variant="dark"
         >
-        <div className="mt-6">
-          <p className="text-gray-300 leading-relaxed">
-            機械学習、深層学習、自然言語処理などの先進的なAI技術を活用し、
-            ビジネスの効率化と価値創造を実現します。
-          </p>
-        </div>
+          {aiServiceData.sections[1].content}
         </SingleColumnSection>
       </div>
 

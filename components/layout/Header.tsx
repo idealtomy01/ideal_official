@@ -50,11 +50,12 @@ export function Header() {
 
   // サービスドロップダウンメニュー
   const serviceLinks = [
+    { href: '/services/dao-design', label: 'DAO設計' },
     { href: '/services/web-development', label: 'Webサイト制作' },
-    { href: '/services/app-development', label: 'アプリ開発' },
-    { href: '/services/game-development', label: 'ゲーム制作' },
     { href: '/services/ai-consulting', label: 'AI' },
-    { href: '/services/blockchain-development', label: 'ブロックチェーン開発' },
+    { href: '/services/app-development', label: 'アプリ開発' },
+    { href: '/services/metaverse', label: 'メタバース' },
+    { href: '/services/blockchain-development', label: 'ブロックチェーン' },
   ]
 
   return (
