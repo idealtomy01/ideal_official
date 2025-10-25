@@ -165,32 +165,34 @@ export default function ServicesPage() {
             </div>
 
             {/* 特徴リスト（偶数は右、奇数は左） */}
-            <div className={index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}>
-              <h3 className={`${typography.h4} ${colors.text.primary} mb-6`}>
-                主な機能・サービス
-              </h3>
-              <ul className="space-y-4">
-                {service.features.map((feature, featureIndex) => (
-                  <li key={featureIndex} className="flex items-start gap-3">
-                    <svg
-                      className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M5 13l4 4L19 7"
-                      />
-                    </svg>
-                    <span className={`${typography.body} ${colors.text.secondary}`}>
-                      {feature}
-                    </span>
-                  </li>
-                ))}
-              </ul>
+            <div className={`text-center ${index % 2 === 0 ? 'lg:order-2' : 'lg:order-1'}`}>
+              <div className="inline-block text-left">
+                <h3 className={`${typography.h4} ${colors.text.primary} mb-6`}>
+                  主な機能・サービス
+                </h3>
+                <ul className="space-y-4">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="flex items-start gap-3">
+                      <svg
+                        className="w-6 h-6 text-blue-400 flex-shrink-0 mt-1"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M5 13l4 4L19 7"
+                        />
+                      </svg>
+                      <span className={`${typography.body} ${colors.text.secondary}`}>
+                        {feature}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </Section>
