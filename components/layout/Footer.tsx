@@ -45,9 +45,9 @@ export function Footer() {
               ideal
             </h3>
             <p className={`${colors.text.muted} text-sm leading-relaxed`}>
-              高級感・宇宙・最先端をコンセプトに、
+              自由と秩序が両立した
               <br />
-              最高のデジタル体験を提供します。
+              社会を設計する
             </p>
           </div>
 

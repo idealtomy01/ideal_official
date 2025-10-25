@@ -57,7 +57,7 @@ export function TwoCardSectionFixed({
         )}
 
         {/* 2カードグリッド */}
-        <div className="grid md:grid-cols-2 gap-4 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8">
           {cards.map((card) => (
             <Link
               key={card.id}

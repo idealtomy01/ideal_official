@@ -19,11 +19,12 @@ export const metadata: Metadata = {
 
 // サービスナビゲーション用のリンク
 const serviceNavLinks = [
-  { id: 'web-development', name: 'Webサイト', href: '/services/web-development' },
   { id: 'ai-consulting', name: 'AI', href: '/services/ai-consulting' },
+  { id: 'web-development', name: 'Web開発', href: '/services/web-development' },
   { id: 'app-development', name: 'アプリ開発', href: '/services/app-development' },
-  { id: 'metaverse', name: 'メタバース', href: '/services/metaverse' },
   { id: 'blockchain-development', name: 'ブロックチェーン', href: '/services/blockchain-development' },
+  { id: 'metaverse', name: 'メタバース', href: '/services/metaverse' },
+  { id: 'dao-design', name: 'DAO設計', href: '/services/dao-design' },
 ]
 
 export default function MetaversePage() {
