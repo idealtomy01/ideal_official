@@ -40,7 +40,7 @@ export default function Home() {
       id: 'ai-consulting',
       title: 'AI',
       description: 'AI活用のためのコンサルティングから環境構築、AI人材育成サポートまで対応します。',
-      image: '/images/test01.png',
+      image: '/images/top_ai.png',
       link: '/services/ai-consulting',
       linkText: 'AI関連詳細へ>>'
     },
@@ -48,7 +48,7 @@ export default function Home() {
       id: 'web-development',
       title: 'Web開発',
       description: 'react、next.jsでの高速Webサイト作成、運用、保守、コンサルティングまで対応します。',
-      image: '/images/test01.png',
+      image: '/images/top_web.png',
       link: '/services/web-development',
       linkText: 'Web開発詳細へ>>'
     },
@@ -56,7 +56,7 @@ export default function Home() {
       id: 'blockchain-development',
       title: 'ブロックチェーン開発',
       description: '分散型アプリケーション（DApp）の開発やNFT活用など各種コンサルティングを行います。',
-      image: '/images/test01.png',
+      image: '/images/top_bc.png',
       link: '/services/blockchain-development',
       linkText: 'ブロックチェーン開発詳細へ>>'
     },
@@ -64,7 +64,7 @@ export default function Home() {
       id: 'app-development',
       title: 'アプリ開発',
       description: 'スマホ向けのネイティブアプリ、スマホゲームアプリの企画・開発に対応します。',
-      image: '/images/test01.png',
+      image: '/images/top_app.png',
       link: '/services/app-development',
       linkText: 'アプリ開発詳細へ>>'
     }
