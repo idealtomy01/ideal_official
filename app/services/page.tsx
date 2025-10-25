@@ -29,6 +29,7 @@ const services = [
     title: 'DAO設計',
     description:
       '会社の核となる部分。分散型自律組織の設計と実装を通じて、新しい組織形態の可能性を探求します。',
+    image: '/images/sv_DAO.png',
     features: [
       'DAO設計・コンサルティング',
       'ガバナンストークン設計',
@@ -42,6 +43,7 @@ const services = [
     title: 'Webサイト制作',
     description:
       '既存の強み。高級感あふれるデザインと、最先端の技術で、あなたのビジネスを次のレベルへ導きます。',
+    image: '/images/sv_web.png',
     features: [
       'レスポンシブデザイン（スマホ・タブレット・PC対応）',
       'SEO最適化（検索エンジン上位表示）',
@@ -55,6 +57,7 @@ const services = [
     title: 'AI',
     description:
       '重要な技術軸。最新のAI技術を活用し、ビジネスの効率化と競争力強化を実現します。',
+    image: '/images/test01.png',
     features: [
       'AI導入コンサルティング',
       '機械学習モデル開発',
@@ -68,6 +71,7 @@ const services = [
     title: 'アプリ開発',
     description:
       '分野をまとめて分かりやすく。iOS、Android、Web、ゲーム。すべてのプラットフォームで、最高のユーザー体験を提供します。',
+    image: '/images/sv_app.png',
     features: [
       'ネイティブアプリ開発（iOS / Android）',
       'クロスプラットフォーム開発（React Native / Flutter）',
@@ -81,6 +85,7 @@ const services = [
     title: 'メタバース',
     description:
       '未来への展望を示す新しい柱。没入感のある仮想空間と、革新的なデジタル体験を提供します。',
+    image: '/images/sv_meta.png',
     features: [
       'メタバース空間設計・構築',
       'VR/ARアプリケーション開発',
@@ -94,6 +99,7 @@ const services = [
     title: 'ブロックチェーン',
     description:
       'DAOとも関連するコア技術。分散型アプリケーション（DApps）やスマートコントラクトの設計・開発を支援します。',
+    image: '/images/sv_bc.png',
     features: [
       'スマートコントラクト開発（Solidity / Rust）',
       'DApps開発（Ethereum / Solana / Polygon）',
@@ -143,7 +149,7 @@ export default function ServicesPage() {
                 {/* 背景画像 */}
                 <div className="absolute inset-0 z-0">
                   <Image
-                    src="/images/test01.png"
+                    src={service.image}
                     alt={service.title}
                     fill
                     className="object-cover opacity-20"
