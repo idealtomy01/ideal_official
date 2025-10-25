@@ -6,6 +6,7 @@
  */
 
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { Section } from '../../components/ui/Section'
 import { HeroSection } from '../../components/sections/HeroSection'
 import { ServiceNavigation } from '../../components/sections/ServiceNavigation'
@@ -138,13 +139,29 @@ export default function ServicesPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* アイコン・タイトル（偶数は左、奇数は右） */}
             <div className={index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}>
-              <div className="text-6xl mb-6"></div>
-              <h2 className={`${typography.h2} ${colors.text.primary} mb-4`}>
-                {service.title}
-              </h2>
-              <p className={`${typography.body} ${colors.text.muted} mb-8`}>
-                {service.description}
-              </p>
+              <div className="relative overflow-hidden rounded-lg">
+                {/* 背景画像 */}
+                <div className="absolute inset-0 z-0">
+                  <Image
+                    src="/images/test01.png"
+                    alt={service.title}
+                    fill
+                    className="object-cover opacity-20"
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                  />
+                </div>
+                
+                {/* コンテンツ */}
+                <div className="relative z-10 p-8 md:p-12">
+                  <div className="text-6xl mb-6"></div>
+                  <h2 className={`${typography.h2} ${colors.text.primary} mb-4`}>
+                    {service.title}
+                  </h2>
+                  <p className={`${typography.body} ${colors.text.muted} mb-8`}>
+                    {service.description}
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* 特徴リスト（偶数は右、奇数は左） */}
