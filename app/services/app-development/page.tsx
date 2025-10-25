@@ -1,9 +1,12 @@
 import { Metadata } from 'next'
-import { Section } from '../../../components/ui/Section'
 import { HeroSection } from '../../../components/sections/HeroSection'
 import { ServiceNavigation } from '../../../components/sections/ServiceNavigation'
-import { CallToAction } from '../../../components/sections/CallToAction'
-import { typography, colors } from '../../../lib/design-tokens'
+import { SingleColumnSection } from '../../../components/sections/SingleColumnSection'
+import { TwoColumnSection } from '../../../components/sections/TwoColumnSection'
+import { ThreeCardSection } from '../../../components/sections/ThreeCardSection'
+import { TabSection } from '../../../components/sections/TabSection'
+import { FAQSection } from '../../../components/sections/FAQSection'
+import { RelatedServicesSection } from '../../../components/sections/RelatedServicesSection'
 
 export const metadata: Metadata = {
   title: 'アプリ開発 | ideal',
@@ -25,7 +28,7 @@ const serviceNavLinks = [
 
 export default function AppDevelopmentPage() {
   return (
-    <div className="min-h-screen bg-black text-gray-100">
+    <div className="min-h-screen bg-black">
       {/* セクション0: ヒーローセクション */}
       <div className="border-b border-blue-400">
         <HeroSection
@@ -34,171 +37,676 @@ export default function AppDevelopmentPage() {
         />
       </div>
 
-      {/* サービスナビゲーション */}
+      {/* セクション0.5: サービスナビゲーション */}
       <ServiceNavigation
         serviceLinks={serviceNavLinks}
         currentServiceId="app-development"
       />
 
-      {/* サービス詳細 */}
-      <Section className="py-16 lg:py-24">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
-              <h2 className={`${typography.h2} ${colors.text.primary} mb-6`}>
-                ネイティブアプリ開発
-              </h2>
-              <p className={`${typography.body} ${colors.text.secondary} mb-6`}>
-                iOS（Swift）・Android（Kotlin）のネイティブアプリを開発。
-                各プラットフォームの特性を活かした最高のパフォーマンスを実現します。
-              </p>
-              <ul className="space-y-3">
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                  <span className={colors.text.secondary}>iOS（Swift/SwiftUI）</span>
+      {/* セクション1: 技術説明 */}
+      <div className="border-b border-blue-400">
+        <SingleColumnSection
+          title="アプリ技術の可能性"
+          description="モバイルアプリは、ビジネスのデジタル化、顧客とのコミュニケーション、サービスの提供など、様々な領域で革新的なソリューションを提供します。IDEALでは、最新のモバイル技術と実務経験を組み合わせ、クライアント様の課題に最適なアプリソリューションを提供します。"
+          variant="dark"
+        >
+          <div className="mt-6">
+            <p className="text-gray-300 leading-relaxed">
+              ネイティブアプリとクロスプラットフォームの技術的優位性を活かし、
+              ユーザーエクスペリエンスを最大化するアプリケーションを開発します。
+            </p>
+          </div>
+        </SingleColumnSection>
+      </div>
+
+      {/* セクション2: ターゲット説明 */}
+      <div className="border-b border-blue-400">
+        <SingleColumnSection
+          title="アプリ活用がもたらす大きな恩恵"
+          description="スマートフォンの普及により、アプリは企業と顧客を直接つなぐ重要なチャネルとなっています。"
+          variant="dark"
+        >
+          <div className="mt-6">
+            <p className="text-gray-300 leading-relaxed">
+              中小企業こそ、アプリを活用することで顧客との距離を縮め、
+              効率的なビジネス運営を実現できます。
+            </p>
+          </div>
+        </SingleColumnSection>
+      </div>
+
+      {/* セクション3: 活用方法 */}
+      <div className="border-b border-blue-400">
+        <ThreeCardSection
+          title="具体的な活用方法"
+          description="アプリ開発技術を活用した具体的なビジネスソリューションをご提案します"
+          enableMobileScroll={true}
+          cards={[
+            {
+              title: '会員アプリ',
+              description: '顧客管理、ポイントシステム、プッシュ通知など、顧客との継続的な関係構築を支援します。',
+              tags: ['CRM', 'ポイント', '通知'],
+              modalTitle: '会員アプリ',
+              modalContent: (
+                <div className="space-y-6">
+                  <h3 className="text-xl font-bold text-white mb-4">会員アプリ</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">顧客管理機能</h4>
+                      <p className="text-gray-300">会員情報の一元管理、購入履歴の追跡、顧客セグメンテーションによるターゲティング</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">ポイントシステム</h4>
+                      <p className="text-gray-300">購入時のポイント付与、ポイント交換、ランク制度による顧客ロイヤルティ向上</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">プッシュ通知</h4>
+                      <p className="text-gray-300">新商品情報、セール情報、イベント告知など、効果的なマーケティングツール</p>
+                    </div>
+                  </div>
+                </div>
+              ),
+              modalSize: "lg"
+            },
+            {
+              title: 'ゲームアプリ',
+              description: 'エンターテインメント性の高いゲームアプリで、ブランド認知度向上と収益化を実現します。',
+              tags: ['Unity', 'ゲーム', 'エンターテインメント'],
+              modalTitle: 'ゲームアプリ',
+              modalContent: (
+                <div className="space-y-6">
+                  <h3 className="text-xl font-bold text-white mb-4">ゲームアプリ</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">ブランドゲーム</h4>
+                      <p className="text-gray-300">企業のブランドを活用したオリジナルゲームで、ブランド認知度と顧客エンゲージメントを向上</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">収益化モデル</h4>
+                      <p className="text-gray-300">広告収入、アプリ内課金、スポンサーシップなど、多様な収益化手法を実装</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">ソーシャル機能</h4>
+                      <p className="text-gray-300">ランキング、フレンド機能、コミュニティ機能でユーザー同士の交流を促進</p>
+                    </div>
+                  </div>
+                </div>
+              ),
+              modalSize: "lg"
+            },
+            {
+              title: '社内業務アプリ',
+              description: '従業員の業務効率化、情報共有、勤怠管理など、社内システムのデジタル化を支援します。',
+              tags: ['業務効率化', '勤怠管理', '情報共有'],
+              modalTitle: '社内業務アプリ',
+              modalContent: (
+                <div className="space-y-6">
+                  <h3 className="text-xl font-bold text-white mb-4">社内業務アプリ</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">勤怠管理</h4>
+                      <p className="text-gray-300">出退勤記録、休暇申請、シフト管理など、人事業務の効率化</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">情報共有</h4>
+                      <p className="text-gray-300">社内ニュース、会議資料、マニュアルなど、必要な情報をリアルタイムで共有</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">業務管理</h4>
+                      <p className="text-gray-300">タスク管理、進捗確認、レポート提出など、プロジェクト管理の効率化</p>
+                    </div>
+                  </div>
+                </div>
+              ),
+              modalSize: "lg"
+            }
+          ]}
+          variant="dark"
+        />
+      </div>
+
+      {/* セクション4: 説明セクション */}
+      <div className="border-b border-blue-400">
+        <SingleColumnSection
+          title="スマホアプリが生み出す効率化"
+          description="スマホネイティブ世代を中心とした顧客、または社員やアルバイトに至るまで、スマホによるサービス提供環境や情報発信環境、社内業務の連携、ゲームによってメッセージを伝えるブランディングなど、活用方法は多岐にわたります。"
+          variant="dark"
+        >
+          <div></div>
+        </SingleColumnSection>
+      </div>
+
+      {/* セクション5: 比較セクション */}
+      <div className="border-b border-blue-400">
+        <TwoColumnSection
+          title="従来技術との比較"
+          textAlign="center"
+          leftContent={
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-white mb-4">従来のアプリ開発</h3>
+              <ul className="space-y-3 text-gray-300 inline-block text-left">
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-red-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span>単一プラットフォーム対応</span>
                 </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                  <span className={colors.text.secondary}>Android（Kotlin/Jetpack Compose）</span>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-red-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span>開発効率が低い</span>
                 </li>
-                <li className="flex items-center">
-                  <span className="w-2 h-2 bg-blue-400 rounded-full mr-3"></span>
-                  <span className={colors.text.secondary}>App Store・Google Play対応</span>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-red-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span>メンテナンス性が低い</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-red-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span>パフォーマンスが低い</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-red-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span>セキュリティ対策が不十分</span>
                 </li>
               </ul>
             </div>
-            <div className="bg-gray-900 p-8 rounded-xl border border-gray-700">
-              <h3 className={`${typography.h3} ${colors.text.primary} mb-4`}>
-                クロスプラットフォーム
-              </h3>
+          }
+          rightContent={
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-white mb-4">最新のアプリ開発</h3>
+              <ul className="space-y-3 text-gray-300 inline-block text-left">
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span>クロスプラットフォーム対応</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span>効率的な開発</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span>高いメンテナンス性</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span>最適化されたパフォーマンス</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="w-2 h-2 bg-green-400 rounded-full mr-3 mt-2 flex-shrink-0"></span>
+                  <span>包括的なセキュリティ対策</span>
+                </li>
+              </ul>
+            </div>
+          }
+          variant="dark"
+        />
+      </div>
+
+      {/* セクション6: 導入要素 */}
+      <div className="border-b border-blue-400">
+        <ThreeCardSection
+          title="導入に必要な要素"
+          description="アプリ開発成功のための3つの重要な要素をご説明します"
+          enableMobileScroll={true}
+          cards={[
+            {
+              title: "技術要素",
+              description: "アプリ開発に必要な技術的な要素を整理します。",
+              tags: ["フロントエンド開発", "バックエンド開発", "データベース設計", "クラウドインフラ", "セキュリティ対策"],
+              modalTitle: "技術要素",
+              modalContent: (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-white mb-4">技術要素</h3>
+                  <div className="space-y-3">
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">フロントエンド開発</h4>
+                      <p className="text-gray-300">React Native、Flutter、Swift、Kotlinなど、プラットフォームに最適な技術選択</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">バックエンド開発</h4>
+                      <p className="text-gray-300">API設計、サーバー構築、データ処理、認証システムの実装</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">データベース設計</h4>
+                      <p className="text-gray-300">効率的なデータ構造設計、スケーラビリティを考慮したDB選択</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">クラウドインフラ</h4>
+                      <p className="text-gray-300">AWS、Azure、GCPなど、クラウドサービスを活用したスケーラブルなインフラ構築</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">セキュリティ対策</h4>
+                      <p className="text-gray-300">データ暗号化、認証・認可、API セキュリティ、プライバシー保護</p>
+                    </div>
+                  </div>
+                </div>
+              ),
+              modalSize: "lg"
+            },
+            {
+              title: "ビジネス要素",
+              description: "アプリ開発に必要なビジネス的な要素を整理します。",
+              tags: ["要件定義", "コンテンツ戦略", "マーケティング計画", "運用体制", "ROI分析"],
+              modalTitle: "ビジネス要素",
+              modalContent: (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-white mb-4">ビジネス要素</h3>
+                  <div className="space-y-3">
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">要件定義</h4>
+                      <p className="text-gray-300">ユーザーニーズの分析、機能要件の整理、非機能要件の定義</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">コンテンツ戦略</h4>
+                      <p className="text-gray-300">ユーザーエクスペリエンス設計、コンテンツ企画、情報アーキテクチャ</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">マーケティング計画</h4>
+                      <p className="text-gray-300">アプリストア最適化、プロモーション戦略、ユーザー獲得計画</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">運用体制</h4>
+                      <p className="text-gray-300">サポート体制、アップデート計画、品質管理プロセス</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">ROI分析</h4>
+                      <p className="text-gray-300">投資対効果の算出、KPI設定、継続的な効果測定</p>
+                    </div>
+                  </div>
+                </div>
+              ),
+              modalSize: "lg"
+            },
+            {
+              title: "人材要素",
+              description: "アプリ開発に必要な人材的な要素を整理します。",
+              tags: ["フロントエンド開発者", "バックエンド開発者", "UI/UXデザイナー", "プロジェクトマネージャー", "コンテンツ制作者"],
+              modalTitle: "人材要素",
+              modalContent: (
+                <div className="space-y-4">
+                  <h3 className="text-xl font-bold text-white mb-4">人材要素</h3>
+                  <div className="space-y-3">
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">フロントエンド開発者</h4>
+                      <p className="text-gray-300">モバイルアプリのUI実装、ユーザーインタラクション設計</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">バックエンド開発者</h4>
+                      <p className="text-gray-300">サーバーサイド開発、API設計、データベース管理</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">UI/UXデザイナー</h4>
+                      <p className="text-gray-300">ユーザーエクスペリエンス設計、インターフェースデザイン、ユーザビリティテスト</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">プロジェクトマネージャー</h4>
+                      <p className="text-gray-300">プロジェクト管理、スケジュール調整、品質管理</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-blue-400 mb-2">コンテンツ制作者</h4>
+                      <p className="text-gray-300">アプリ内コンテンツ制作、マーケティング素材作成</p>
+                    </div>
+                  </div>
+                </div>
+              ),
+              modalSize: "lg"
+            }
+          ]}
+          variant="dark"
+        />
+      </div>
+
+      {/* セクション7: 理由説明 */}
+      <div className="border-b border-blue-400">
+        <TwoColumnSection
+          title="なぜ今、導入が必要なのか"
+          description="モバイル時代において、アプリケーションは企業の顔であり、ビジネスの成長を支える重要なプラットフォームです。以下の理由から、今アプリケーションの開発が重要です："
+          leftContent={
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold text-white mb-4">市場動向と消費者変化</h3>
               <div className="space-y-4">
-                <div>
-                  <h4 className="text-blue-400 font-semibold mb-2">React Native</h4>
-                  <p className="text-sm text-gray-300">JavaScriptでiOS・Android両対応</p>
+                <div className="flex items-start">
+                  <span className="w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span className="text-white text-xs">📱</span>
+                  </span>
+                  <p className="text-gray-300 text-sm">
+                    モバイルアプリの利用が増加し、ビジネスチャンスが拡大
+                  </p>
                 </div>
-                <div>
-                  <h4 className="text-blue-400 font-semibold mb-2">Flutter</h4>
-                  <p className="text-sm text-gray-300">Dartで高速なクロスプラットフォーム開発</p>
+                <div className="flex items-start">
+                  <span className="w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span className="text-white text-xs">🌍</span>
+                  </span>
+                  <p className="text-gray-300 text-sm">
+                    グローバル市場での競争力強化のため、多言語対応が重要に
+                  </p>
                 </div>
-                <div>
-                  <h4 className="text-blue-400 font-semibold mb-2">PWA</h4>
-                  <p className="text-sm text-gray-300">Web技術でアプリライクな体験</p>
+                <div className="flex items-start">
+                  <span className="w-6 h-6 bg-blue-400 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span className="text-white text-xs">👤</span>
+                  </span>
+                  <p className="text-gray-300 text-sm">
+                    ユーザー体験の質が、ビジネスの成功を左右する
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </Section>
+          }
+          rightContent={
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold text-white mb-4">技術革新と競争優位性</h3>
+              <div className="space-y-4">
+                <div className="flex items-start">
+                  <span className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span className="text-white text-xs">⚡</span>
+                  </span>
+                  <p className="text-gray-300 text-sm">
+                    最新のアプリ開発技術による高速なパフォーマンス
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <span className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span className="text-white text-xs">🔒</span>
+                  </span>
+                  <p className="text-gray-300 text-sm">
+                    セキュリティ対策の強化による信頼性の向上
+                  </p>
+                </div>
+                <div className="flex items-start">
+                  <span className="w-6 h-6 bg-green-400 rounded-full flex items-center justify-center mr-3 mt-1 flex-shrink-0">
+                    <span className="text-white text-xs">📊</span>
+                  </span>
+                  <p className="text-gray-300 text-sm">
+                    データ分析とマーケティングの統合
+                  </p>
+                </div>
+              </div>
+            </div>
+          }
+          variant="dark"
+        />
+      </div>
 
-      {/* 技術スタックセクション */}
-      <Section className="py-16 lg:py-24 bg-gray-900">
-        <div className="max-w-6xl mx-auto">
-          <h2 className={`${typography.h2} ${colors.text.primary} text-center mb-12`}>
-            技術スタック
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-              <h3 className={`${typography.h3} ${colors.text.primary} mb-4`}>
-                フロントエンド
-              </h3>
-              <ul className="space-y-2">
-                <li className="text-gray-300">React Native</li>
-                <li className="text-gray-300">Flutter</li>
-                <li className="text-gray-300">Swift/SwiftUI</li>
-                <li className="text-gray-300">Kotlin/Jetpack Compose</li>
-              </ul>
-            </div>
-            <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-              <h3 className={`${typography.h3} ${colors.text.primary} mb-4`}>
-                バックエンド
-              </h3>
-              <ul className="space-y-2">
-                <li className="text-gray-300">Node.js</li>
-                <li className="text-gray-300">Firebase</li>
-                <li className="text-gray-300">AWS Amplify</li>
-                <li className="text-gray-300">GraphQL</li>
-              </ul>
-            </div>
-            <div className="bg-gray-800 p-6 rounded-xl border border-gray-700">
-              <h3 className={`${typography.h3} ${colors.text.primary} mb-4`}>
-                開発・運用
-              </h3>
-              <ul className="space-y-2">
-                <li className="text-gray-300">Git/GitHub</li>
-                <li className="text-gray-300">CI/CD</li>
-                <li className="text-gray-300">App Store Connect</li>
-                <li className="text-gray-300">Google Play Console</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </Section>
+      {/* セクション8: 技術提供 */}
+      <div className="border-b border-blue-400">
+        <TabSection
+          title="技術提供"
+          tabs={[
+            {
+              id: 'development',
+              name: '開発',
+              content: (
+                <ThreeCardSection
+                  padding="sm"
+                  enableMobileScroll={true}
+                  cards={[
+                    {
+                      title: 'iOSアプリ開発',
+                      description: 'SwiftやObjective-Cを使用し、高品質なiOSアプリケーションを開発します。',
+                      tags: ['Swift', 'Objective-C', 'iOS'],
+                      modalTitle: 'iOSアプリ開発',
+                      modalContent: (
+                        <div className="space-y-6">
+                          <h4 className="text-2xl font-bold text-white mb-4">
+                            Swift・Objective-CによるiOS開発
+                          </h4>
+                          <p className="text-gray-300 leading-relaxed">
+                            Appleの最新技術を活用し、App Storeの審査基準をクリアする高品質なiOSアプリを開発します。
+                          </p>
+                          <div className="space-y-4">
+                            <h5 className="text-xl font-semibold text-white">技術スタック</h5>
+                            <ul className="space-y-2 text-gray-300">
+                              <li>• Swift 5.9+</li>
+                              <li>• Objective-C</li>
+                              <li>• SwiftUI</li>
+                              <li>• UIKit</li>
+                              <li>• Core Data</li>
+                            </ul>
+                          </div>
+                        </div>
+                      ),
+                      modalSize: "lg"
+                    },
+                    {
+                      title: 'Androidアプリ開発',
+                      description: 'KotlinやJavaを使用し、安定性の高いAndroidアプリケーションを開発します。',
+                      tags: ['Kotlin', 'Java', 'Android'],
+                      modalTitle: 'Androidアプリ開発',
+                      modalContent: (
+                        <div className="space-y-6">
+                          <h4 className="text-2xl font-bold text-white mb-4">
+                            Kotlin・JavaによるAndroid開発
+                          </h4>
+                          <p className="text-gray-300 leading-relaxed">
+                            Googleの推奨技術を使用し、Material Design 3に準拠した美しいAndroidアプリを開発します。
+                          </p>
+                          <div className="space-y-4">
+                            <h5 className="text-xl font-semibold text-white">技術スタック</h5>
+                            <ul className="space-y-2 text-gray-300">
+                              <li>• Kotlin</li>
+                              <li>• Java</li>
+                              <li>• Jetpack Compose</li>
+                              <li>• Android Studio</li>
+                              <li>• Material Design</li>
+                            </ul>
+                          </div>
+                        </div>
+                      ),
+                      modalSize: "lg"
+                    },
+                    {
+                      title: 'クロスプラットフォーム開発',
+                      description: 'React NativeやFlutterを使用し、効率的なクロスプラットフォーム開発を実現します。',
+                      tags: ['React Native', 'Flutter', 'クロスプラットフォーム'],
+                      modalTitle: 'クロスプラットフォーム開発',
+                      modalContent: (
+                        <div className="space-y-6">
+                          <h4 className="text-2xl font-bold text-white mb-4">
+                            効率的なクロスプラットフォーム開発
+                          </h4>
+                          <p className="text-gray-300 leading-relaxed">
+                            一つのコードベースでiOS・Android両方に対応したアプリを効率的に開発します。
+                          </p>
+                          <div className="space-y-4">
+                            <h5 className="text-xl font-semibold text-white">技術スタック</h5>
+                            <ul className="space-y-2 text-gray-300">
+                              <li>• React Native</li>
+                              <li>• Flutter</li>
+                              <li>• JavaScript</li>
+                              <li>• Dart</li>
+                              <li>• PWA</li>
+                            </ul>
+                          </div>
+                        </div>
+                      ),
+                      modalSize: "lg"
+                    }
+                  ]}
+                  variant="dark"
+                />
+              )
+            },
+            {
+              id: 'consulting',
+              name: 'コンサルティング',
+              content: (
+                <ThreeCardSection
+                  padding="sm"
+                  enableMobileScroll={true}
+                  cards={[
+                    {
+                      title: 'アプリ戦略立案',
+                      description: '企業のアプリ戦略の策定、ユースケースの特定、ROI分析など、包括的な導入計画を支援します。',
+                      tags: ['戦略立案', 'ROI分析', '導入計画'],
+                      modalTitle: 'アプリ戦略立案',
+                      modalContent: (
+                        <div className="space-y-6">
+                          <h4 className="text-2xl font-bold text-white mb-4">
+                            包括的なアプリ戦略立案
+                          </h4>
+                          <p className="text-gray-300 leading-relaxed">
+                            企業のビジネス目標に合わせたアプリ戦略を策定し、成功への道筋を明確にします。
+                          </p>
+                          <div className="space-y-4">
+                            <h5 className="text-xl font-semibold text-white">サービス内容</h5>
+                            <ul className="space-y-2 text-gray-300">
+                              <li>• アプリ戦略の策定</li>
+                              <li>• ユースケースの特定</li>
+                              <li>• ROI分析</li>
+                              <li>• 導入計画の立案</li>
+                              <li>• 競合分析</li>
+                            </ul>
+                          </div>
+                        </div>
+                      ),
+                      modalSize: "lg"
+                    },
+                    {
+                      title: 'セキュリティ対策',
+                      description: '最新のセキュリティ基準に準拠し、安全で信頼性の高いアプリケーションを構築します。',
+                      tags: ['セキュリティ', '暗号化', '認証'],
+                      modalTitle: 'セキュリティ対策',
+                      modalContent: (
+                        <div className="space-y-6">
+                          <h4 className="text-2xl font-bold text-white mb-4">
+                            包括的なセキュリティ対策
+                          </h4>
+                          <p className="text-gray-300 leading-relaxed">
+                            最新のセキュリティ基準に準拠し、ユーザーデータを保護する安全なアプリケーションを構築します。
+                          </p>
+                          <div className="space-y-4">
+                            <h5 className="text-xl font-semibold text-white">セキュリティ要素</h5>
+                            <ul className="space-y-2 text-gray-300">
+                              <li>• データ暗号化</li>
+                              <li>• 認証・認可システム</li>
+                              <li>• API セキュリティ</li>
+                              <li>• プライバシー保護</li>
+                              <li>• セキュリティ監査</li>
+                            </ul>
+                          </div>
+                        </div>
+                      ),
+                      modalSize: "lg"
+                    },
+                    {
+                      title: '運用サポート',
+                      description: 'アプリケーションの継続的な運営支援、コンテンツ管理、パフォーマンス最適化をサポートします。',
+                      tags: ['運用支援', 'コンテンツ管理', '最適化'],
+                      modalTitle: '運用サポート',
+                      modalContent: (
+                        <div className="space-y-6">
+                          <h4 className="text-2xl font-bold text-white mb-4">
+                            継続的な運用サポート
+                          </h4>
+                          <p className="text-gray-300 leading-relaxed">
+                            アプリケーションの継続的な運営を支援し、パフォーマンスの最適化とユーザー体験の向上を実現します。
+                          </p>
+                          <div className="space-y-4">
+                            <h5 className="text-xl font-semibold text-white">サポート内容</h5>
+                            <ul className="space-y-2 text-gray-300">
+                              <li>• 継続的な運営支援</li>
+                              <li>• コンテンツ管理</li>
+                              <li>• パフォーマンス最適化</li>
+                              <li>• バグ修正・アップデート</li>
+                              <li>• ユーザーサポート</li>
+                            </ul>
+                          </div>
+                        </div>
+                      ),
+                      modalSize: "lg"
+                    }
+                  ]}
+                  variant="dark"
+                />
+              )
+            }
+          ]}
+          defaultTab="development"
+          variant="dark"
+        />
+      </div>
 
-      {/* 開発プロセスセクション */}
-      <Section className="py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto">
-          <h2 className={`${typography.h2} ${colors.text.primary} text-center mb-12`}>
-            開発プロセス
-          </h2>
-          <div className="space-y-8">
-            <div className="flex items-start">
-              <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
-                <span className="text-lg font-bold text-black">1</span>
-              </div>
-              <div>
-                <h3 className={`${typography.h3} ${colors.text.primary} mb-2`}>
-                  要件定義・設計
-                </h3>
-                <p className={colors.text.secondary}>
-                  アプリの機能要件を整理し、UI/UXデザイン、アーキテクチャを設計します。
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
-                <span className="text-lg font-bold text-black">2</span>
-              </div>
-              <div>
-                <h3 className={`${typography.h3} ${colors.text.primary} mb-2`}>
-                  プロトタイプ開発
-                </h3>
-                <p className={colors.text.secondary}>
-                  主要機能のプロトタイプを作成し、早期にフィードバックを得ます。
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
-                <span className="text-lg font-bold text-black">3</span>
-              </div>
-              <div>
-                <h3 className={`${typography.h3} ${colors.text.primary} mb-2`}>
-                  本格開発・テスト
-                </h3>
-                <p className={colors.text.secondary}>
-                  フル機能のアプリを開発し、包括的なテストを実施します。
-                </p>
-              </div>
-            </div>
-            <div className="flex items-start">
-              <div className="w-12 h-12 bg-blue-400 rounded-full flex items-center justify-center mr-6 flex-shrink-0">
-                <span className="text-lg font-bold text-black">4</span>
-              </div>
-              <div>
-                <h3 className={`${typography.h3} ${colors.text.primary} mb-2`}>
-                  リリース・運用
-                </h3>
-                <p className={colors.text.secondary}>
-                  ストアへの申請・公開、継続的なアップデートとサポートを提供します。
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
+      {/* セクション9: FAQ */}
+      <div className="border-b border-blue-400">
+        <FAQSection
+          title="よくある質問"
+          faqs={[
+            {
+              id: 'faq-1',
+              question: 'アプリ開発にはどのくらいの期間がかかりますか？',
+              answer: 'プロジェクトの規模や複雑さによって異なりますが、一般的には3ヶ月から6ヶ月程度です。'
+            },
+            {
+              id: 'faq-2',
+              question: 'iOSとAndroidの両方に対応できますか？',
+              answer: 'はい、ネイティブ開発またはクロスプラットフォーム開発で両方に対応可能です。'
+            },
+            {
+              id: 'faq-3',
+              question: 'アプリの運用・保守はどのように行いますか？',
+              answer: '継続的なアップデート、バグ修正、セキュリティ更新など、包括的な運用サポートを提供します。'
+            },
+            {
+              id: 'faq-4',
+              question: 'ゲームアプリの開発も可能ですか？',
+              answer: 'はい、UnityやUnreal Engineを使用したゲームアプリ開発も対応しています。'
+            },
+            {
+              id: 'faq-5',
+              question: 'アプリストアへの申請サポートはありますか？',
+              answer: 'App StoreやGoogle Play Storeへの申請から公開まで、一貫してサポートします。'
+            }
+          ]}
+          variant="dark"
+        />
+      </div>
 
-      {/* CTA */}
-      <CallToAction />
+      {/* セクション10: 関連サービス */}
+      <div className="border-b border-blue-400">
+        <RelatedServicesSection
+          title="関連サービス"
+          services={[
+            {
+              id: 'web-development',
+              title: 'Web開発',
+              description: 'モダンなWebアプリケーションの開発',
+              tags: ['React', 'Next.js', 'TypeScript'],
+              href: '/services/web-development'
+            },
+            {
+              id: 'ai-consulting',
+              title: 'AI',
+              description: 'AI技術を活用したビジネスソリューション',
+              tags: ['機械学習', '深層学習', '自然言語処理'],
+              href: '/services/ai-consulting'
+            },
+            {
+              id: 'metaverse',
+              title: 'メタバース',
+              description: 'VR空間構築から、企画・運用・活用提案まで',
+              tags: ['VR', 'AR', '3D空間'],
+              href: '/services/metaverse'
+            }
+          ]}
+          variant="dark"
+        />
+      </div>
+
+      {/* セクション11: CTA */}
+      <div className="border-b border-blue-400">
+        <SingleColumnSection
+          title="アプリで新しいビジネス価値を創造しませんか？"
+          description="IDEALのアプリ開発サービスで、貴社のビジネスに革新をもたらします。まずはお気軽にお問い合わせください。"
+          variant="dark"
+          className="text-center"
+        >
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+            <button className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+              お問い合わせ
+            </button>
+            <button className="px-8 py-3 border border-blue-400 text-blue-400 rounded-lg hover:bg-blue-400 hover:text-white transition-colors">
+              サービス一覧に戻る
+            </button>
+          </div>
+        </SingleColumnSection>
+      </div>
     </div>
   )
 }

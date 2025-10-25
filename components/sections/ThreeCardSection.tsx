@@ -2,7 +2,13 @@
 
 import { colors } from '../../lib/design-tokens'
 import Image from 'next/image'
-import { ModalTrigger } from '../ui/ModalTrigger'
+import dynamic from 'next/dynamic'
+
+// モーダルを動的インポート（パフォーマンス最適化）
+const ModalTrigger = dynamic(() => import('../ui/ModalTrigger').then(mod => ({ default: mod.ModalTrigger })), {
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-gray-800 rounded-lg h-full" />
+})
 
 /**
  * ThreeCardSection コンポーネント

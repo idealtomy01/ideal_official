@@ -1,5 +1,3 @@
-'use client'
-
 import { colors, typography, spacing } from '../../lib/design-tokens'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -83,6 +81,9 @@ export function TwoCardSectionFixed({
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, 50vw"
+                      quality={75}
+                      priority={false}
+                      loading="lazy"
                     />
                   </div>
                 </div>

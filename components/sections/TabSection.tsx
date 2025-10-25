@@ -1,8 +1,14 @@
 'use client'
 
 import { colors } from '../../lib/design-tokens'
-import { TabContainer } from '../ui/TabContainer'
+import dynamic from 'next/dynamic'
 import { TabData } from '../../types/service'
+
+// TabContainerを動的インポート（パフォーマンス最適化）
+const TabContainer = dynamic(() => import('../ui/TabContainer').then(mod => ({ default: mod.TabContainer })), {
+  ssr: false,
+  loading: () => <div className="animate-pulse bg-gray-800 rounded-lg h-64" />
+})
 
 /**
  * TabSection コンポーネント

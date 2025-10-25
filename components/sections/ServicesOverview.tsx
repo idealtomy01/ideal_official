@@ -120,7 +120,7 @@ const services = [
 
 export function ServicesOverview() {
   return (
-    <Section backgroundColor="gray-900">
+    <Section backgroundColor="black">
       {/* セクション見出し */}
       <div className="text-center mb-16">
         <h2 className={`${typography.h2} ${colors.text.primary} mb-4`}>

@@ -26,16 +26,16 @@ const DAOOverviewSection = React.memo(() => {
               なぜidealがDAOを研究するのか
             </h3>
             <p className="text-gray-300 leading-relaxed mb-6">
-              DAO（分散型自律組織）は、従来の中央集権的な組織運営から脱却し、
-              透明性、自律性、協調性を重視した新しい組織形態です。
-              私たちidealは、この革新的な組織形態が持つ可能性に注目し、
-              テクノロジーを活用した公正で持続可能な社会の実現を目指しています。
+            DAOの本質は、「中央の権力者」を「プログラム（コード）」に置き換えることにあります。
+            ブロックチェーンがもたらす①透明性（隠せない記録）と②改ざん不可能性（書き換えられない記録）、
+            そしてスマートコントラクトによる③自動執行（必ず実行される約束）。
+            これらを組み合わせることで、人間社会が抱える「約束不履行」や「情報の非対称性」
+            といった問題を、技術的に克服できる可能性を秘めています。
             </p>
             <p className="text-gray-300 leading-relaxed">
-              DAOの研究を通じて、個人の価値観と組織の目標が一致する環境を創造し、
-              誰もが自分らしく貢献できる社会システムの構築を追求しています。
-              これは単なる技術的な革新ではなく、人間の働き方と組織の在り方を
-              根本から変革する可能性を秘めています。
+            このDAOの仕組みを研究・開発することで、個人の貢献が正当に評価され、
+            組織と個人の目標が自然と一致するような、新しい社会システムの基盤を構築したいと考えています。
+            人間が人間を評価・判断しなくてよい技術を活用し、新たな価値観と価値基準を確率する時代に突入しています
             </p>
           </div>
 
@@ -58,9 +58,9 @@ const DAOOverviewSection = React.memo(() => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h4 className="text-lg font-semibold text-white mb-2">自律性</h4>
+              <h4 className="text-lg font-semibold text-white mb-2">自動化</h4>
               <p className="text-gray-300 text-sm">
-                中央集権的な管理なしに、メンバーが自律的に意思決定と実行を行う
+                プログラムによる自動執行により不履行がなくなり、不要な監視や保険が不要になる
               </p>
             </div>
 
@@ -70,9 +70,9 @@ const DAOOverviewSection = React.memo(() => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
               </div>
-              <h4 className="text-lg font-semibold text-white mb-2">協調性</h4>
+              <h4 className="text-lg font-semibold text-white mb-2">永続性</h4>
               <p className="text-gray-300 text-sm">
-                多様な価値観を持つメンバーが協力し、共通の目標に向かって活動
+              　分散化された記録は、改ざんの経済的合理性がないため、永続的な信頼の証として機能します
               </p>
             </div>
           </div>

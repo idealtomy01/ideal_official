@@ -75,6 +75,7 @@ export function Header() {
         {/* ロゴ */}
         <Link
           href="/"
+          prefetch={true}
           className={`
             text-2xl font-bold ${colors.text.primary}
             ${transitions.colors}
@@ -90,6 +91,7 @@ export function Header() {
             <li key={link.href}>
               <Link
                 href={link.href}
+                prefetch={link.href === '/' ? true : false}
                 className={`
                   ${colors.text.secondary}
                   ${transitions.colors}
@@ -136,6 +138,7 @@ export function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
+                      prefetch={false}
                       className="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 hover:text-white transition-colors"
                       onClick={() => setIsServicesDropdownOpen(false)}
                     >
@@ -145,6 +148,7 @@ export function Header() {
                   <div className="border-t border-gray-700 my-2"></div>
                   <Link
                     href="/services"
+                    prefetch={false}
                     className="block px-4 py-2 text-sm text-blue-400 hover:bg-gray-800 transition-colors"
                     onClick={() => setIsServicesDropdownOpen(false)}
                   >

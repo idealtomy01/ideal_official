@@ -1,5 +1,3 @@
-'use client'
-
 import { colors, typography, spacing } from '../../lib/design-tokens'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -83,6 +81,9 @@ export function ServiceGridSectionFixed({
                       fill
                       className="object-cover"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                      quality={75}
+                      priority={false}
+                      loading="lazy"
                     />
                   </div>
                 </div>

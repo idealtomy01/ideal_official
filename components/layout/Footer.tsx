@@ -61,6 +61,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    prefetch={false}
                     className={`
                       ${colors.text.muted}
                       hover:${colors.text.primary}
@@ -86,6 +87,7 @@ export function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
+                    prefetch={false}
                     className={`
                       ${colors.text.muted}
                       hover:${colors.text.primary}

@@ -27,13 +27,6 @@ export interface ServiceCardData {
   onClick?: () => void
 }
 
-// サービスカードのProps型定義
-export interface ServiceCardProps {
-  data: ServiceCardData
-  variant?: 'default' | 'feature' | 'technology'
-  className?: string
-}
-
 // セクションデータの型定義
 export interface SectionData {
   id: string
