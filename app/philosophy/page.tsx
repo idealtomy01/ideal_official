@@ -45,45 +45,16 @@ export default function PhilosophyPage() {
       
       {/* グローバルヘッダー */}
       <Header />
-      
-      {/* 固定ヘッダーナビゲーション */}
-      <nav className="fixed top-16 left-0 right-0 z-40 bg-black/95 backdrop-blur-sm border-b border-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex space-x-8 py-4">
-            <a href="#vision" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              はじめに
-            </a>
-            <a href="#conflict" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              問題と課題
-            </a>
-            <a href="#philosophy" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              歪められた価値の再定義
-            </a>
-            <a href="#mechanism" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              基本設計
-            </a>
-            <a href="#structure" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              組織構造
-            </a>
-            <a href="#path" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              ロードマップ
-            </a>
-            <a href="#declaration" className="text-sm font-medium text-gray-300 hover:text-white transition-colors">
-              技術の進化
-            </a>
-                </div>
-              </div>
-      </nav>
 
       {/* メインコンテンツ */}
-      <main className="pt-32">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* ページタイトル */}
-          <HeroSection
-            title="自由と秩序が両立した社会を設計する"
-            subText="正直であることが合理的な環境の設計へ"
-          />
+      <main className="">
+        {/* ページタイトル */}
+        <HeroSection
+          title="自由と秩序が両立した社会を設計する"
+          subText="正直であることが合理的な環境の設計へ"
+        />
 
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* セクション0: はじめに */}
           <div>
             <VisionSection />

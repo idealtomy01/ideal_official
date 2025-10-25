@@ -11,12 +11,12 @@ export function HeroSection({
   className = '' 
 }: HeroSectionProps) {
   return (
-    <section className={`flex items-center justify-center bg-gradient-to-b from-black via-gray-900 to-black py-24 lg:py-48 ${className}`}>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section className={`bg-gradient-to-b from-black via-gray-900 to-black py-24 lg:py-48 ${className}`}>
+      <div className="text-center px-4 sm:px-6 lg:px-8">
         <h1 className="text-4xl md:text-6xl font-bold text-white mb-6">
           {title}
         </h1>
-        <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+        <p className="text-xl md:text-2xl text-gray-300">
           {subText}
         </p>
       </div>

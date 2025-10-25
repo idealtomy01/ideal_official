@@ -14,6 +14,7 @@ export interface TwoCardData {
   image: string
   link: string
   linkText: string
+  priority?: boolean  // Above the fold画像を優先読み込み
 }
 
 export interface TwoCardSectionFixedProps {
@@ -78,12 +79,13 @@ export function TwoCardSectionFixed({
                     <Image
                       src={card.image}
                       alt={card.title}
-                      fill
-                      className="object-cover"
+                      width={1200}
+                      height={450}
+                      className="object-cover w-full h-full"
                       sizes="(max-width: 768px) 100vw, 50vw"
                       quality={75}
-                      priority={false}
-                      loading="lazy"
+                      priority={card.priority || false}
+                      loading={card.priority ? undefined : "lazy"}
                     />
                   </div>
                 </div>

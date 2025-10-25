@@ -10,7 +10,8 @@ import { Button } from '../ui/Button'
 import { Section } from '../ui/Section'
 import { typography, colors } from '../../lib/design-tokens'
 
-export function CallToAction() {
+// デフォルトエクスポートに変更（dynamic import対応）
+export default function CallToAction() {
   return (
     <Section backgroundColor="black">
       <div className="text-center max-w-4xl mx-auto">

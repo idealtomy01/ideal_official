@@ -24,7 +24,8 @@ export interface ServiceGridSectionFixedProps {
   className?: string
 }
 
-export function ServiceGridSectionFixed({
+// デフォルトエクスポートに変更（dynamic import対応）
+export default function ServiceGridSectionFixed({
   title,
   subtitle,
   description,
@@ -78,8 +79,9 @@ export function ServiceGridSectionFixed({
                     <Image
                       src={service.image}
                       alt={service.title}
-                      fill
-                      className="object-cover"
+                      width={600}
+                      height={400}
+                      className="object-cover w-full h-full"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                       quality={75}
                       priority={false}

@@ -7,7 +7,7 @@ import { Footer } from "../components/layout/Footer";
 // Noto Sans JP フォントの設定（パフォーマンス最適化）
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  weight: ["400", "500", "700"],
+  weight: ["400", "700"],
   variable: "--font-noto-sans-jp",
   display: "swap",
   preload: true,

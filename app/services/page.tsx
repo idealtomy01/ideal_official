@@ -9,7 +9,7 @@ import { Metadata } from 'next'
 import { Section } from '../../components/ui/Section'
 import { HeroSection } from '../../components/sections/HeroSection'
 import { ServiceNavigation } from '../../components/sections/ServiceNavigation'
-import { CallToAction } from '../../components/sections/CallToAction'
+import CallToAction from '../../components/sections/CallToAction'
 import { typography, colors } from '../../lib/design-tokens'
 
 export const metadata: Metadata = {
