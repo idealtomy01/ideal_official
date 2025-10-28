@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { HeroSection } from '../../../components/sections/HeroSection'
 import { ServiceNavigation } from '../../../components/sections/ServiceNavigation'
 import { SingleColumnSection } from '../../../components/sections/SingleColumnSection'
@@ -62,20 +63,39 @@ export default function DAODesignPage() {
         </SingleColumnSection>
       </div>
 
-      {/* セクション2: ターゲット説明 */}
-      <div className="border-b border-blue-400">
-        <SingleColumnSection
-          title="DAOがもたらす大きな恩恵"
-          description="かつては一部の先進的なプロジェクトのものであったDAO。スマートコントラクト技術や低コストなブロックチェーンの登場により、中小企業やコミュニティでも導入・活用が可能になりました。"
-          variant="dark"
-        >
-          <div className="mt-6">
-            <h3 className="text-lg font-semibold text-blue-400 mb-3">あらゆる規模の組織に、透明性と効率性をもたらす</h3>
-            <p className="text-gray-300 leading-relaxed">
-              意思決定の透明化、インセンティブの自動化、グローバルな協力体制の構築など、組織の規模に関わらず大きなメリットをもたらします。
-            </p>
+      {/* セクション2: ターゲット説明（CSS Media Query パララックス） */}
+      <div className="border-b border-blue-400 relative overflow-hidden">
+        {/* 背景画像 - PCのみパララックス効果 */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-40 z-0 hidden md:block"
+          style={{ 
+            backgroundImage: 'url(/images/DAO_para.png)',
+            backgroundAttachment: 'fixed'
+          }}
+        />
+        
+        {/* 黒の半透明オーバーレイ - デスクトップのみ */}
+        <div className="absolute inset-0 bg-black/50 z-0 hidden md:block" />
+        
+        {/* コンテンツ */}
+        <div className="relative z-10 py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                DAOがもたらす大きな恩恵
+              </h2>
+              <p className="text-lg text-gray-300 mb-6">
+                かつては一部の先進的なプロジェクトのものであったDAO。スマートコントラクト技術や低コストなブロックチェーンの登場により、中小企業やコミュニティでも導入・活用が可能になりました。
+              </p>
+              <div className="mt-6">
+                <h3 className="text-lg font-semibold text-blue-400 mb-3">あらゆる規模の組織に、透明性と効率性をもたらす</h3>
+                <p className="text-gray-300 leading-relaxed">
+                  意思決定の透明化、インセンティブの自動化、グローバルな協力体制の構築など、組織の規模に関わらず大きなメリットをもたらします。
+                </p>
+              </div>
+            </div>
           </div>
-        </SingleColumnSection>
+        </div>
       </div>
 
       {/* セクション3: 活用方法 */}
@@ -593,7 +613,7 @@ export default function DAODesignPage() {
                               <h5 className="font-semibold text-blue-400 mb-2">イベント企画</h5>
                               <p className="text-gray-300">コミュニティを盛り上げるイベントの企画・実施をサポートします。（詳細は後日追加予定）</p>
                             </div>
-                          </div>
+        </div>
                         </div>
                       ),
                       modalSize: "lg"

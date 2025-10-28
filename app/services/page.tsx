@@ -7,6 +7,7 @@
 
 import { Metadata } from 'next'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Section } from '../../components/ui/Section'
 import { HeroSection } from '../../components/sections/HeroSection'
 import { ServiceNavigation } from '../../components/sections/ServiceNavigation'
@@ -137,11 +138,14 @@ export default function ServicesPage() {
 
       {/* サービス詳細セクション */}
       {services.map((service, index) => (
-        <Section
-          key={service.id}
-          backgroundColor="black"
-          className="py-16 md:py-24"
-        >
+        <div key={service.id}>
+          {/* 仕切り線 */}
+          {index > 0 && <div className="border-b border-blue-400" />}
+          
+          <Section
+            backgroundColor="black"
+            className="py-16 md:py-24"
+          >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* アイコン・タイトル（偶数は左、奇数は右） */}
             <div className={index % 2 === 0 ? 'lg:order-1' : 'lg:order-2'}>
@@ -166,6 +170,14 @@ export default function ServicesPage() {
                   <p className={`${typography.body} ${colors.text.muted} mb-8`}>
                     {service.description}
                   </p>
+                  
+                  {/* リンクボタン */}
+                  <Link 
+                    href={`/services/${service.id}`}
+                    className="inline-block text-cyan-400 hover:text-cyan-300 font-medium text-lg transition-colors duration-200"
+                  >
+                    {service.title}ページへ →
+                  </Link>
                 </div>
               </div>
             </div>
@@ -201,7 +213,8 @@ export default function ServicesPage() {
               </div>
             </div>
           </div>
-        </Section>
+          </Section>
+        </div>
       ))}
 
       {/* CTA セクション */}

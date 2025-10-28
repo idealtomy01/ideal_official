@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { HeroSection } from '../../../components/sections/HeroSection'
 import { ServiceNavigation } from '../../../components/sections/ServiceNavigation'
 import { SingleColumnSection } from '../../../components/sections/SingleColumnSection'
@@ -59,20 +60,39 @@ export default function MetaversePage() {
         </SingleColumnSection>
       </div>
 
-      {/* セクション2: ターゲット説明 */}
-      <div className="border-b border-blue-400">
-        <SingleColumnSection
-          title="中小企業にこそ、メタバースがもたらす大きな恩恵"
-          description="かつては大企業だけのものだったメタバース技術。クラウドサービスやWeb3技術の進化により、少ない初期投資で効果的なメタバース活用が可能になりました。意思決定の速さと組織の柔軟性を活かせる中小企業だからこそ、バーチャル空間による新しいビジネス機会を最大限に活用できます。"
-          variant="dark"
-        >
-          <div className="mt-6">
-            <p className="text-gray-300 leading-relaxed">
-              中小企業こそ、メタバースを活用することで地理的制約を超え、
-              効率的なビジネス展開を実現できます。
-            </p>
+      {/* セクション2: ターゲット説明（CSS Media Query パララックス） */}
+      <div className="border-b border-blue-400 relative overflow-hidden">
+        {/* 背景画像 - PCのみパララックス効果 */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-40 z-0 hidden md:block"
+          style={{ 
+            backgroundImage: 'url(/images/meta_para.png)',
+            backgroundAttachment: 'fixed'
+          }}
+        />
+        
+        {/* 黒の半透明オーバーレイ - デスクトップのみ */}
+        <div className="absolute inset-0 bg-black/50 z-0 hidden md:block" />
+        
+        {/* コンテンツ */}
+        <div className="relative z-10 py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                中小企業にこそ、メタバースがもたらす大きな恩恵
+              </h2>
+              <p className="text-lg text-gray-300 mb-6">
+                かつては大企業だけのものだったメタバース技術。クラウドサービスやWeb3技術の進化により、少ない初期投資で効果的なメタバース活用が可能になりました。意思決定の速さと組織の柔軟性を活かせる中小企業だからこそ、バーチャル空間による新しいビジネス機会を最大限に活用できます。
+              </p>
+              <div className="mt-6">
+                <p className="text-gray-300 leading-relaxed">
+                  中小企業こそ、メタバースを活用することで地理的制約を超え、
+                  効率的なビジネス展開を実現できます。
+                </p>
+              </div>
+            </div>
           </div>
-        </SingleColumnSection>
+        </div>
       </div>
 
       {/* セクション3: 活用方法 */}

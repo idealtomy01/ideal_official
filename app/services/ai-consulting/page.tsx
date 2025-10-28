@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { HeroSection } from '../../../components/sections/HeroSection'
 import { ServiceNavigation } from '../../../components/sections/ServiceNavigation'
 import { SingleColumnSection } from '../../../components/sections/SingleColumnSection'
@@ -29,7 +30,6 @@ const serviceNavLinks = [
 ]
 
 export default function AIConsultingPage() {
-
   return (
     <div className="min-h-screen bg-black">
       {/* セクション0: ヒーローセクション */}
@@ -58,20 +58,39 @@ export default function AIConsultingPage() {
         </SingleColumnSection>
       </div>
 
-      {/* 2. 中小企業にこそ、AIがもたらす大きな恩恵 - 単一カラムセクション */}
-      <div className="border-b border-blue-400">
-        <SingleColumnSection
-          title={aiServiceData.sections[2].title!}
-          description={aiServiceData.sections[2].description!}
-          variant="dark"
-        >
-          <div className="mt-6">
-            <p className="text-gray-300 leading-relaxed">
-              中小企業こそ、新しい技術の恩恵を最大限に活用できる柔軟性と意思決定の速さを持っています。
-              限られたリソースを最大限に活用し、競争優位性を獲得するためのAI戦略を策定します。
-            </p>
+      {/* 2. 中小企業にこそ、AIがもたらす大きな恩恵（CSS Media Query パララックス） */}
+      <div className="border-b border-blue-400 relative overflow-hidden">
+        {/* 背景画像 - PCのみパララックス効果 */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-40 z-0 hidden md:block"
+          style={{ 
+            backgroundImage: 'url(/images/ai_para.png)',
+            backgroundAttachment: 'fixed'
+          }}
+        />
+        
+        {/* 黒の半透明オーバーレイ - デスクトップのみ */}
+        <div className="absolute inset-0 bg-black/50 z-0 hidden md:block" />
+        
+        {/* コンテンツ */}
+        <div className="relative z-10 py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                {aiServiceData.sections[2].title}
+              </h2>
+              <p className="text-lg text-gray-300 mb-6">
+                {aiServiceData.sections[2].description}
+              </p>
+              <div className="mt-6">
+                <p className="text-gray-300 leading-relaxed">
+                  中小企業こそ、新しい技術の恩恵を最大限に活用できる柔軟性と意思決定の速さを持っています。
+                  限られたリソースを最大限に活用し、競争優位性を獲得するためのAI戦略を策定します。
+                </p>
+              </div>
+            </div>
           </div>
-        </SingleColumnSection>
+        </div>
       </div>
 
       {/* 3. 具体的な活用方法 - 3カードセクション */}

@@ -1,4 +1,5 @@
 import { Metadata } from 'next'
+import Image from 'next/image'
 import { HeroSection } from '../../../components/sections/HeroSection'
 import { ServiceNavigation } from '../../../components/sections/ServiceNavigation'
 import { SingleColumnSection } from '../../../components/sections/SingleColumnSection'
@@ -58,15 +59,36 @@ export default function WebDevelopmentPage() {
         </SingleColumnSection>
       </div>
 
-      {/* セクション2: ターゲット説明 */}
-      <div className="border-b border-blue-400">
-        <SingleColumnSection
-          title={webDevelopmentData.sections[1].title}
-          description={webDevelopmentData.sections[1].description}
-          variant="dark"
-        >
-          {webDevelopmentData.sections[1].content}
-        </SingleColumnSection>
+      {/* セクション2: ターゲット説明（CSS Media Query パララックス） */}
+      <div className="border-b border-blue-400 relative overflow-hidden">
+        {/* 背景画像 - PCのみパララックス効果 */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center opacity-40 z-0 hidden md:block"
+          style={{ 
+            backgroundImage: 'url(/images/web_para.png)',
+            backgroundAttachment: 'fixed'
+          }}
+        />
+        
+        {/* 黒の半透明オーバーレイ - デスクトップのみ */}
+        <div className="absolute inset-0 bg-black/50 z-0 hidden md:block" />
+        
+        {/* コンテンツ */}
+        <div className="relative z-10 py-16 md:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
+                {webDevelopmentData.sections[1].title}
+              </h2>
+              <p className="text-lg text-gray-300 mb-6">
+                {webDevelopmentData.sections[1].description}
+              </p>
+              <div className="mt-6">
+                {webDevelopmentData.sections[1].content}
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* セクション3: 活用方法 */}
