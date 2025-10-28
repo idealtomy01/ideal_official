@@ -60,12 +60,11 @@ export default function AIConsultingPage() {
 
       {/* 2. 中小企業にこそ、AIがもたらす大きな恩恵（CSS Media Query パララックス） */}
       <div className="border-b border-blue-400 relative overflow-hidden">
-        {/* 背景画像 - PCのみパララックス効果 */}
+        {/* 背景画像 - レスポンシブパララックス効果 */}
         <div 
-          className="absolute inset-0 bg-cover bg-center opacity-40 z-0 hidden md:block"
+          className="absolute inset-0 bg-cover bg-center opacity-40 z-0 hidden md:block parallax-bg"
           style={{ 
-            backgroundImage: 'url(/images/ai_para.png)',
-            backgroundAttachment: 'fixed'
+            backgroundImage: 'url(/images/ai_para.png)'
           }}
         />
         

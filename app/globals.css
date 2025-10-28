@@ -61,3 +61,17 @@ html {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Safari and Chrome */
 }
+
+/* パララックス背景のモバイル最適化 */
+@media (max-width: 767px) {
+  .parallax-bg {
+    background-attachment: scroll !important;
+  }
+}
+
+/* デスクトップでは固定背景を維持 */
+@media (min-width: 768px) {
+  .parallax-bg {
+    background-attachment: fixed;
+  }
+}
