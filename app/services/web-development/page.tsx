@@ -1,13 +1,28 @@
 import { Metadata } from 'next'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import { HeroSection } from '../../../components/sections/HeroSection'
 import { ServiceNavigation } from '../../../components/sections/ServiceNavigation'
 import { SingleColumnSection } from '../../../components/sections/SingleColumnSection'
 import { TwoColumnSection } from '../../../components/sections/TwoColumnSection'
-import { ThreeCardSection } from '../../../components/sections/ThreeCardSection'
-import { TabSection } from '../../../components/sections/TabSection'
-import { FAQSection } from '../../../components/sections/FAQSection'
-import { RelatedServicesSection } from '../../../components/sections/RelatedServicesSection'
+
+// 重いコンポーネントを動的インポート（レンダリングブロック解消）
+const ThreeCardSection = dynamic(() => import('../../../components/sections/ThreeCardSection').then(mod => ({ default: mod.ThreeCardSection })), {
+  loading: () => <div className="animate-pulse bg-gray-800 rounded-lg h-64" />
+})
+
+const TabSection = dynamic(() => import('../../../components/sections/TabSection').then(mod => ({ default: mod.TabSection })), {
+  loading: () => <div className="animate-pulse bg-gray-800 rounded-lg h-64" />
+})
+
+const FAQSection = dynamic(() => import('../../../components/sections/FAQSection').then(mod => ({ default: mod.FAQSection })), {
+  loading: () => <div className="animate-pulse bg-gray-800 rounded-lg h-64" />
+})
+
+const RelatedServicesSection = dynamic(() => import('../../../components/sections/RelatedServicesSection').then(mod => ({ default: mod.RelatedServicesSection })), {
+  loading: () => <div className="animate-pulse bg-gray-800 rounded-lg h-64" />
+})
+
 import { webDevelopmentData } from '../../../data/services/web-development'
 import { serviceLinks } from '../../../data/services/service-links'
 
