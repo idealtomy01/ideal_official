@@ -13,23 +13,24 @@ export function TabContainer({ tabs, defaultTab, className = '' }: TabContainerP
   return (
     <div className={className}>
       <Tab.Group defaultIndex={defaultTab ? tabs.findIndex(tab => tab.id === defaultTab) : 0}>
-        {/* タブボタン部分 - ピル型デザイン */}
-        <div className="flex justify-center mb-8">
-          <Tab.List className="inline-flex p-1 rounded-lg bg-gray-800 space-x-1">
+        {/* タブボタン部分 - 高級感のあるテキストベースデザイン */}
+        <div className="flex justify-center mb-12">
+          <Tab.List className="inline-flex gap-8 border-b border-gray-700">
             {tabs.map((tab) => (
               <Tab as={Fragment} key={tab.id}>
                 {({ selected }) => (
                   <button
                     className={`
-                      w-full px-8 py-4 text-lg font-bold rounded-md
+                      px-2 py-4 text-xl font-semibold
                       ${transitions.colors}
                       focus:outline-none
                       focus-visible:outline-none
                       focus:ring-0
                       focus-visible:ring-0
+                      relative
                       ${selected
-                        ? `bg-blue-600 ${colors.text.primary} shadow-md`
-                        : `${colors.text.secondary} hover:bg-gray-700 hover:${colors.text.primary}`
+                        ? `${colors.text.primary} border-b-2 border-blue-400 pb-4 -mb-px`
+                        : `${colors.text.secondary} hover:${colors.text.primary}`
                       }
                     `}
                   >
