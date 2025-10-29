@@ -4,14 +4,16 @@ import "./globals.css";
 import { Header } from "../components/layout/Header";
 import { Footer } from "../components/layout/Footer";
 
-// Noto Sans JP フォントの設定（パフォーマンス最適化）
+// Noto Sans JP フォントの設定（パフォーマンス最適化・配信最適化）
 const notoSansJP = Noto_Sans_JP({
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400", "500", "700"],
   variable: "--font-noto-sans-jp",
   display: "swap",
   preload: true,
   adjustFontFallback: true,
+  // 配信最適化
+  fallback: ['system-ui', 'arial'],
 });
 
 export const metadata: Metadata = {
